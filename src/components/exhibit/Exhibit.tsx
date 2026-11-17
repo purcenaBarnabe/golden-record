@@ -30,14 +30,14 @@ export function Exhibit() {
               disabled={!interactive}
               onClick={() => setPanel('inscriptions')}
             >
-              <BookOpen size={18} strokeWidth={1.4} />
+              <BookOpen size={20} strokeWidth={1.7} />
             </IconButton>
             <IconButton
               label="About this recreation"
               disabled={!interactive}
               onClick={() => setPanel('sources')}
             >
-              <Info size={18} strokeWidth={1.4} />
+              <Info size={20} strokeWidth={1.7} />
             </IconButton>
             <IconButton
               label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
@@ -45,9 +45,9 @@ export function Exhibit() {
               onClick={toggleTheme}
             >
               {theme === 'light' ? (
-                <Moon size={18} strokeWidth={1.4} />
+                <Moon size={20} strokeWidth={1.7} />
               ) : (
-                <Sun size={18} strokeWidth={1.4} />
+                <Sun size={20} strokeWidth={1.7} />
               )}
             </IconButton>
           </nav>

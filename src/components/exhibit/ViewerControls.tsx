@@ -57,20 +57,20 @@ export function ViewerControls({
           onClick={() => s.changeZoom(-0.25)}
           disabled={disabled || s.zoom <= MIN_ZOOM}
         >
-          <Minus size={17} strokeWidth={1.4} />
+          <Minus size={19} strokeWidth={1.7} />
         </IconButton>
         <IconButton
           label="Zoom in"
           onClick={() => s.changeZoom(0.25)}
           disabled={disabled || s.zoom >= MAX_ZOOM}
         >
-          <Plus size={17} strokeWidth={1.4} />
+          <Plus size={19} strokeWidth={1.7} />
         </IconButton>
         <IconButton label="Inspect surface texture" onClick={s.inspectTexture} disabled={disabled}>
-          <Microscope size={18} strokeWidth={1.4} />
+          <Microscope size={20} strokeWidth={1.7} />
         </IconButton>
         <IconButton label="Reset view" onClick={s.reset} disabled={disabled}>
-          <RotateCcw size={16} strokeWidth={1.4} />
+          <RotateCcw size={18} strokeWidth={1.7} />
         </IconButton>
         <span className="toolbar-divider" />
         <IconButton
@@ -79,7 +79,7 @@ export function ViewerControls({
           onClick={s.toggleAnnotations}
           disabled={disabled || s.artifact !== 'cover'}
         >
-          <ScanLine size={17} strokeWidth={1.4} />
+          <ScanLine size={19} strokeWidth={1.7} />
         </IconButton>
         <IconButton
           label={s.lighting === 'gallery' ? 'Use raking light' : 'Use studio light'}
@@ -87,7 +87,7 @@ export function ViewerControls({
           onClick={s.toggleLighting}
           disabled={disabled}
         >
-          <SunMedium size={18} strokeWidth={1.4} />
+          <SunMedium size={20} strokeWidth={1.7} />
         </IconButton>
         <output className="sr-only" aria-live="polite">
           Zoom {Math.round(s.zoom * 100)}%

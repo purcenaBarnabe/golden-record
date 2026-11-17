@@ -6,11 +6,13 @@
 :root {
   color-scheme: light;
   --background: #fff;
-  --foreground: #151515;
-  --muted: #747474;
-  --line: #e5e5e5;
-  --surface: #f5f5f5;
+  --foreground: #20231f;
+  --muted: #596057;
+  --line: #d6dbd2;
+  --surface: #f2f4f0;
   --panel: #fff;
+  --accent: #795b20;
+  --accent-surface: #f4efdf;
   --overlay: #ffffff9c;
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -21,22 +23,26 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
   --background: #000;
-  --foreground: #e7e7e7;
-  --muted: #898989;
-  --line: #262626;
-  --surface: #141414;
-  --panel: #080808;
+  --foreground: #f1f3ef;
+  --muted: #a9afa5;
+  --line: #373c33;
+  --surface: #1b1e18;
+  --panel: #10120e;
+  --accent: #e1c77c;
+  --accent-surface: #2c2718;
   --overlay: #000000a8;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
     --background: #000;
-    --foreground: #e7e7e7;
-    --muted: #898989;
-    --line: #262626;
-    --surface: #141414;
-    --panel: #080808;
+    --foreground: #f1f3ef;
+    --muted: #a9afa5;
+    --line: #373c33;
+    --surface: #1b1e18;
+    --panel: #10120e;
+    --accent: #e1c77c;
+    --accent-surface: #2c2718;
     --overlay: #000000a8;
   }
 }
@@ -69,7 +75,7 @@ button:disabled {
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 1px solid currentColor;
+  outline: 2px solid var(--accent);
   outline-offset: 5px;
 }
 h1,
@@ -79,7 +85,7 @@ p {
   margin: 0;
 }
 ::selection {
-  background: #b6b6b660;
+  background: var(--accent-surface);
 }
 .gallery {
   height: 100dvh;
@@ -102,12 +108,12 @@ p {
   pointer-events: auto;
 }
 .gallery-title h1 {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.15px;
 }
 .gallery-title p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 6px;
 }
@@ -117,8 +123,8 @@ p {
   pointer-events: auto;
 }
 .icon-button {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -134,8 +140,8 @@ p {
   background: var(--surface);
 }
 .icon-button[aria-pressed='true'] {
-  color: var(--foreground);
-  background: var(--surface);
+  color: var(--accent);
+  background: var(--accent-surface);
 }
 .artifact-viewer {
   height: 100dvh;
@@ -168,7 +174,7 @@ p {
 }
 .gesture-hint,
 .surface-caption {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -178,7 +184,7 @@ p {
 .viewer-toolbar {
   display: flex;
   align-items: center;
-  padding: 5px;
+  padding: 6px;
   border: 1px solid var(--line);
   border-radius: 5px;
   background: var(--panel);
@@ -190,14 +196,16 @@ p {
   gap: 2px;
 }
 .surface-switch > button {
-  font-size: 11px;
-  padding: 10px 14px;
+  min-height: 42px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
   border-radius: 3px;
   color: var(--muted);
 }
 .surface-switch > button[aria-pressed='true'] {
-  background: var(--surface);
-  color: var(--foreground);
+  background: var(--accent-surface);
+  color: var(--accent);
 }
 .toolbar-divider {
   height: 19px;
@@ -206,7 +214,7 @@ p {
   margin: 0 7px;
 }
 .control-tooltip {
-  font-size: 10px;
+  font-size: 13px;
   background: var(--foreground);
   color: var(--background);
   padding: 7px 10px;
@@ -224,7 +232,7 @@ p {
   justify-content: center;
   flex-direction: column;
   gap: 17px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--muted);
 }
 .loading-ring {
@@ -289,13 +297,16 @@ p {
   position: absolute;
   left: 36px;
   top: -13px;
-  width: 228px;
+  width: 300px;
+  max-height: calc(100dvh - 205px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   text-align: left;
   background: var(--panel);
   border: 1px solid var(--line);
-  box-shadow: 0 7px 35px #00000017;
+  box-shadow: 0 8px 32px #0000001a;
   border-radius: 4px;
-  padding: 19px;
+  padding: 24px;
   cursor: default;
 }
 .annotation-card.opens-left {
@@ -307,31 +318,34 @@ p {
   right: -14px;
 }
 .card-category {
-  font-size: 9px;
-  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
 }
 .annotation-card h3 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 25px;
-  line-height: 1.05;
-  margin: 10px 0;
+  font-size: 32px;
+  line-height: 1.12;
+  margin: 10px 0 12px;
 }
 .annotation-card p {
-  font-size: 10px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.65;
   color: var(--muted);
 }
 .annotation-card > button {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 10px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
   padding: 15px 0 0;
 }
 .annotation-card > .annotation-action {
   width: calc(100% + 16px);
-  min-height: 34px;
+  min-height: 44px;
   margin-left: -8px;
   padding: 9px 8px;
   border-radius: 4px;
@@ -391,7 +405,7 @@ p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(510px, calc(100vw - 40px));
+  width: min(580px, calc(100vw - 40px));
   max-height: calc(100dvh - 70px);
   overflow: auto;
   z-index: 110;
@@ -399,7 +413,7 @@ p {
   color: var(--foreground);
   border: 1px solid var(--line);
   border-radius: 5px;
-  padding: 34px;
+  padding: 36px;
   box-shadow: 0 15px 90px #00000014;
 }
 .panel-close {
@@ -408,14 +422,14 @@ p {
   right: 15px;
 }
 .gallery-panel > h2 {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 400;
   padding-right: 28px;
   letter-spacing: -0.6px;
   margin-bottom: 12px;
 }
 .gallery-panel > p {
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--muted);
   margin-bottom: 25px;
@@ -451,13 +465,13 @@ p {
 }
 .engraving-list > button > span {
   flex: 1;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
 }
 .engraving-list strong {
   display: block;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 7px;
   color: var(--foreground);
 }
@@ -473,13 +487,13 @@ p {
   margin-bottom: 24px;
 }
 .detail-category {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .detail-content > p,
 .about-content > p {
-  font-size: 12px;
-  line-height: 1.95;
+  font-size: 15px;
+  line-height: 1.8;
   color: var(--muted);
   margin-top: 12px;
 }
@@ -491,18 +505,18 @@ p {
 }
 .detail-fact strong {
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 400;
 }
 .detail-fact span {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .source-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 10px;
+  font-size: 13px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 4px;
 }
@@ -514,7 +528,7 @@ p {
   width: 100%;
   padding: 13px;
   margin-top: 24px;
-  font-size: 11px;
+  font-size: 14px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 3px;
@@ -528,15 +542,19 @@ p {
   padding-top: 15px;
 }
 .detail-pagination > span {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .detail-pagination button {
   display: flex;
-  padding: 7px;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 9px;
 }
 .about-content dl {
-  font-size: 11px;
+  font-size: 14px;
   margin: 26px 0;
 }
 .about-content dl > div {
@@ -555,7 +573,7 @@ p {
   margin: 0;
 }
 .about-content p.reference-note {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.9;
 }
 .reference-links {
@@ -568,14 +586,14 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 10px;
+  font-size: 13px;
   gap: 12px;
 }
 .about-content p.credit-note {
   border-top: 1px solid var(--line);
   padding-top: 17px;
   margin-top: 27px;
-  font-size: 9px;
+  font-size: 12px;
 }
 .skip-link {
   position: absolute;
@@ -584,7 +602,7 @@ p {
   background: var(--foreground);
   color: var(--background);
   padding: 12px 20px;
-  font-size: 12px;
+  font-size: 15px;
   z-index: 300;
 }
 .skip-link:focus {
@@ -607,7 +625,7 @@ p {
 }
 .webgl-fallback p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   max-width: 330px;
   text-align: center;
   line-height: 1.8;
@@ -622,7 +640,7 @@ p {
     display: none;
   }
   .surface-caption {
-    font-size: 9px;
+    font-size: 12px;
     text-align: center;
   }
 }
@@ -631,17 +649,17 @@ p {
     inset: 23px 20px auto;
   }
   .gallery-title h1 {
-    font-size: 12px;
+    font-size: 16px;
   }
   .gallery-title p {
-    font-size: 9px;
+    font-size: 12px;
   }
   .gallery-header nav {
     gap: 1px;
   }
   .gallery-header .icon-button {
-    width: 33px;
-    height: 33px;
+    width: 40px;
+    height: 40px;
   }
   .gallery-bottom {
     left: 12px;
@@ -649,37 +667,38 @@ p {
     bottom: 24px;
   }
   .viewer-toolbar {
-    padding: 4px;
+    padding: 5px;
   }
   .surface-switch > button {
-    font-size: 10px;
-    padding: 10px 11px;
+    font-size: 13px;
+    min-height: 44px;
+    padding: 10px;
   }
   .viewer-toolbar > .icon-button {
-    width: 30px;
-    height: 34px;
+    width: 34px;
+    height: 44px;
   }
   .toolbar-divider {
     margin: 0 5px;
   }
   .gallery-panel {
-    padding: 27px;
+    padding: 26px;
     width: calc(100vw - 28px);
     max-height: calc(100dvh - 36px);
   }
   .gallery-panel > h2 {
-    font-size: 21px;
+    font-size: 26px;
   }
   .annotation-card {
-    width: min(205px, 54vw);
+    width: min(300px, calc(100vw - 32px));
     left: 31px;
-    padding: 16px;
+    padding: 22px;
   }
   .annotation-card.opens-left {
     right: 31px;
   }
   .annotation-card h3 {
-    font-size: 23px;
+    font-size: 30px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -727,7 +746,7 @@ p {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: min(560px, calc(100vw - 40px));
+  width: min(620px, calc(100vw - 40px));
   height: min(800px, calc(100dvh - 56px));
   display: flex;
   flex-direction: column;
@@ -747,7 +766,7 @@ p {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
 }
 .music-close {
@@ -757,13 +776,13 @@ p {
 }
 .music-header h2 {
   font-family: var(--font-display);
-  font-size: 38px;
+  font-size: 44px;
   font-weight: 400;
   letter-spacing: -0.5px;
   margin: 17px 0 7px;
 }
 .music-header > p {
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -774,18 +793,18 @@ p {
   margin-top: 24px;
 }
 .music-filters > button {
-  font-size: 11px;
+  font-size: 14px;
   padding: 0 0 13px;
   margin-bottom: -1px;
   border-bottom: 1px solid transparent;
   color: var(--muted);
 }
 .music-filters > button[aria-pressed='true'] {
-  color: var(--foreground);
-  border-color: var(--foreground);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 .music-filters span {
-  font-size: 9px;
+  font-size: 12px;
   margin-left: 6px;
   color: var(--muted);
 }
@@ -803,7 +822,11 @@ p {
   color: var(--foreground);
   outline: none;
   font-family: inherit;
-  font-size: 11px;
+  font-size: 16px;
+}
+.music-search input::placeholder {
+  color: var(--muted);
+  opacity: 1;
 }
 .music-search:focus-within {
   color: var(--foreground);
@@ -854,9 +877,9 @@ p {
 }
 .track-number {
   flex-shrink: 0;
-  width: 19px;
+  width: 22px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 .track-copy {
@@ -865,26 +888,26 @@ p {
 }
 .track-copy > strong {
   display: block;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 400;
 }
 .track-copy > span {
   display: block;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.7;
   margin-top: 3px;
 }
 .track-copy > small {
   display: block;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.6;
   margin-top: 1px;
 }
 .track-duration {
-  font-size: 10px;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
   flex-shrink: 0;
@@ -905,7 +928,7 @@ p {
 .music-empty {
   padding: 42px 20px;
   text-align: center;
-  font-size: 12px;
+  font-size: 15px;
   color: var(--muted);
 }
 .music-empty > button {
@@ -921,12 +944,12 @@ p {
   padding: 19px 30px 17px;
 }
 .now-playing {
-  padding-right: 105px;
+  padding-right: 124px;
   min-height: 37px;
 }
 .now-playing > strong {
   display: block;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 500;
   white-space: nowrap;
@@ -935,7 +958,7 @@ p {
 }
 .now-playing > span {
   display: block;
-  font-size: 10px;
+  font-size: 13px;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -955,12 +978,12 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 32px;
+  width: 32px;
+  height: 40px;
 }
 .player-transport > .player-play {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--foreground);
   color: var(--panel);
@@ -970,12 +993,12 @@ p {
   align-items: center;
   gap: 10px;
   margin-top: 17px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
 .player-timeline > span {
-  min-width: 28px;
+  min-width: 34px;
 }
 .player-timeline > span:last-child {
   text-align: right;
@@ -1016,7 +1039,7 @@ p {
   align-items: center;
   justify-content: space-between;
   margin-top: 12px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
   gap: 10px;
 }
@@ -1030,9 +1053,10 @@ p {
 }
 .music-sources {
   display: flex;
+  flex-wrap: wrap;
   gap: 18px;
   margin-top: 18px;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
 }
 .music-sources > a {
@@ -1045,7 +1069,7 @@ p {
 }
 .player-error {
   padding-top: 10px;
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.7;
 }
 .player-error > button {
@@ -1088,8 +1112,8 @@ p {
   display: flex;
   align-items: center;
   gap: 13px;
-  width: 275px;
-  padding: 13px 14px;
+  width: 320px;
+  padding: 16px;
   background: var(--panel);
   color: var(--foreground);
   border: 1px solid var(--line);
@@ -1111,12 +1135,12 @@ p {
 }
 .mini-title > span {
   display: block;
-  font-size: 9px;
+  font-size: 12px;
   color: var(--muted);
 }
 .mini-title > strong {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 400;
   white-space: nowrap;
   overflow: hidden;
@@ -1135,7 +1159,7 @@ p {
     padding: 22px 22px 0;
   }
   .music-header h2 {
-    font-size: 34px;
+    font-size: 40px;
     margin-top: 14px;
   }
   .music-close {
@@ -1153,13 +1177,13 @@ p {
     gap: 10px;
   }
   .track-copy > strong {
-    font-size: 11px;
+    font-size: 14px;
   }
   .track-copy > span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .track-copy > small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .music-player {
     padding: 17px 22px 15px;
@@ -1170,13 +1194,13 @@ p {
     gap: 5px;
   }
   .now-playing {
-    padding-right: 98px;
+    padding-right: 112px;
   }
   .now-playing > strong {
-    font-size: 11px;
+    font-size: 14px;
   }
   .music-sources {
-    font-size: 8px;
+    font-size: 12px;
     gap: 12px;
   }
   .mini-player {
@@ -1192,15 +1216,6 @@ p {
   }
 }
 
-@media (max-width: 600px) {
-  .viewer-toolbar > .icon-button {
-    width: 34px;
-    height: 40px;
-  }
-  .surface-switch > button {
-    padding: 12px 11px;
-  }
-}
 @media (max-height: 600px) {
   .music-window {
     height: calc(100dvh - 24px);
@@ -1257,8 +1272,8 @@ p {
 .annotation-connector > path {
   fill: none;
   stroke: var(--muted);
-  stroke-width: 0.65;
-  opacity: 0.55;
+  stroke-width: 1;
+  opacity: 0.6;
   pointer-events: none;
 }
 .annotation-corridor {
@@ -1281,16 +1296,24 @@ p {
   width: min(420px, calc(100vw - 32px));
 }
 @media (max-width: 380px) {
-  .viewer-toolbar > .icon-button {
-    width: 28px;
+  .viewer-toolbar {
+    display: grid;
+    grid-template-columns: repeat(6, 40px);
+    gap: 2px;
+  }
+  .viewer-toolbar .surface-switch {
+    grid-column: 1 / -1;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--line);
   }
   .surface-switch > button {
-    padding-left: 9px;
-    padding-right: 9px;
+    flex: 1;
   }
-  .toolbar-divider {
-    margin-left: 3px;
-    margin-right: 3px;
+  .viewer-toolbar > .icon-button {
+    width: 40px;
+  }
+  .viewer-toolbar > .toolbar-divider {
+    display: none;
   }
 }
 .magnification {
@@ -1316,4 +1339,10 @@ p {
   position: fixed;
   z-index: 1;
   pointer-events: auto;
+}
+
+@media (max-height: 519px) {
+  .annotation-card {
+    max-height: calc(100dvh - 88px);
+  }
 }
