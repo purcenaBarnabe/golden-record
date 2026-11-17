@@ -4,12 +4,18 @@ import * as Tooltip from '@radix-ui/react-tooltip'
 export function IconButton({
   label,
   children,
+  className = '',
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & { label: string; children: ReactNode }) {
   return (
     <Tooltip.Root>
       <Tooltip.Trigger asChild>
-        <button type="button" className="icon-button" aria-label={label} {...props}>
+        <button
+          type="button"
+          className={`icon-button ${className}`.trim()}
+          aria-label={label}
+          {...props}
+        >
           {children}
         </button>
       </Tooltip.Trigger>

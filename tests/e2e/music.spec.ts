@@ -37,7 +37,7 @@ async function serveRecording(route: Route) {
 }
 async function openPlaylist(page: Page) {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   await page.locator('.listen-caption').click()
   await expect(page.getByRole('dialog')).toHaveAccessibleName('The Sounds of Earth')
 }
@@ -50,7 +50,7 @@ test('the reverse-face card stays stable and opens the full playlist without pre
     if (archiveAudio.test(request.url())) requests.push(request.url())
   })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   const marker = page.getByRole('button', { name: 'Explore the Sounds of Earth', exact: true })
   await marker.hover({ timeout: 60_000 })
   const card = page.locator('.music-info-card')
@@ -115,7 +115,7 @@ test('native audio supports choosing, seeking, volume, queue advance and listeni
   await expect(page.getByRole('complementary', { name: 'Now playing' })).toContainText(
     'Johnny B. Goode',
   )
-  await page.getByRole('button', { name: 'Cover', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(false)
   await expect
     .poll(() => page.locator('audio').evaluate((audio: HTMLAudioElement) => audio.paused))
     .toBe(false)
@@ -194,7 +194,7 @@ test('the music remains accessible after a WebGL context is lost', async ({ page
     .locator('canvas')
     .evaluate((canvas) => canvas.dispatchEvent(new Event('webglcontextlost', { cancelable: true })))
   await expect(page.locator('.webgl-fallback')).toBeVisible()
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   await page.locator('.listen-caption').click()
   await expect(page.locator('.music-track')).toHaveCount(27)
 })
@@ -208,8 +208,8 @@ test('manual orbit updates the visible surface and phone info cards stay in boun
   await page.mouse.down()
   await page.mouse.move(100, 680, { steps: 25 })
   await page.mouse.up()
-  await expect(page.getByRole('button', { name: 'Record', exact: true })).toHaveAttribute(
-    'aria-pressed',
+  await expect(page.getByRole('switch', { name: 'Show record' })).toHaveAttribute(
+    'aria-checked',
     'true',
   )
   await expect(

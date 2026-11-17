@@ -110,9 +110,18 @@ test('each actual engraving opens its card with markers hidden and remains reach
     await page.goto('/')
     await expect(page.getByText('Preparing the record')).toHaveCount(0, { timeout: 60_000 })
     const project = await coverProjection(page)
+    const anchor = page.locator('.annotation-dot').first()
+    const original = (await anchor.boundingBox())!
     for (const cut of cuts) {
       await page.mouse.move(12, viewport.height - 12)
       await expect(page.locator('.annotation-card')).toHaveCount(0)
+      // A reading rail must finish restoring the renderer before using its projection.
+      await expect
+        .poll(async () => {
+          const current = (await anchor.boundingBox())!
+          return Math.abs(current.x - original.x) + Math.abs(current.y - original.y)
+        })
+        .toBeLessThan(1)
       const point = project(cut.point)
       await page.mouse.move(point.x, point.y)
       const card = page.locator(`[data-inscription="${cut.id}"] .annotation-card`)

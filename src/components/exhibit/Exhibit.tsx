@@ -11,6 +11,8 @@ import { useEffect, useState } from 'react'
 export function Exhibit() {
   const { theme, toggleTheme } = useGalleryTheme()
   const setPanel = useExhibitStore((s) => s.setPanel)
+  const mobileNavigationMode = useExhibitStore((s) => s.mobileNavigationMode)
+  const setMobileNavigationMode = useExhibitStore((s) => s.setMobileNavigationMode)
   const [interactive, setInteractive] = useState(false)
   useEffect(() => setInteractive(true), [])
   return (
@@ -22,6 +24,24 @@ export function Exhibit() {
         <div className="gallery-title">
           <h1>The Golden Record</h1>
           <p>Voyager, 1977</p>
+          <div className="mobile-navigation-modes" role="group" aria-label="Touch navigation">
+            <button
+              type="button"
+              aria-pressed={mobileNavigationMode === 'orbit'}
+              disabled={!interactive}
+              onClick={() => setMobileNavigationMode('orbit')}
+            >
+              Orbit
+            </button>
+            <button
+              type="button"
+              aria-pressed={mobileNavigationMode === 'drag'}
+              disabled={!interactive}
+              onClick={() => setMobileNavigationMode('drag')}
+            >
+              Drag
+            </button>
+          </div>
         </div>
         <Tooltip.Provider delayDuration={200}>
           <nav aria-label="Exhibit options">

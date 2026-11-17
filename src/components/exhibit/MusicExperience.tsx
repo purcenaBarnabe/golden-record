@@ -246,9 +246,7 @@ export function MusicExperience() {
                 element.focus()
               else
                 document
-                  .querySelector<HTMLButtonElement>(
-                    '.listen-caption, .surface-switch > button:last-child',
-                  )
+                  .querySelector<HTMLButtonElement>('.listen-caption, .surface-switch')
                   ?.focus()
             }}
           >

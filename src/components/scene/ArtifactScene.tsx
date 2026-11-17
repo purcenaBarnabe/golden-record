@@ -1,7 +1,7 @@
 import { memo, Suspense, useEffect, useLayoutEffect, useRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Environment, Lightformer, OrbitControls, SoftShadows } from '@react-three/drei'
-import { ACESFilmicToneMapping, MathUtils, PCFSoftShadowMap, Vector3 } from 'three'
+import { ACESFilmicToneMapping, MathUtils, MOUSE, PCFSoftShadowMap, TOUCH, Vector3 } from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { CoverModel, AudioRecordModel } from './RecordModel'
 import { Annotations } from './Annotations'
@@ -12,9 +12,14 @@ import { ARTIFACT_CENTER_Y, COVER_FACE_Z, RECORD_THICKNESS } from '../../lib/art
 import { artworkPosition, inscriptions } from '../../lib/inscriptions'
 import { MAX_ZOOM, MIN_ZOOM, SURFACE_FOCUS } from '../../lib/inspection'
 import { COVER_RADIUS } from './RecordModel'
+import { useMobileControls } from '../../hooks/use-mobile-controls'
 
 const INITIAL_CAMERA = new Vector3(0.245, 0.18, 1.1)
 const INITIAL_DISTANCE = INITIAL_CAMERA.length()
+const ORBIT_MOUSE_BUTTONS = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN }
+const DRAG_MOUSE_BUTTONS = { LEFT: MOUSE.PAN, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN }
+const ORBIT_TOUCHES = { ONE: TOUCH.ROTATE, TWO: TOUCH.DOLLY_PAN }
+const DRAG_TOUCHES = { ONE: TOUCH.PAN, TWO: TOUCH.DOLLY_PAN }
 
 const StudioEnvironment = memo(function StudioEnvironment() {
   return (
@@ -81,6 +86,9 @@ function SceneContent({ onReady }: { onReady: () => void }) {
   const zoomRevision = useExhibitStore((s) => s.zoomRevision)
   const zoom = useExhibitStore((s) => s.zoom)
   const artifact = useExhibitStore((s) => s.artifact)
+  const mobileNavigationMode = useExhibitStore((s) => s.mobileNavigationMode)
+  const mobile = useMobileControls()
+  const dragMode = mobile && mobileNavigationMode === 'drag'
   const { camera, invalidate } = useThree()
   const fit = useThree((s) => Math.max(1, 0.72 / (s.size.width / s.size.height)))
   const target = useRef(INITIAL_CAMERA.clone())
@@ -253,7 +261,10 @@ function SceneContent({ onReady }: { onReady: () => void }) {
         ref={controls}
         makeDefault
         enabled={!panelOpen}
+        enableRotate={!dragMode}
         enablePan
+        mouseButtons={dragMode ? DRAG_MOUSE_BUTTONS : ORBIT_MOUSE_BUTTONS}
+        touches={dragMode ? DRAG_TOUCHES : ORBIT_TOUCHES}
         screenSpacePanning
         zoomToCursor
         panSpeed={0.6}

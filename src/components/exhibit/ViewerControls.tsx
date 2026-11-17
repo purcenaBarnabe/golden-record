@@ -35,22 +35,25 @@ export function ViewerControls({
         id="viewer-controls"
         tabIndex={-1}
       >
-        <div className="surface-switch" aria-label="Visible surface">
-          <button
-            disabled={loading}
-            aria-pressed={s.artifact === 'cover'}
-            onClick={() => s.setArtifact('cover')}
-          >
+        <button
+          type="button"
+          className="surface-switch"
+          role="switch"
+          aria-label="Show record"
+          aria-checked={s.artifact === 'record'}
+          disabled={loading}
+          onClick={() => s.setArtifact(s.artifact === 'cover' ? 'record' : 'cover')}
+        >
+          <span className="surface-label-cover" aria-hidden="true">
             Cover
-          </button>
-          <button
-            disabled={loading}
-            aria-pressed={s.artifact === 'record'}
-            onClick={() => s.setArtifact('record')}
-          >
+          </span>
+          <span className="surface-switch-track" aria-hidden="true">
+            <span className="surface-switch-thumb" />
+          </span>
+          <span className="surface-label-record" aria-hidden="true">
             Record
-          </button>
-        </div>
+          </span>
+        </button>
         <span className="toolbar-divider" />
         <IconButton
           label="Zoom out"
@@ -66,13 +69,18 @@ export function ViewerControls({
         >
           <Plus size={19} strokeWidth={1.7} />
         </IconButton>
-        <IconButton label="Inspect surface texture" onClick={s.inspectTexture} disabled={disabled}>
+        <IconButton
+          className="desktop-viewer-control"
+          label="Inspect surface texture"
+          onClick={s.inspectTexture}
+          disabled={disabled}
+        >
           <Microscope size={20} strokeWidth={1.7} />
         </IconButton>
         <IconButton label="Reset view" onClick={s.reset} disabled={disabled}>
           <RotateCcw size={18} strokeWidth={1.7} />
         </IconButton>
-        <span className="toolbar-divider" />
+        <span className="toolbar-divider marker-divider" />
         <IconButton
           label={s.annotations ? 'Hide engraving markers' : 'Show engraving markers'}
           aria-pressed={s.annotations}
@@ -82,6 +90,7 @@ export function ViewerControls({
           <ScanLine size={19} strokeWidth={1.7} />
         </IconButton>
         <IconButton
+          className="desktop-viewer-control"
           label={s.lighting === 'gallery' ? 'Use raking light' : 'Use studio light'}
           aria-pressed={s.lighting === 'raking'}
           onClick={s.toggleLighting}

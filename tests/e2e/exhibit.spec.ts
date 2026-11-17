@@ -13,6 +13,7 @@ test('the gallery is a single uncluttered viewport in both themes', async ({ pag
   await expect(
     page.getByRole('button', { name: 'Explore the engravings', exact: true }),
   ).toHaveCount(0)
+  await expect(page.getByRole('group', { name: 'Touch navigation' })).toBeHidden()
   expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1)).toBe(
     true,
   )
@@ -178,11 +179,19 @@ test('surface controls rotate the display to the record and preserve inspection 
   await page.mouse.move(750, 620, { steps: 5 })
   await page.mouse.up({ button: 'right' })
   await page.getByRole('button', { name: 'Reset view' }).click()
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   await expect(page.locator('.surface-caption')).toContainText('Side 1')
   await expect(page.locator('.annotation-dot').first()).toBeHidden()
-  await page.getByRole('button', { name: 'Cover', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(false)
   await expect(page.locator('.annotation-dot').first()).toBeVisible()
+  const surfaceSwitch = page.getByRole('switch', { name: 'Show record' })
+  await surfaceSwitch.focus()
+  await page.keyboard.press('Space')
+  await expect(surfaceSwitch).toBeChecked()
+  await expect(page.locator('.surface-caption')).toContainText('Side 1')
+  await page.keyboard.press('Enter')
+  await expect(surfaceSwitch).not.toBeChecked()
+  await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toBeVisible()
   await page.getByRole('button', { name: 'Use raking light' }).click()
   await expect(page.getByRole('button', { name: 'Use studio light' })).toHaveAttribute(
     'aria-pressed',
@@ -232,7 +241,7 @@ test('the reference photograph, information and music work without WebGL', async
   await expect(page.getByRole('dialog')).toContainText('1.27 mm')
   await page.getByRole('button', { name: 'Close information' }).click()
   await expect(page.getByRole('dialog')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   await page.locator('.listen-caption').click()
   await expect(page.getByRole('dialog')).toHaveAccessibleName('The Sounds of Earth')
   await expect(page.locator('.music-track')).toHaveCount(27)

@@ -4,6 +4,7 @@ import { clampZoom, ENGRAVING_ZOOM, TEXTURE_ZOOM } from '../lib/inspection'
 
 export type Artifact = 'cover' | 'record'
 export type Lighting = 'gallery' | 'raking'
+export type NavigationMode = 'orbit' | 'drag'
 export type HoverTarget = InscriptionId | 'music'
 export interface SurfaceHoverPoint {
   x: number
@@ -23,6 +24,8 @@ interface ExhibitState {
   theme: 'light' | 'dark'
   setTheme: (theme: 'light' | 'dark') => void
   artifact: Artifact
+  mobileNavigationMode: NavigationMode
+  setMobileNavigationMode: (mode: NavigationMode) => void
   annotations: boolean
   lighting: Lighting
   selected: InscriptionId | null
@@ -55,6 +58,9 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   theme: 'light',
   setTheme: (theme) => set({ theme }),
   artifact: 'cover',
+  mobileNavigationMode: 'drag',
+  setMobileNavigationMode: (mobileNavigationMode) =>
+    set({ ...dismissHover(), mobileNavigationMode }),
   annotations: false,
   lighting: 'gallery',
   selected: null,

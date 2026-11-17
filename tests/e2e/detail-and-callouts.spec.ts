@@ -6,31 +6,33 @@ async function expectClearSubject(card: Locator) {
     .poll(async () =>
       card.evaluate((element) => {
         const subject = JSON.parse((element as HTMLElement).dataset.subject ?? 'null')
-        if (!subject) return 0
         const box = element.getBoundingClientRect()
-        return (
-          Math.max(
-            0,
-            Math.min(box.right, subject.x + subject.width) - Math.max(box.left, subject.x),
-          ) *
-          Math.max(
-            0,
-            Math.min(box.bottom, subject.y + subject.height) - Math.max(box.top, subject.y),
-          )
-        )
+        const header = document.querySelector('.gallery-header')!.getBoundingClientRect()
+        const footer = document.querySelector('.gallery-bottom')!.getBoundingClientRect()
+        const overlap = subject
+          ? Math.max(
+              0,
+              Math.min(box.right, subject.x + subject.width) - Math.max(box.left, subject.x),
+            ) *
+            Math.max(
+              0,
+              Math.min(box.bottom, subject.y + subject.height) - Math.max(box.top, subject.y),
+            )
+          : 0
+        // Projection and card placement settle after the renderer handles a resize.
+        return {
+          clearSubject: overlap < 0.5,
+          insideViewport:
+            box.left >= 11 &&
+            box.top >= 0 &&
+            box.right <= innerWidth - 10 &&
+            box.bottom <= innerHeight,
+          clearHeader: box.top >= header.bottom,
+          clearFooter: box.bottom <= footer.top,
+        }
       }),
     )
-    .toBeLessThan(0.5)
-  const box = (await card.boundingBox())!
-  const viewport = await card.evaluate(() => ({ width: innerWidth, height: innerHeight }))
-  expect(box.x).toBeGreaterThanOrEqual(11)
-  expect(box.y).toBeGreaterThanOrEqual(0)
-  expect(box.x + box.width).toBeLessThanOrEqual(viewport.width - 10)
-  expect(box.y + box.height).toBeLessThanOrEqual(viewport.height)
-  const header = (await card.page().locator('.gallery-header').boundingBox())!
-  const footer = (await card.page().locator('.gallery-bottom').boundingBox())!
-  expect(box.y).toBeGreaterThanOrEqual(header.y + header.height)
-  expect(box.y + box.height).toBeLessThanOrEqual(footer.y)
+    .toEqual({ clearSubject: true, insideViewport: true, clearHeader: true, clearFooter: true })
 }
 
 test('surface studies resolve at 96x and can zoom through to 128x on both faces', async ({
@@ -44,7 +46,7 @@ test('surface studies resolve at 96x and can zoom through to 128x on both faces'
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
   for (const face of ['Cover', 'Record']) {
-    await page.getByRole('button', { name: face, exact: true }).click()
+    await page.getByRole('switch', { name: 'Show record' }).setChecked(face === 'Record')
     await page.getByRole('button', { name: 'Inspect surface texture', exact: true }).click()
     await expect(page.getByRole('status')).toContainText('Zoom 9600%')
     await expect(page.getByRole('button', { name: 'Use studio light' })).toHaveAttribute(
@@ -86,7 +88,7 @@ test('all diagram cards and the music card avoid their projected subject', async
     await expectClearSubject(page.locator(`[data-inscription="${id}"] .annotation-card`))
     await page.keyboard.press('Escape')
   }
-  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.getByRole('switch', { name: 'Show record' }).setChecked(true)
   await page.getByRole('button', { name: 'Explore the Sounds of Earth', exact: true }).focus()
   await expectClearSubject(page.locator('.music-info-card'))
   await page.keyboard.press('Escape')
