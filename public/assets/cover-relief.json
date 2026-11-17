@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "depthMetres": 0.000045,
+  "bevelWidthMetres": 0.00004512396694214877,
+  "bevelFacets": 3,
+  "vertices": [
+    22280,
+    173283,
+    29131
+  ],
+  "triangles": 211878,
+  "indexedBytes": 9732776,
+  "unindexedBytes": 20340320,
+  "source": "cover-artwork.svg"
+}
