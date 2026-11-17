@@ -1,0 +1,54 @@
+{
+  "name": "voyager-golden-record",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 3000 --strictPort",
+    "build": "vite build",
+    "start": "vite preview --config vite.static.config.ts --outDir dist/client --host 127.0.0.1 --port 3000 --strictPort",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "assets": "node scripts/prepare-assets.mjs"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-tooltip": "^1.2.8",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-router": "^1.169.5",
+    "@tanstack/react-start": "^1.169.5",
+    "lucide-react": "^0.577.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.18",
+    "three": "^0.183.2",
+    "three-mesh-bvh": "0.8.3",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.183.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "@xmldom/xmldom": "^0.9.12",
+    "clipper-lib": "^6.4.2",
+    "prettier": "^3.9.6",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8",
+    "vitest": "^4.0.18"
+  },
+  "packageManager": "yarn@4.9.2"
+}

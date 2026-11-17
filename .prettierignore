@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.tanstack/
+.openai/
+.venv/
+.yarn/
+artifacts/
+test-results/
+playwright-report/
+src/routeTree.gen.ts
+public/assets/
+yarn.lock
+LICENSE
