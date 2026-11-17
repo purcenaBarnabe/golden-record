@@ -18,7 +18,37 @@ Development and preview bind to loopback and require an unused port 3000. To exp
 
 ## Cloudflare
 
-Deploy the **static export** in `dist/client/`. The included `wrangler.jsonc` configures an assets-only Worker with an SPA fallback; no Worker script, database bindings, API keys, or application secrets are required. Build with `yarn install --immutable` and `yarn build`, then deploy with your separately installed Cloudflare Wrangler CLI (`wrangler deploy`). For Cloudflare Pages, use `yarn build` and the same output directory.
+The included `wrangler.jsonc` targets the existing **Cloudflare Pages** Direct Upload project `voyager-golden-record`. It deploys the static export in `dist/client/`; no Worker script, database, or application secrets are required. Pages supplies its default SPA fallback because this export has no top-level `404.html`.
+
+### Deploy from your computer
+
+```sh
+yarn install --immutable
+yarn wrangler login # Only needed if Wrangler is not already logged in.
+yarn deploy
+```
+
+`yarn deploy` rebuilds the site and publishes to the production branch `main`. Wrangler is pinned in `devDependencies` and `yarn.lock`. The production URL is https://voyager-golden-record.pages.dev.
+
+### Automated deployment from GitHub
+
+[`.github/workflows/cloudflare-pages.yml`](.github/workflows/cloudflare-pages.yml) checks types, runs unit tests, and builds on pull requests and pushes to `main`. Successful pushes to `main` deploy to Pages. You can also run the workflow manually on `main` from GitHub's Actions tab. Browser tests remain a separate local check because this project's suite requires installed Chrome with native GPU WebGL.
+
+Configure these once in the GitHub repository:
+
+1. Open **Settings → Environments**, create `production`, and set **Deployment branches and tags → Selected branches and tags** to the branch `main` only. Leave required reviewers unset for fully automatic deployment.
+2. In [Cloudflare API Tokens](https://dash.cloudflare.com/profile/api-tokens), create a custom token with **Account → Cloudflare Pages → Edit**. Restrict **Account Resources** to the account containing this project. This permission covers Pages projects in that account; it is not restricted to this single project. Use a dedicated token, rather than a Global API Key or your local Wrangler OAuth credentials.
+3. Under the GitHub `production` environment, add an **environment secret** named `CLOUDFLARE_API_TOKEN` containing that token.
+4. In the same environment, add an **environment variable** named `CLOUDFLARE_ACCOUNT_ID` containing the Cloudflare account ID (`yarn wrangler whoami` shows it). The account ID is an identifier, not an authentication credential.
+5. Commit and push the workflow, Wrangler config, `package.json`, `yarn.lock`, and this README to `main`. Open **Actions → Cloudflare Pages** to verify the deployment. Subsequent pushes deploy automatically after checks pass.
+
+Public repositories can use Actions secrets: the workflow contains only references to the token, never its value. The build job receives no Cloudflare credentials. Deployment runs on a fresh GitHub-hosted runner with only the static artifact, without checking out or running application source. The token is supplied only to the upload step, after installing Wrangler. Pull requests cannot run that job; forks cannot deploy to this project. Actions are pinned to commit SHAs, checkout does not persist Git credentials, and workflow token permissions are limited. Keep the pinned Wrangler version in the workflow aligned with `package.json` when upgrading it.
+
+Only trusted maintainers should have write access, and changes to `main` and workflow files should be reviewed: trusted workflow changes can still access deployment secrets. Never put the API token in a workflow literal, `.env` committed to Git, `VITE_*` variables, `public/`, or a build artifact. The existing `.gitignore` excludes local environment files and Wrangler state. Rotate the dedicated token if it expires or is exposed.
+
+This approach works with the project already created through Wrangler. Cloudflare cannot switch an existing Direct Upload project to its native Git integration; that would require a new project. See [Cloudflare's CI guide](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/), [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/), and [GitHub's workflow security guidance](https://docs.github.com/en/actions/reference/security/secure-use).
+
+### Deployment files and headers
 
 Upload only `dist/client/`; the parent `dist/` also contains build-time server output. `public/_headers` supplies browser policy headers for both Cloudflare static hosting paths. It restricts media to Internet Archive and its download subdomains. Inline scripts are currently allowed because TanStack Start emits inline hydration code; inline styles support React Three Fiber and Radix positioning. This policy is defense in depth and does not provide a strict script nonce/hash policy.
 

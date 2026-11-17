@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3000 --strictPort",
     "build": "vite build",
+    "deploy": "yarn build && wrangler pages deploy dist/client --project-name voyager-golden-record --branch main",
     "start": "vite preview --config vite.static.config.ts --outDir dist/client --host 127.0.0.1 --port 3000 --strictPort",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -48,7 +49,8 @@
     "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "vite": "^8.3.8",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "wrangler": "4.164.0"
   },
   "packageManager": "yarn@4.9.2"
 }

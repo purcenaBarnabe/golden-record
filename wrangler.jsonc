@@ -1,9 +1,6 @@
 {
-  "$schema": "https://unpkg.com/wrangler/config-schema.json",
-  "name": "golden-record",
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "voyager-golden-record",
   "compatibility_date": "2026-11-17",
-  "assets": {
-    "directory": "./dist/client",
-    "not_found_handling": "single-page-application",
-  },
+  "pages_build_output_dir": "./dist/client",
 }
