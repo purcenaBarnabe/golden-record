@@ -299,19 +299,33 @@ p {
   width: 26px;
   height: 26px;
   padding: 0;
-  border: 1px solid #ffffffa6;
+  border: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: #00000030;
+  border-radius: 4px;
+  background: transparent;
   opacity: 0;
   transition: opacity 0.15s;
 }
 .annotation-dot > span {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 20px;
+  border-radius: 3px;
+  background: #fff3dacc;
+  color: #59421b;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1;
+  box-shadow: 0 0 0 1px #785e2c30;
+  pointer-events: none;
+}
+.annotation-dot:hover > span,
+.annotation-dot:focus-visible > span {
+  background: #fff8e6;
 }
 .annotation.show-marker .annotation-dot,
 .annotation.is-hovered .annotation-dot,
@@ -702,16 +716,20 @@ p {
     align-items: center;
     gap: 2px;
     margin-top: 12px;
-    padding: 4px;
+    padding: 3px;
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 5px;
     box-shadow: 0 4px 16px #0000000a;
   }
   .mobile-navigation-modes > button {
-    min-height: 40px;
-    padding: 9px 12px;
-    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 34px;
+    padding: 6px 7px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--muted);
     border-radius: 3px;

@@ -92,7 +92,7 @@ export function Annotations() {
                 setSelected(item.id)
               }}
             >
-              <span />
+              <span aria-hidden="true">i</span>
             </button>
             {hovered === item.id && !selected && (
               <AnnotationCard

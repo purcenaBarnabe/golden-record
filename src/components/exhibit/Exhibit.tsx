@@ -1,4 +1,4 @@
-import { Info, Moon, Sun } from 'lucide-react'
+import { HandGrab, Info, Moon, Orbit, Sun } from 'lucide-react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { ArtifactViewer } from './ArtifactViewer'
 import { ExhibitPanels } from './ExhibitPanels'
@@ -27,19 +27,21 @@ export function Exhibit() {
           <div className="mobile-navigation-modes" role="group" aria-label="Touch navigation">
             <button
               type="button"
-              aria-pressed={mobileNavigationMode === 'orbit'}
-              disabled={!interactive}
-              onClick={() => setMobileNavigationMode('orbit')}
-            >
-              Orbit
-            </button>
-            <button
-              type="button"
               aria-pressed={mobileNavigationMode === 'drag'}
               disabled={!interactive}
               onClick={() => setMobileNavigationMode('drag')}
             >
+              <HandGrab size={14} strokeWidth={1.6} aria-hidden="true" />
               Drag
+            </button>
+            <button
+              type="button"
+              aria-pressed={mobileNavigationMode === 'orbit'}
+              disabled={!interactive}
+              onClick={() => setMobileNavigationMode('orbit')}
+            >
+              <Orbit size={14} strokeWidth={1.6} aria-hidden="true" />
+              Orbit
             </button>
           </div>
         </div>
