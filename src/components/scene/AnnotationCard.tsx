@@ -55,9 +55,12 @@ export function AnnotationCard({
       if (!element.isConnected) return
       const origin = marker.getBoundingClientRect()
       const markerAnchor = { x: origin.x + origin.width / 2, y: origin.y + origin.height / 2 }
-      const top = innerHeight >= 520 ? 85 : 12,
-        bottom = innerHeight >= 520 ? 120 : 60
+      const header = document.querySelector('.gallery-header')?.getBoundingClientRect()
+      const footer = document.querySelector('.gallery-bottom')?.getBoundingClientRect()
+      const top = header ? header.bottom + 16 : 12,
+        bottom = footer ? innerHeight - footer.top + 16 : 60
       const bounds = { x: 12, y: top, width: innerWidth - 24, height: innerHeight - top - bottom }
+      element.style.maxHeight = `${Math.max(0, bounds.height)}px`
       const obstacles = [
         ...document.querySelectorAll('.gallery-header, .gallery-bottom, .mini-player'),
       ].map(rectOf)
@@ -101,10 +104,11 @@ export function AnnotationCard({
             side: 'right',
           }
         } else {
-          const footer = document.querySelector('.gallery-bottom')?.getBoundingClientRect()
           const mini = document.querySelector('.mini-player')?.getBoundingClientRect()
           const footerHeight = footer ? innerHeight - footer.top + 12 : bottom
           const miniHeight = mini ? mini.height + 16 : 0
+          element.style.maxHeight = `${Math.max(0, innerHeight - top - footerHeight - miniHeight - 16)}px`
+          size = element.getBoundingClientRect()
           const rail = size.height + footerHeight + miniHeight + 32
           viewer.style.setProperty('--callout-rail', `${rail}px`)
           position = {

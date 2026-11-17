@@ -31,8 +31,8 @@ function Fallback() {
         alt={`NASA reference photograph of the Golden Record ${artifact}`}
       />
       <p>
-        3D is unavailable in this browser. The engraving guide and the record’s music remain
-        available.
+        3D is unavailable in this browser. You can still listen to the record’s music and read about
+        this recreation.
       </p>
     </div>
   )

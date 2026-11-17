@@ -30,7 +30,7 @@ interface ExhibitState {
   annotationHovered: HoverTarget | null
   surfaceHoverPoint: SurfaceHoverPoint | null
   focus: InscriptionId | 'cover-texture' | 'record-texture' | null
-  panel: 'inscriptions' | 'sources' | 'music' | null
+  panel: 'sources' | 'music' | null
   view: 'front' | 'back'
   viewRevision: number
   zoom: number

@@ -1,4 +1,4 @@
-import { BookOpen, Info, Moon, Sun } from 'lucide-react'
+import { Info, Moon, Sun } from 'lucide-react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { ArtifactViewer } from './ArtifactViewer'
 import { ExhibitPanels } from './ExhibitPanels'
@@ -25,13 +25,6 @@ export function Exhibit() {
         </div>
         <Tooltip.Provider delayDuration={200}>
           <nav aria-label="Exhibit options">
-            <IconButton
-              label="Explore the engravings"
-              disabled={!interactive}
-              onClick={() => setPanel('inscriptions')}
-            >
-              <BookOpen size={20} strokeWidth={1.7} />
-            </IconButton>
             <IconButton
               label="About this recreation"
               disabled={!interactive}

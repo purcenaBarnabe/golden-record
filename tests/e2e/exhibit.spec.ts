@@ -7,6 +7,12 @@ test('the gallery is a single uncluttered viewport in both themes', async ({ pag
   await expect(page.getByText('Preparing the record')).toHaveCount(0, { timeout: 60_000 })
   await expect(page.locator('canvas')).toHaveCount(1)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('The Golden Record')
+  await expect(
+    page.getByRole('navigation', { name: 'Exhibit options' }).getByRole('button'),
+  ).toHaveCount(2)
+  await expect(
+    page.getByRole('button', { name: 'Explore the engravings', exact: true }),
+  ).toHaveCount(0)
   expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1)).toBe(
     true,
   )
@@ -25,12 +31,24 @@ test('the gallery is a single uncluttered viewport in both themes', async ({ pag
   expect(errors).toEqual([])
 })
 
-test('system dark mode is honored without a saved preference', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'dark' })
-  await page.goto('/')
-  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-  await expect(page.getByRole('button', { name: 'Switch to light mode' })).toBeVisible()
-})
+for (const colorScheme of ['light', 'dark'] as const) {
+  test(`system ${colorScheme} mode is honored and tracks changes without a saved preference`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme })
+    await page.goto('/')
+    await expect(page.locator('html')).toHaveAttribute('data-theme', colorScheme)
+    const opposite = colorScheme === 'dark' ? 'light' : 'dark'
+    await expect(page.getByRole('button', { name: `Switch to ${opposite} mode` })).toBeEnabled()
+    await page.emulateMedia({ colorScheme: opposite })
+    await expect(page.locator('html')).toHaveAttribute('data-theme', opposite)
+    await expect(page.locator('.gallery')).toHaveAttribute('data-theme', opposite)
+    await page.emulateMedia({ colorScheme })
+    await expect(page.locator('html')).toHaveAttribute('data-theme', colorScheme)
+    await page.reload()
+    await expect(page.locator('html')).toHaveAttribute('data-theme', colorScheme)
+  })
+}
 
 test('all eight engravings remain keyboard accessible with markers hidden', async ({ page }) => {
   await page.goto('/')
@@ -52,10 +70,14 @@ test('all eight engravings remain keyboard accessible with markers hidden', asyn
     await expect(page.getByRole('dialog')).toBeVisible()
     await expect(page.locator('.detail-category')).toContainText(category, { ignoreCase: true })
     await page.getByRole('button', { name: 'Close information' }).click()
+    await expect(page.getByRole('dialog')).toHaveCount(0)
+    await expect(
+      page.getByRole('button', { name: `Explore ${category}`, exact: true }),
+    ).toBeFocused()
   }
 })
 
-test('hover cards expand and the diagram guide offers the same explanations', async ({ page }) => {
+test('hover cards open explanations and navigate between engravings', async ({ page }) => {
   await page.goto('/')
   await page.getByRole('button', { name: 'Show engraving markers' }).click()
   await page
@@ -66,11 +88,10 @@ test('hover cards expand and the diagram guide offers the same explanations', as
   await expect(page.getByRole('dialog')).toContainText('nanoseconds per time unit')
   await page.getByRole('button', { name: 'Previous engraving' }).click()
   await expect(page.getByRole('dialog')).toContainText('Our return address')
+  await page.getByRole('button', { name: 'Next engraving' }).click()
+  await expect(page.getByRole('dialog')).toContainText('A universal measure')
   await page.keyboard.press('Escape')
-  await page.getByRole('button', { name: 'Explore the engravings', exact: true }).click()
-  await expect(page.locator('.engraving-list > button')).toHaveCount(8)
-  await page.locator('.engraving-list > button').first().click()
-  await expect(page.getByRole('dialog')).toContainText('How to play a world')
+  await expect(page.getByRole('dialog')).toHaveCount(0)
 })
 
 test('cards stay mounted while the pointer crosses every part of each card', async ({ page }) => {
@@ -135,8 +156,9 @@ test('carving inspection focuses a diagram and zoom reaches 128 times', async ({
   await page.mouse.up()
   await page.getByRole('button', { name: 'Reset view' }).click()
   await expect(page.getByRole('status')).toContainText('Zoom 100%')
-  await page.getByRole('button', { name: 'Explore the engravings', exact: true }).click()
-  await page.locator('.engraving-list > button').first().click()
+  await page.getByRole('button', { name: 'Explore record & rotation', exact: true }).focus()
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('dialog')).toContainText('How to play a world')
   await page.getByRole('button', { name: 'See it close up' }).click()
   await expect(page.getByRole('dialog')).toHaveCount(0)
   await expect(page.getByRole('status')).toContainText('Zoom 1800%')
@@ -183,12 +205,12 @@ test('mobile remains one viewport without overflow in light and dark modes', asy
     ),
   ).toBe(true)
   await page.getByRole('button', { name: 'Switch to dark mode' }).click()
-  await page.getByRole('button', { name: 'Explore the engravings' }).click()
-  await page.locator('.engraving-list > button').last().click()
+  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await page.getByRole('button', { name: 'Explore hydrogen transition', exact: true }).click()
   await expect(page.getByRole('dialog')).toContainText('A universal measure')
 })
 
-test('the reference photograph and engraving guide work without WebGL', async ({ page }) => {
+test('the reference photograph, information and music work without WebGL', async ({ page }) => {
   await page.addInitScript(() => {
     const original = HTMLCanvasElement.prototype.getContext
     HTMLCanvasElement.prototype.getContext = function (
@@ -203,6 +225,15 @@ test('the reference photograph and engraving guide work without WebGL', async ({
   await page.goto('/')
   await expect(page.getByText('3D is unavailable in this browser.', { exact: false })).toBeVisible()
   await expect(page.getByText('Preparing the record')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Explore the engravings' }).click()
-  await expect(page.locator('.engraving-list > button')).toHaveCount(8)
+  await expect(
+    page.getByRole('img', { name: 'NASA reference photograph of the Golden Record cover' }),
+  ).toBeVisible()
+  await page.getByRole('button', { name: 'About this recreation' }).click()
+  await expect(page.getByRole('dialog')).toContainText('1.27 mm')
+  await page.getByRole('button', { name: 'Close information' }).click()
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await page.getByRole('button', { name: 'Record', exact: true }).click()
+  await page.locator('.listen-caption').click()
+  await expect(page.getByRole('dialog')).toHaveAccessibleName('The Sounds of Earth')
+  await expect(page.locator('.music-track')).toHaveCount(27)
 })

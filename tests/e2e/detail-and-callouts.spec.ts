@@ -27,6 +27,10 @@ async function expectClearSubject(card: Locator) {
   expect(box.y).toBeGreaterThanOrEqual(0)
   expect(box.x + box.width).toBeLessThanOrEqual(viewport.width - 10)
   expect(box.y + box.height).toBeLessThanOrEqual(viewport.height)
+  const header = (await card.page().locator('.gallery-header').boundingBox())!
+  const footer = (await card.page().locator('.gallery-bottom').boundingBox())!
+  expect(box.y).toBeGreaterThanOrEqual(header.y + header.height)
+  expect(box.y + box.height).toBeLessThanOrEqual(footer.y)
 }
 
 test('surface studies resolve at 96x and can zoom through to 128x on both faces', async ({
@@ -105,6 +109,8 @@ test('macro callouts reserve a reading rail and restore the inspected view after
   for (const viewport of [
     { width: 1440, height: 1000 },
     { width: 390, height: 844 },
+    { width: 320, height: 568 },
+    { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport)
     await marker.focus()

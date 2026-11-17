@@ -20,7 +20,7 @@ export function ExhibitPanels() {
   }
   return (
     <Dialog.Root
-      open={Boolean((panel && panel !== 'music') || selected)}
+      open={panel === 'sources' || Boolean(selected)}
       onOpenChange={(open) => {
         if (!open) close()
       }}
@@ -49,19 +49,11 @@ export function ExhibitPanels() {
           <Dialog.Close className="panel-close icon-button" aria-label="Close information">
             <X size={20} strokeWidth={1.4} />
           </Dialog.Close>
-          <Dialog.Title>
-            {item
-              ? item.title
-              : panel === 'inscriptions'
-                ? 'The engraved cover'
-                : 'About this recreation'}
-          </Dialog.Title>
+          <Dialog.Title>{item ? item.title : 'About this recreation'}</Dialog.Title>
           <Dialog.Description id="panel-description">
             {item
               ? item.summary
-              : panel === 'inscriptions'
-                ? 'Hover over a figure on the cover, or choose one here.'
-                : 'A message from Earth, carried by both Voyager spacecraft since 1977.'}
+              : 'A message from Earth, carried by both Voyager spacecraft since 1977.'}
           </Dialog.Description>
           {item ? (
             <div className="detail-content">
@@ -99,19 +91,6 @@ export function ExhibitPanels() {
                   <ArrowRight size={18} />
                 </button>
               </div>
-            </div>
-          ) : panel === 'inscriptions' ? (
-            <div className="engraving-list">
-              {inscriptions.map((entry) => (
-                <button key={entry.id} onClick={() => setSelected(entry.id)}>
-                  <DiagramPreview item={entry} />
-                  <span>
-                    {entry.category}
-                    <strong>{entry.title}</strong>
-                  </span>
-                  <ArrowUpRight size={16} />
-                </button>
-              ))}
             </div>
           ) : (
             <div className="about-content">
