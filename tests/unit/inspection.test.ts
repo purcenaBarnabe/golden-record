@@ -6,7 +6,7 @@ const state = () => useExhibitStore.getState()
 beforeEach(() => {
   vi.useFakeTimers()
   state().reset()
-  useExhibitStore.setState({ markersVisible: false })
+  useExhibitStore.setState({ markersVisible: false, hasRevealedMarkers: false })
 })
 afterEach(() => {
   state().clearHover()
@@ -25,14 +25,29 @@ describe('Temporary engraving markers', () => {
     expect(state().markersVisible).toBe(false)
     expect(state().hovered).toBe('playback')
   })
-  it('restarts the display interval on another view interaction', () => {
+  it('does not extend the initial interval on another view interaction', () => {
     state().interactWithView()
     vi.advanceTimersByTime(2000)
     state().changeZoom(0.25)
-    vi.advanceTimersByTime(2000)
-    expect(state().markersVisible).toBe(true)
     vi.advanceTimersByTime(1000)
     expect(state().markersVisible).toBe(false)
+  })
+  it('never repeats the introduction after later navigation or inspection', () => {
+    state().interactWithView()
+    vi.advanceTimersByTime(3000)
+    expect(state().hasRevealedMarkers).toBe(true)
+    for (const interact of [
+      () => state().interactWithView(),
+      () => state().reset(),
+      () => state().setArtifact('record'),
+      () => state().changeZoom(0.25),
+      () => state().inspectEngraving('playback'),
+      () => state().inspectTexture(),
+    ]) {
+      interact()
+      expect(state().markersVisible).toBe(false)
+      expect(state().hasRevealedMarkers).toBe(true)
+    }
   })
 })
 

@@ -95,25 +95,34 @@ for (const interaction of ['orbit', 'pan', 'wheel', 'zoom button'] as const) {
     expect(box.width).toBe(box.height)
     await expect(markers.first()).toHaveCSS('transition-duration', '0.45s')
 
-    if (interaction === 'zoom button') {
-      await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
-    } else {
-      await page.mouse.move(40, 500)
-      if (interaction === 'wheel') await page.mouse.wheel(0, -100)
-      else {
-        const button = interaction === 'pan' ? 'right' : 'left'
-        await page.mouse.down({ button })
-        await page.mouse.move(70, 510, { steps: 5 })
-        await page.mouse.up({ button })
+    const interact = async () => {
+      if (interaction === 'zoom button') {
+        await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+      } else {
+        await page.mouse.move(40, 500)
+        if (interaction === 'wheel') await page.mouse.wheel(0, -100)
+        else {
+          const button = interaction === 'pan' ? 'right' : 'left'
+          await page.mouse.down({ button })
+          await page.mouse.move(70, 510, { steps: 5 })
+          await page.mouse.up({ button })
+        }
       }
     }
+    await interact()
     for (const marker of await markers.all()) await expect(marker).toHaveCSS('opacity', '1')
     await page.getByRole('button', { name: 'Reset view', exact: true }).click()
     await expect(markers.first()).toHaveCSS('opacity', '1')
     await expect(markers.first()).toHaveCSS('opacity', '0')
     await expect(markers.first()).toHaveCSS('pointer-events', 'none')
+    await interact()
+    await expect(page.locator('.annotation.show-marker')).toHaveCount(0)
+    await expect(markers.first()).toHaveCSS('opacity', '0')
     await page.reload()
     await expect(markers.first()).toHaveCSS('opacity', '0')
+    await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false')
+    await interact()
+    await expect(markers.first()).toHaveCSS('opacity', '1')
   })
 }
 
@@ -148,10 +157,13 @@ test('cards stay mounted while the pointer crosses every part of each card', asy
     'pulsars',
     'hydrogen',
   ]) {
-    await revealEngravingMarkers(page)
     await page.mouse.move(1200, 800)
     await expect(page.locator('.annotation-card')).toHaveCount(0)
-    await page.locator(`[data-inscription="${id}"] .annotation-dot`).hover()
+    const marker = page.locator(`[data-inscription="${id}"] .annotation-dot`)
+    await marker.focus()
+    const origin = (await marker.boundingBox())!
+    await page.mouse.move(origin.x + origin.width / 2, origin.y + origin.height / 2)
+    await marker.evaluate((element) => element.blur())
     const card = page.locator(`[data-inscription="${id}"] .annotation-card`)
     await expect(card).toBeVisible()
     await card.evaluate((node) => node.setAttribute('data-stability-probe', 'original'))

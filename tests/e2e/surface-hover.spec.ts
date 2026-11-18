@@ -104,7 +104,9 @@ test('a card stays mounted across gaps in the same engraving and its trace ends 
   }
 })
 
-test('a marker fading out does not dismiss or reopen its hovered card', async ({ page }) => {
+test('only the hovered marker stays visible after the introduction and hides when leaving', async ({
+  page,
+}) => {
   await page.goto('/')
   await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false', {
     timeout: 60_000,
@@ -116,11 +118,25 @@ test('a marker fading out does not dismiss or reopen its hovered card', async ({
   const card = page.locator('[data-inscription="hydrogen"] .annotation-card')
   await expect(card).toBeVisible()
   await card.evaluate((element) => element.setAttribute('data-stability', 'original'))
-  await expect(marker).toHaveCSS('opacity', '0')
+  await expect(page.locator('[data-inscription="playback"] .annotation-dot')).toHaveCSS(
+    'opacity',
+    '0',
+  )
+  await expect(marker).toHaveCSS('opacity', '1')
   await expect(card).toHaveAttribute('data-stability', 'original')
   await expect(card).toBeVisible()
   await page.mouse.move(12, 950)
   await expect(card).toHaveCount(0)
+  await expect(marker).toHaveCSS('opacity', '0')
+  const project = await coverProjection(page)
+  const entry = project(cuts.find((cut) => cut.id === 'hydrogen')!.point)
+  await page.mouse.move(entry.x, entry.y)
+  await expect(marker).toHaveCSS('opacity', '1')
+  await expect(card).toBeVisible()
+  await expect(page.locator('[data-inscription="playback"] .annotation-dot')).toHaveCSS(
+    'opacity',
+    '0',
+  )
 })
 
 test('empty metal inside diagram bounds does not activate cards or click targets', async ({
@@ -189,7 +205,10 @@ test('each actual engraving opens its card with markers hidden and remains reach
       await page.mouse.move(point.x, point.y)
       const card = page.locator(`[data-inscription="${cut.id}"] .annotation-card`)
       await expect(card).toBeVisible()
-      await expect(anchor).toHaveCSS('opacity', '0')
+      await expect(page.locator(`[data-inscription="${cut.id}"] .annotation-dot`)).toHaveCSS(
+        'opacity',
+        '1',
+      )
       await card.evaluate((element) => element.setAttribute('data-stability', 'original'))
       const box = (await card.boundingBox())!
       // A slow approach exceeds the ordinary leave grace period. The safe

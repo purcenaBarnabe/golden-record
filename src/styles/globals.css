@@ -336,6 +336,7 @@ p {
   background: #ffffff73;
 }
 .annotation.show-marker .annotation-dot,
+.annotation.is-hovered .annotation-dot,
 .annotation-dot:focus-visible {
   opacity: 1;
 }
