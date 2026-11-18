@@ -50,7 +50,7 @@
     "@xmldom/xmldom": "^0.9.12",
     "clipper-lib": "^6.4.2",
     "prettier": "^3.9.6",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.5",
     "typescript": "^5.9.3",
     "vite": "^8.3.8",
     "vitest": "^4.0.18",
