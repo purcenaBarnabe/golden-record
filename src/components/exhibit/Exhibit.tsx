@@ -62,7 +62,7 @@ export function Exhibit() {
       </main>
       <ExhibitPanels />
       <MusicExperience />
-      <WelcomeCelebration ready={viewerReady} />
+      <WelcomeCelebration viewerReady={viewerReady} />
     </div>
   )
 }

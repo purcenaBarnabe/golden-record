@@ -22,7 +22,7 @@ const confetti = Array.from({ length: 36 }, (_, index) => {
   } as CSSProperties
 })
 
-export function WelcomeCelebration({ ready }: { ready: boolean }) {
+export function WelcomeCelebration({ viewerReady }: { viewerReady: boolean }) {
   const { t } = useI18n()
   const checked = useRef(false)
   const container = useRef<HTMLDivElement>(null)
@@ -32,7 +32,8 @@ export function WelcomeCelebration({ ready }: { ready: boolean }) {
   }, [])
 
   useEffect(() => {
-    if (!ready || checked.current) return
+    // Start at hydration, independently of scene downloads, decoding, and WebGL.
+    if (checked.current) return
     checked.current = true
     try {
       if (localStorage.getItem(STORAGE_KEY) === 'true') return
@@ -41,7 +42,7 @@ export function WelcomeCelebration({ ready }: { ready: boolean }) {
       // The welcome still works for this visit when storage is blocked or full.
     }
     setPhase('open')
-  }, [ready])
+  }, [])
 
   useEffect(() => {
     if (phase !== 'open') return
@@ -79,6 +80,7 @@ export function WelcomeCelebration({ ready }: { ready: boolean }) {
     <div
       ref={container}
       className="welcome-celebration"
+      data-loading={!viewerReady || undefined}
       data-closing={phase === 'closing' || undefined}
       inert={phase === 'closing' || undefined}
     >
@@ -102,6 +104,7 @@ export function WelcomeCelebration({ ready }: { ready: boolean }) {
           width="520"
           height="420"
           alt={t.welcome.voyager}
+          fetchPriority="high"
           draggable={false}
         />
         <div className="welcome-message" aria-live="polite">

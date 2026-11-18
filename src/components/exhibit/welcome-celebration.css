@@ -10,6 +10,21 @@
   pointer-events: none;
   animation: welcome-appear 650ms ease-out both;
 }
+.welcome-celebration::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--background);
+  opacity: 0;
+  transition: opacity 650ms ease-out;
+}
+.welcome-celebration[data-loading]::before {
+  opacity: 1;
+}
+.gallery:has(.welcome-celebration) .scene-loading {
+  visibility: hidden;
+}
 .welcome-celebration[data-closing] {
   animation: welcome-disappear 600ms ease-in-out both;
 }
