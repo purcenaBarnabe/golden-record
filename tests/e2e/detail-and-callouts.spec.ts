@@ -36,9 +36,7 @@ async function expectClearSubject(card: Locator) {
     .toEqual({ clearSubject: true, insideViewport: true, clearHeader: true, clearFooter: true })
 }
 
-test('surface studies resolve at 96x and can zoom through to 128x on both faces', async ({
-  page,
-}) => {
+test('zoom controls reach 128x on both faces without the texture shortcut', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(error.message))
   page.on('console', (message) => {
@@ -46,17 +44,17 @@ test('surface studies resolve at 96x and can zoom through to 128x on both faces'
   })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
+  await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toHaveCount(0)
+  await page.getByRole('button', { name: 'Use raking light' }).click()
   for (const face of ['Cover', 'Record']) {
     await page.getByRole('switch', { name: 'Show record' }).setChecked(face === 'Record')
-    await page.getByRole('button', { name: 'Inspect surface texture', exact: true }).click()
-    await expect(page.getByRole('status')).toContainText('Zoom 9600%')
     await expect(page.getByRole('button', { name: 'Use studio light' })).toHaveAttribute(
       'aria-pressed',
       'true',
     )
     await page.mouse.move(1200, 650)
     await expect(page.locator('.annotation-card')).toHaveCount(0)
-    for (let i = 0; i < 2; i++)
+    for (let i = 0; i < 22; i++)
       await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
     await expect(page.getByRole('status')).toContainText('Zoom 12800%')
     await expect(page.getByRole('button', { name: 'Zoom in', exact: true })).toBeDisabled()

@@ -62,6 +62,67 @@ const cuts = inscriptions.map((item) => {
   return { id: item.id, point }
 })
 
+test('a card stays mounted across gaps in the same engraving and its trace ends at the marker', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  for (const viewport of [
+    { width: 1440, height: 1000 },
+    { width: 390, height: 844 },
+  ]) {
+    await page.setViewportSize(viewport)
+    await page.goto('/')
+    await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false', {
+      timeout: 60_000,
+    })
+    const project = await coverProjection(page)
+    const entry = project(cuts.find((cut) => cut.id === 'playback')!.point)
+    await page.mouse.move(entry.x, entry.y)
+    const card = page.locator('[data-inscription="playback"] .annotation-card')
+    await expect(card).toBeVisible()
+    await card.evaluate((element) => element.setAttribute('data-stability', 'original'))
+    const currentProjection = await coverProjection(page)
+    for (const uv of [
+      [0.39, 0.42],
+      [0.37, 0.4],
+      [0.35, 0.4],
+    ]) {
+      const gap = currentProjection(uv)
+      await page.mouse.move(gap.x, gap.y, { steps: 5 })
+      await page.waitForTimeout(350)
+      await expect(card).toHaveAttribute('data-stability', 'original')
+    }
+    const marker = (await page
+      .locator('[data-inscription="playback"] .annotation-dot')
+      .boundingBox())!
+    const line = page.locator('[data-inscription="playback"] .annotation-connector > path')
+    const coordinates = (await line.getAttribute('d'))!.match(/-?[\d.]+/g)!.map(Number)
+    expect(Math.abs(coordinates[0] - marker.x - marker.width / 2)).toBeLessThan(1)
+    expect(Math.abs(coordinates[1] - marker.y - marker.height / 2)).toBeLessThan(1)
+    await page.mouse.move(12, viewport.height - 12)
+    await expect(card).toHaveCount(0)
+  }
+})
+
+test('a marker fading out does not dismiss or reopen its hovered card', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false', {
+    timeout: 60_000,
+  })
+  await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+  await page.getByRole('button', { name: 'Reset view', exact: true }).click()
+  const marker = page.locator('[data-inscription="hydrogen"] .annotation-dot')
+  await marker.hover()
+  const card = page.locator('[data-inscription="hydrogen"] .annotation-card')
+  await expect(card).toBeVisible()
+  await card.evaluate((element) => element.setAttribute('data-stability', 'original'))
+  await expect(marker).toHaveCSS('opacity', '0')
+  await expect(card).toHaveAttribute('data-stability', 'original')
+  await expect(card).toBeVisible()
+  await page.mouse.move(12, 950)
+  await expect(card).toHaveCount(0)
+})
+
 test('empty metal inside diagram bounds does not activate cards or click targets', async ({
   page,
 }) => {
@@ -81,10 +142,12 @@ test('empty metal inside diagram bounds does not activate cards or click targets
         await page.waitForTimeout(100)
       }
       const project = await coverProjection(page)
+      // Stay clear of the four-pixel allowance around the small spindle and
+      // calibration circles, including at the phone's smaller display scale.
       for (const uv of [
-        [0.25, 0.33],
+        [0.2, 0.32],
         [0.7, 0.47],
-        [0.68, 0.61],
+        [0.665, 0.6],
         [0.5, 0.83],
       ]) {
         const point = project(uv)

@@ -13,7 +13,7 @@ import { useProjectedSubject } from './use-projected-subject'
 export function Annotations() {
   const hovered = useExhibitStore((s) => s.hovered)
   const selected = useExhibitStore((s) => s.selected)
-  const markers = useExhibitStore((s) => s.hasInteracted)
+  const markers = useExhibitStore((s) => s.markersVisible)
   const setHovered = useExhibitStore((s) => s.setAnnotationHovered)
   const clearHover = useExhibitStore((s) => s.clearHover)
   const inspectEngraving = useExhibitStore((s) => s.inspectEngraving)
@@ -98,7 +98,7 @@ export function Annotations() {
               <AnnotationCard
                 target={item.id}
                 projectSubject={() => ({
-                  ...project(item.bounds, useExhibitStore.getState().surfaceHoverPoint?.artwork),
+                  ...project(item.bounds),
                   surface: project([0, 0, 1, 1]).subject,
                   neighbors: inscriptions
                     .filter((other) => other.id !== item.id)
@@ -110,7 +110,7 @@ export function Annotations() {
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
                 <button className="annotation-action" onClick={() => setSelected(item.id)}>
-                  How does this work? <ArrowUpRight size={14} />
+                  What does this mean? <ArrowUpRight size={14} />
                 </button>
                 <button className="annotation-action" onClick={() => inspectEngraving(item.id)}>
                   See it close up <Focus size={14} />

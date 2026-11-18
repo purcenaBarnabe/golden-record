@@ -6,10 +6,34 @@ const state = () => useExhibitStore.getState()
 beforeEach(() => {
   vi.useFakeTimers()
   state().reset()
+  useExhibitStore.setState({ markersVisible: false })
 })
 afterEach(() => {
   state().clearHover()
+  vi.clearAllTimers()
   vi.useRealTimers()
+})
+
+describe('Temporary engraving markers', () => {
+  it('hides the markers after three seconds without dismissing the active card', () => {
+    expect(state().markersVisible).toBe(false)
+    state().interactWithView()
+    state().setHovered('playback')
+    vi.advanceTimersByTime(2999)
+    expect(state().markersVisible).toBe(true)
+    vi.advanceTimersByTime(1)
+    expect(state().markersVisible).toBe(false)
+    expect(state().hovered).toBe('playback')
+  })
+  it('restarts the display interval on another view interaction', () => {
+    state().interactWithView()
+    vi.advanceTimersByTime(2000)
+    state().changeZoom(0.25)
+    vi.advanceTimersByTime(2000)
+    expect(state().markersVisible).toBe(true)
+    vi.advanceTimersByTime(1000)
+    expect(state().markersVisible).toBe(false)
+  })
 })
 
 describe('Inscription hover ownership', () => {

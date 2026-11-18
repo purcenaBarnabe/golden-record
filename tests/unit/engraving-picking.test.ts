@@ -45,7 +45,7 @@ describe('Picking actual cover engravings', () => {
     expect(remaining.size).toBe(0)
   })
 
-  it('keeps the targeting allowance at two screen pixels as zoom and viewport size change', () => {
+  it('keeps the targeting allowance at four screen pixels as zoom and viewport size change', () => {
     const line = new BufferGeometry().setAttribute(
       'position',
       new Float32BufferAttribute([-0.001, 0, 0, 0.001, 0, 0, 0, 0.000001, 0], 3),
@@ -57,8 +57,8 @@ describe('Picking actual cover engravings', () => {
     ])
       for (const zoom of [1, 4]) {
         const projection = new Matrix4().makeScale(zoom / COVER_RADIUS, zoom / COVER_RADIUS, 1)
-        expect(thin.pick(projection, new Vector2(0, (1.9 * 2) / size.height), size)).not.toBeNull()
-        expect(thin.pick(projection, new Vector2(0, (2.2 * 2) / size.height), size)).toBeNull()
+        expect(thin.pick(projection, new Vector2(0, (3.9 * 2) / size.height), size)).not.toBeNull()
+        expect(thin.pick(projection, new Vector2(0, (4.2 * 2) / size.height), size)).toBeNull()
       }
     line.dispose()
   })

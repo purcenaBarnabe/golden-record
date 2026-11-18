@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useTexture } from '@react-three/drei'
-import { Matrix4, SRGBColorSpace, Vector2, type Texture } from 'three'
+import { Matrix4, SRGBColorSpace, Vector2, type Group, type Texture } from 'three'
 import { useLoader, useThree, type ThreeEvent } from '@react-three/fiber'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { EngravedCoverLoader } from '../../lib/cover-loader'
@@ -9,6 +9,8 @@ import { onDisc } from '../../lib/surface-picking'
 import { createMetalMaterial } from '../../lib/metal-finish'
 import { AUTO_HOVER_MAX_ZOOM } from '../../lib/inspection'
 import { EngravingPicker } from '../../lib/engraving-picking'
+import { inscriptions } from '../../lib/inscriptions'
+import { useProjectedSubject } from './use-projected-subject'
 import {
   BOND_THICKNESS,
   COPPER_LAYER_THICKNESS,
@@ -58,6 +60,8 @@ function Edge({
 }
 
 export function CoverModel() {
+  const root = useRef<Group>(null)
+  const project = useProjectedSubject(root, COVER_RADIUS, COVER_FACE_Z)
   const relief = useLoader(EngravedCoverLoader, COVER_RELIEF_URL)
   const picker = useMemo(() => new EngravingPicker(relief), [relief])
   const clip = useMemo(() => new Matrix4(), [])
@@ -110,7 +114,24 @@ export function CoverModel() {
       !event.uv
     )
       return
-    const id = pick(event)
+    let id = pick(event)
+    const active = useExhibitStore.getState().hovered
+    if (!id && active && active !== 'music' && onDisc(event.uv.x, event.uv.y, COVER_RADIUS)) {
+      // Once a figure is active, its gaps and a small screen-space margin keep
+      // the same card open. A direct hit on another engraving still switches it.
+      const item = inscriptions.find((item) => item.id === active)!
+      const region = project(item.bounds).subject
+      const { clientX: x, clientY: y } = event.nativeEvent
+      const margin = 10
+      if (
+        region &&
+        x >= region.x - margin &&
+        x <= region.x + region.width + margin &&
+        y >= region.y - margin &&
+        y <= region.y + region.height + margin
+      )
+        id = active
+    }
     setHovered(
       id,
       id
@@ -123,7 +144,7 @@ export function CoverModel() {
     )
   }
   return (
-    <group>
+    <group ref={root}>
       <Edge radius={COVER_RADIUS} depth={0.0006} z={COVER_FACE_Z - 0.0003} />
       <mesh
         position={[0, 0, COVER_FACE_Z + 0.000001]}

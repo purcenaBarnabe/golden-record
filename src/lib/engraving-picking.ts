@@ -4,7 +4,7 @@ import type { CoverRelief } from './engraved-cover'
 import { COVER_RADIUS } from './artifact-dimensions'
 import { inscriptionAtUv, inscriptions, type InscriptionId } from './inscriptions'
 
-export const ENGRAVING_HOVER_TOLERANCE = 2 // CSS pixels, independent of zoom and DPR.
+export const ENGRAVING_HOVER_TOLERANCE = 4 // CSS pixels, independent of zoom and DPR.
 const trees = new WeakMap<BufferGeometry, MeshBVH>()
 function treeFor(geometry: BufferGeometry) {
   let tree = trees.get(geometry)
@@ -153,7 +153,7 @@ export class EngravingPicker {
     pointerNdc: Vector2,
     viewport: { width: number; height: number },
     tolerance = ENGRAVING_HOVER_TOLERANCE,
-  ) {
+  ): InscriptionId | null {
     this.matrix.copy(localToClip)
     this.halfWidth = viewport.width / 2
     this.halfHeight = viewport.height / 2

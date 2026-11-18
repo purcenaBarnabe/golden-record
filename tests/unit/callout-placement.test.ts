@@ -108,4 +108,25 @@ describe('Subject-aware information cards', () => {
       }
     }
   })
+  it('protects approaches from a distant surface hit as well as the marker', () => {
+    const marker = { x: 800, y: 300 },
+      surface = { x: 500, y: 600 },
+      rect = { x: 150, y: 200, width: 228, height: 214 }
+    const path = calloutCorridor(marker, rect, surface)
+    expect(path.edge).toEqual({ x: 378, y: 300 })
+    const polygon = path.polygon.split(' ').map((point) => point.split(',').map(Number))
+    for (const origin of [marker, surface]) {
+      for (let step = 0; step <= 10; step++) {
+        const x = origin.x + ((rect.x + rect.width / 2 - origin.x) * step) / 10
+        const y = origin.y + ((rect.y + rect.height / 2 - origin.y) * step) / 10
+        const sides = polygon.map((a, i) => {
+          const b = polygon[(i + 1) % polygon.length]
+          return (b[0] - a[0]) * (y - a[1]) - (b[1] - a[1]) * (x - a[0])
+        })
+        expect(sides.every((side) => side >= -0.001) || sides.every((side) => side <= 0.001)).toBe(
+          true,
+        )
+      }
+    }
+  })
 })

@@ -80,7 +80,7 @@ test('all eight engravings remain keyboard accessible with markers hidden', asyn
 })
 
 for (const interaction of ['orbit', 'pan', 'wheel', 'zoom button'] as const) {
-  test(`engraving markers fade in after the first ${interaction}`, async ({ page }) => {
+  test(`engraving markers briefly fade in after ${interaction}`, async ({ page }) => {
     await page.goto('/')
     await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false', {
       timeout: 60_000,
@@ -110,6 +110,8 @@ for (const interaction of ['orbit', 'pan', 'wheel', 'zoom button'] as const) {
     for (const marker of await markers.all()) await expect(marker).toHaveCSS('opacity', '1')
     await page.getByRole('button', { name: 'Reset view', exact: true }).click()
     await expect(markers.first()).toHaveCSS('opacity', '1')
+    await expect(markers.first()).toHaveCSS('opacity', '0')
+    await expect(markers.first()).toHaveCSS('pointer-events', 'none')
     await page.reload()
     await expect(markers.first()).toHaveCSS('opacity', '0')
   })
@@ -122,7 +124,7 @@ test('hover cards open explanations and navigate between engravings', async ({ p
     .getByRole('button', { name: 'Explore hydrogen transition', exact: true })
     .hover({ timeout: 60_000 })
   await expect(page.locator('.annotation-card')).toContainText('A universal measure')
-  await page.getByRole('button', { name: 'How does this work?', exact: true }).click()
+  await page.getByRole('button', { name: 'What does this mean?', exact: true }).click()
   await expect(page.getByRole('dialog')).toContainText('nanoseconds per time unit')
   await page.getByRole('button', { name: 'Previous engraving' }).click()
   await expect(page.getByRole('dialog')).toContainText('Our return address')
@@ -146,6 +148,7 @@ test('cards stay mounted while the pointer crosses every part of each card', asy
     'pulsars',
     'hydrogen',
   ]) {
+    await revealEngravingMarkers(page)
     await page.mouse.move(1200, 800)
     await expect(page.locator('.annotation-card')).toHaveCount(0)
     await page.locator(`[data-inscription="${id}"] .annotation-dot`).hover()
@@ -228,7 +231,7 @@ test('surface controls rotate the display to the record and preserve inspection 
   await expect(page.locator('.surface-caption')).toContainText('Side 1')
   await page.keyboard.press('Enter')
   await expect(surfaceSwitch).not.toBeChecked()
-  await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toHaveCount(0)
   await page.getByRole('button', { name: 'Use raking light' }).click()
   await expect(page.getByRole('button', { name: 'Use studio light' })).toHaveAttribute(
     'aria-pressed',

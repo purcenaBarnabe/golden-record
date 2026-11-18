@@ -41,7 +41,7 @@ test('mobile controls fit on one row with the surface switch below the subtitle'
         })),
       )
       .toEqual(viewport)
-    await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toBeHidden()
+    await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toHaveCount(0)
     await expect(page.getByRole('button', { name: /Use (raking|studio) light/ })).toBeHidden()
     await expect(page.getByRole('button', { name: 'Drag', exact: true })).toHaveAttribute(
       'aria-pressed',

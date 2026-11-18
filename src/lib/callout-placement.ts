@@ -133,12 +133,20 @@ export function placeCallout({
 }
 
 /** A narrow safe path lets a reader reach a separated card at a slow pace. */
-export function calloutCorridor(anchor: ScreenPoint, rect: ScreenRect) {
+export function calloutCorridor(anchor: ScreenPoint, rect: ScreenRect, approach?: ScreenPoint) {
   const x = clamp(anchor.x, rect.x, rect.x + rect.width),
     y = clamp(anchor.y, rect.y, rect.y + rect.height)
   // The convex hull covers approaches to either edge of a diagonal card.
   // Choosing only its nearest vertical/horizontal edge leaves a dead wedge.
   const points = [
+    ...(approach
+      ? [
+          { x: approach.x - 9, y: approach.y },
+          { x: approach.x + 9, y: approach.y },
+          { x: approach.x, y: approach.y - 9 },
+          { x: approach.x, y: approach.y + 9 },
+        ]
+      : []),
     { x: anchor.x - 9, y: anchor.y },
     { x: anchor.x + 9, y: anchor.y },
     { x: anchor.x, y: anchor.y - 9 },

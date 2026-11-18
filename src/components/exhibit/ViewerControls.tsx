@@ -1,4 +1,4 @@
-import { HandGrab, Minus, Orbit, Plus, RotateCcw, SunMedium, Microscope } from 'lucide-react'
+import { HandGrab, Minus, Orbit, Plus, RotateCcw, SunMedium } from 'lucide-react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { useShallow } from 'zustand/react/shallow'
@@ -14,7 +14,6 @@ export function ViewerControls({ disabled }: { disabled: boolean }) {
       lighting: s.lighting,
       zoom: s.zoom,
       reset: s.reset,
-      inspectTexture: s.inspectTexture,
       toggleLighting: s.toggleLighting,
       changeZoom: s.changeZoom,
     })),
@@ -62,14 +61,6 @@ export function ViewerControls({ disabled }: { disabled: boolean }) {
           disabled={disabled || s.zoom >= MAX_ZOOM}
         >
           <Plus size={19} strokeWidth={1.7} />
-        </IconButton>
-        <IconButton
-          className="desktop-viewer-control"
-          label="Inspect surface texture"
-          onClick={s.inspectTexture}
-          disabled={disabled}
-        >
-          <Microscope size={20} strokeWidth={1.7} />
         </IconButton>
         <IconButton
           label="Reset view"

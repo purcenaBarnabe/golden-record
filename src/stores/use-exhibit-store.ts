@@ -12,6 +12,15 @@ export interface SurfaceHoverPoint {
   artwork?: [number, number]
 }
 let hoverLeaveTimer: ReturnType<typeof setTimeout> | undefined
+let markerHideTimer: ReturnType<typeof setTimeout> | undefined
+function revealMarkers() {
+  clearTimeout(markerHideTimer)
+  markerHideTimer = setTimeout(() => {
+    markerHideTimer = undefined
+    useExhibitStore.setState({ markersVisible: false })
+  }, 3000)
+  return { markersVisible: true }
+}
 function cancelHoverLeave() {
   clearTimeout(hoverLeaveTimer)
   hoverLeaveTimer = undefined
@@ -26,7 +35,7 @@ interface ExhibitState {
   artifact: Artifact
   mobileNavigationMode: NavigationMode
   setMobileNavigationMode: (mode: NavigationMode) => void
-  hasInteracted: boolean
+  markersVisible: boolean
   lighting: Lighting
   selected: InscriptionId | null
   hovered: HoverTarget | null
@@ -61,7 +70,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   mobileNavigationMode: 'drag',
   setMobileNavigationMode: (mobileNavigationMode) =>
     set({ ...dismissHover(), mobileNavigationMode }),
-  hasInteracted: false,
+  markersVisible: false,
   lighting: 'gallery',
   selected: null,
   hovered: null,
@@ -139,7 +148,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   inspectEngraving: (focus) =>
     set((s) => ({
       ...dismissHover(),
-      hasInteracted: true,
+      ...revealMarkers(),
       focus,
       artifact: 'cover',
       view: 'front',
@@ -151,7 +160,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   inspectTexture: () =>
     set((s) => ({
       ...dismissHover(),
-      hasInteracted: true,
+      ...revealMarkers(),
       focus: `${s.artifact}-texture`,
       view: s.artifact === 'cover' ? 'front' : 'back',
       zoom: TEXTURE_ZOOM,
@@ -161,12 +170,12 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
       viewRevision: s.viewRevision + 1,
     })),
   setPanel: (panel) => set({ ...dismissHover(), panel, selected: null }),
-  interactWithView: () => set({ ...dismissHover(), hasInteracted: true }),
+  interactWithView: () => set({ ...dismissHover(), ...revealMarkers() }),
   toggleLighting: () => set((s) => ({ lighting: s.lighting === 'gallery' ? 'raking' : 'gallery' })),
   changeZoom: (delta) =>
     set((s) => ({
       ...dismissHover(),
-      hasInteracted: true,
+      ...revealMarkers(),
       zoom: clampZoom(delta > 0 ? s.zoom * 1.25 : s.zoom / 1.25),
       zoomRevision: s.zoomRevision + 1,
     })),

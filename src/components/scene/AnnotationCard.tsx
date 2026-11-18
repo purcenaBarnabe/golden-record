@@ -73,7 +73,7 @@ export function AnnotationCard({
         ...document.querySelectorAll('.gallery-header, .gallery-bottom, .mini-player'),
       ].map(rectOf)
       const context = projection.current()
-      const anchor = context.anchor ?? markerAnchor
+      const anchor = markerAnchor
       let { subject, viewport } = context
       let size = element.getBoundingClientRect()
       let position = dock
@@ -149,14 +149,15 @@ export function AnnotationCard({
         'd',
         `M${anchor.x},${anchor.y} L${path.edge.x},${path.edge.y}`,
       )
-      // Surface hover may begin anywhere along a long, sparse diagram. Keep
-      // the approach safe from that actual point, rather than only its marker.
+      // Keep approaches from both the engraving and its marker safe, while the
+      // visible connector always ends at the marker.
       const state = useExhibitStore.getState()
       corridor.current?.setAttribute(
         'points',
         calloutCorridor(
-          state.hovered === target && state.surfaceHoverPoint ? state.surfaceHoverPoint : anchor,
+          anchor,
           position,
+          state.hovered === target ? (state.surfaceHoverPoint ?? undefined) : undefined,
         ).polygon,
       )
     }
