@@ -46,7 +46,7 @@ jobs:
         env:
           VITE_SENTRY_DSN: https://ded47edfd319c547b6bea66c1e0e6f0b@o415353.ingest.us.sentry.io/4512450849275904
           VITE_SENTRY_ENVIRONMENT: ${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
-          SENTRY_RELEASE: ${{ github.sha }}
+          SENTRY_RELEASE: golden-record@${{ github.sha }}
           SENTRY_AUTH_TOKEN: ${{ github.event_name != 'pull_request' && secrets.SENTRY_AUTH_TOKEN || '' }}
         run: yarn build
 

@@ -38,6 +38,10 @@ The social card uses the bundled NASA/JPL-Caltech reference photograph with attr
 
 Cloudflare Web Analytics provides traffic and browser performance metrics. Sentry captures UI errors, important exhibit and player interactions, scene readiness, audio startup, and buffering. Copy `.env.example` to `.env.local` to enable local reporting. Production builds receive the public DSN and a build-only source-map upload token through GitHub Actions. Errors are captured at full rate; production traces default to 10% sampling. Session Replay is disabled, and search text is excluded from telemetry.
 
+The production hostname uses the same Cloudflare Web Analytics property as `purcena.com`; filter that dashboard by hostname to view each app. Pages automatically injects one beacon using the shared property's site tag/token in the project's `build_config`. No second beacon is embedded by application code. The old Pages analytics site remains available for historical reports. Cloudflare controls automatic injection and its privacy rules separately from Sentry's SDK settings.
+
+Sentry remains in its separate `purcena-barnabe/golden-record` project. Production releases use `golden-record@<commit>` and carry `app:golden-record` and `runtime:browser` tags. Filter dashboards and notifications to `production`; development and verification data remain separate. No cross-app visitor identity or additional analytics platform is configured.
+
 ## Verify
 
 ```sh
