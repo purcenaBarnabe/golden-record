@@ -11,6 +11,7 @@ import { AUTO_HOVER_MAX_ZOOM } from '../../lib/inspection'
 import { EngravingPicker } from '../../lib/engraving-picking'
 import { inscriptions } from '../../lib/inscriptions'
 import { useProjectedSubject } from './use-projected-subject'
+import { useTouchTap } from './use-touch-tap'
 import {
   BOND_THICKNESS,
   COPPER_LAYER_THICKNESS,
@@ -60,6 +61,7 @@ function Edge({
 }
 
 export function CoverModel() {
+  const touch = useTouchTap()
   const root = useRef<Group>(null)
   const project = useProjectedSubject(root, COVER_RADIUS, COVER_FACE_Z)
   const relief = useLoader(EngravedCoverLoader, COVER_RELIEF_URL)
@@ -108,6 +110,7 @@ export function CoverModel() {
   const inspect = (event: ThreeEvent<PointerEvent>) => {
     if ((event.nativeEvent.target as HTMLElement)?.closest?.('.annotation')) return
     if (
+      event.pointerType === 'touch' ||
       event.buttons !== 0 ||
       useExhibitStore.getState().selected ||
       useExhibitStore.getState().zoom > AUTO_HOVER_MAX_ZOOM ||
@@ -150,7 +153,16 @@ export function CoverModel() {
         position={[0, 0, COVER_FACE_Z + 0.000001]}
         onPointerMove={inspect}
         onPointerOut={() => setHovered(null)}
+        onPointerUp={(e) => {
+          if (!touch.consumeTouchTap(e.nativeEvent)) return
+          const id = pick(e)
+          if (id) {
+            e.stopPropagation()
+            setSelected(id)
+          }
+        }}
         onClick={(e) => {
+          if (touch.isTouchClick()) return
           if (e.delta > 5 || !e.uv) return
           if (!onDisc(e.uv.x, e.uv.y, COVER_RADIUS)) return
           const id = pick(e)
@@ -194,6 +206,7 @@ export function CoverModel() {
 }
 
 export function AudioRecordModel() {
+  const touch = useTouchTap()
   const textures = useTexture(RECORD_TEXTURE_URLS)
   const [color, roughness, anisotropy, relief] = useMemo(
     () => textures.map((t, i) => finishTexture(t, i === 0)),
@@ -244,6 +257,7 @@ export function AudioRecordModel() {
         rotation={[0, Math.PI, 0]}
         onPointerMove={(event) => {
           if (
+            event.pointerType === 'touch' ||
             event.buttons !== 0 ||
             !event.uv ||
             useExhibitStore.getState().zoom > AUTO_HOVER_MAX_ZOOM ||
@@ -261,7 +275,19 @@ export function AudioRecordModel() {
             )
         }}
         onPointerOut={() => useExhibitStore.getState().setHovered(null)}
+        onPointerUp={(event) => {
+          if (
+            touch.consumeTouchTap(event.nativeEvent) &&
+            event.uv &&
+            onDisc(event.uv.x, event.uv.y, RECORD_RADIUS) &&
+            Math.hypot(event.uv.x - 0.5, event.uv.y - 0.5) < 0.24
+          ) {
+            event.stopPropagation()
+            useExhibitStore.getState().setPanel('music')
+          }
+        }}
         onClick={(event) => {
+          if (touch.isTouchClick()) return
           if (
             event.delta <= 5 &&
             event.uv &&

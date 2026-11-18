@@ -297,9 +297,12 @@ p {
   position: relative;
   width: 26px;
   height: 26px;
+  pointer-events: none;
+}
+.annotation > button {
   pointer-events: auto;
 }
-.cover-annotation-anchor .annotation:not(.show-marker):not(.is-hovered) {
+.cover-annotation-anchor .annotation:not(.show-marker):not(.is-hovered) > .annotation-dot {
   pointer-events: none;
 }
 .annotation-dot {

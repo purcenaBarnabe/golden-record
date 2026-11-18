@@ -27,6 +27,7 @@ export function Annotations() {
   const root = useRef<Group>(null)
   const project = useProjectedSubject(root, COVER_RADIUS, COVER_FACE_Z)
   const front = useRef(true)
+  const touchFocus = useRef(false)
   const normal = useMemoVector()
   const world = useMemoVector()
   const direction = useMemoVector()
@@ -66,7 +67,12 @@ export function Annotations() {
           <div
             data-inscription={item.id}
             className={`annotation ${markers ? 'show-marker' : ''} ${hovered === item.id ? 'is-hovered' : ''} ${selected === item.id ? 'is-selected' : ''}`}
-            onPointerEnter={() => setHovered(item.id)}
+            onPointerEnter={(e) => {
+              if (e.pointerType !== 'touch') {
+                touchFocus.current = false
+                setHovered(item.id)
+              }
+            }}
             onPointerLeave={(e) => {
               if (
                 !withinAnnotation(item.id, e.relatedTarget) &&
@@ -75,7 +81,10 @@ export function Annotations() {
                 setHovered(null)
             }}
             onPointerMove={(e) => e.stopPropagation()}
-            onPointerDown={(e) => e.stopPropagation()}
+            onPointerDown={(e) => {
+              touchFocus.current = e.pointerType === 'touch'
+              e.stopPropagation()
+            }}
             onWheel={(e) => e.stopPropagation()}
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
@@ -83,7 +92,9 @@ export function Annotations() {
                 clearHover()
               }
             }}
-            onFocus={() => setHovered(item.id)}
+            onFocus={(e) => {
+              if (!touchFocus.current || e.target.matches(':focus-visible')) setHovered(item.id)
+            }}
             onBlur={(e) => {
               if (!withinAnnotation(item.id, e.relatedTarget) && !hoveringAnnotation(item.id))
                 setHovered(null)

@@ -19,6 +19,7 @@ export function RecordAnnotation() {
   const project = useProjectedSubject(root, RECORD_RADIUS, -RECORD_THICKNESS / 2)
   const anchor = useRef<HTMLDivElement>(null)
   const visible = useRef(false)
+  const touchFocus = useRef(false)
   const world = useRef(new Vector3()).current
   const direction = useRef(new Vector3()).current
   useFrame(({ camera }) => {
@@ -50,7 +51,12 @@ export function RecordAnnotation() {
         <div
           className={`annotation record-annotation ${hovered ? 'is-hovered' : ''}`}
           data-inscription="music"
-          onPointerEnter={() => setHovered('music')}
+          onPointerEnter={(e) => {
+            if (e.pointerType !== 'touch') {
+              touchFocus.current = false
+              setHovered('music')
+            }
+          }}
           onPointerLeave={(e) => {
             if (
               !withinAnnotation('music', e.relatedTarget) &&
@@ -59,7 +65,10 @@ export function RecordAnnotation() {
               setHovered(null)
           }}
           onPointerMove={(e) => e.stopPropagation()}
-          onPointerDown={(e) => e.stopPropagation()}
+          onPointerDown={(e) => {
+            touchFocus.current = e.pointerType === 'touch'
+            e.stopPropagation()
+          }}
           onWheel={(e) => e.stopPropagation()}
           onKeyDown={(e) => {
             if (e.key === 'Escape') {
@@ -67,7 +76,9 @@ export function RecordAnnotation() {
               useExhibitStore.getState().clearHover()
             }
           }}
-          onFocus={() => setHovered('music')}
+          onFocus={(e) => {
+            if (!touchFocus.current || e.target.matches(':focus-visible')) setHovered('music')
+          }}
           onBlur={(e) => {
             if (!withinAnnotation('music', e.relatedTarget) && !hoveringAnnotation('music'))
               setHovered(null)
