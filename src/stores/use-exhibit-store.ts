@@ -66,7 +66,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   theme: 'light',
   setTheme: (theme) => set({ theme }),
   artifact: 'cover',
-  mobileNavigationMode: 'drag',
+  mobileNavigationMode: 'orbit',
   setMobileNavigationMode: (mobileNavigationMode) =>
     set({ ...dismissHover(), mobileNavigationMode }),
   markersVisible: false,

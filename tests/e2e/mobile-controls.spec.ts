@@ -43,13 +43,16 @@ test('mobile controls fit on one row with the surface switch below the subtitle'
       .toEqual(viewport)
     await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toHaveCount(0)
     await expect(page.getByRole('button', { name: /Use (raking|studio) light/ })).toBeHidden()
+    await expect(
+      page.getByRole('group', { name: 'Touch navigation' }).getByRole('button'),
+    ).toHaveText(['Orbit', 'Drag'])
     await expect(page.getByRole('button', { name: 'Drag', exact: true })).toHaveAttribute(
       'aria-pressed',
-      'true',
+      'false',
     )
     await expect(page.getByRole('button', { name: 'Orbit', exact: true })).toHaveAttribute(
       'aria-pressed',
-      'false',
+      'true',
     )
     const { modes, subtitle, surface, toolbar } = await page.evaluate(() => {
       const bounds = (selector: string) =>
@@ -68,7 +71,7 @@ test('mobile controls fit on one row with the surface switch below the subtitle'
     expect(toolbar.x).toBeGreaterThanOrEqual(12)
     expect(toolbar.x + toolbar.width).toBeLessThanOrEqual(viewport.width - 12)
     expect(toolbar.height).toBeLessThan(65)
-    for (const label of ['Drag', 'Orbit', 'Zoom out', 'Zoom in', 'Reset view'])
+    for (const label of ['Orbit', 'Drag', 'Zoom out', 'Zoom in', 'Reset view'])
       await expect(page.getByRole('button', { name: label, exact: true })).toBeInViewport()
     await expect(page.getByRole('button', { name: /engraving markers/ })).toHaveCount(0)
     await surfaceSwitch.tap()
@@ -79,7 +82,7 @@ test('mobile controls fit on one row with the surface switch below the subtitle'
   }
 })
 
-test('mobile starts with one-finger dragging, keeps pinch zoom, and can switch to orbit', async ({
+test('mobile starts in orbit, supports one-finger dragging, and keeps pinch zoom', async ({
   page,
 }) => {
   await page.goto('/')
@@ -87,9 +90,12 @@ test('mobile starts with one-finger dragging, keeps pinch zoom, and can switch t
   await expect(surfaceSwitch).toBeEnabled({ timeout: 60_000 })
   const drag = page.getByRole('button', { name: 'Drag', exact: true })
   const orbit = page.getByRole('button', { name: 'Orbit', exact: true })
+  await expect(orbit).toHaveAttribute('aria-pressed', 'true')
+  await expect(drag).toHaveAttribute('aria-pressed', 'false')
   const marker = page.locator('[data-inscription="playback"] .annotation-dot')
   await expect(marker).toHaveCSS('opacity', '0')
   const before = (await marker.boundingBox())!
+  await drag.tap()
   const session = await page.context().newCDPSession(page)
   try {
     await swipe(session, 300, 180, 500)
@@ -134,7 +140,8 @@ test('mobile starts with one-finger dragging, keeps pinch zoom, and can switch t
     await drag.tap()
     await expect(drag).toHaveAttribute('aria-pressed', 'true')
     await page.reload()
-    await expect(drag).toHaveAttribute('aria-pressed', 'true')
+    await expect(orbit).toHaveAttribute('aria-pressed', 'true')
+    await expect(drag).toHaveAttribute('aria-pressed', 'false')
   } finally {
     await session.detach()
   }

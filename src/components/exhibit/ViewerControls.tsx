@@ -32,21 +32,21 @@ export function ViewerControls({ disabled }: { disabled: boolean }) {
         <div className="mobile-navigation-modes" role="group" aria-label={t.controls.touch}>
           <button
             type="button"
-            aria-pressed={s.mobileNavigationMode === 'drag'}
-            disabled={disabled}
-            onClick={() => s.setMobileNavigationMode('drag')}
-          >
-            <HandGrab size={14} strokeWidth={1.6} aria-hidden="true" />
-            {t.controls.drag}
-          </button>
-          <button
-            type="button"
             aria-pressed={s.mobileNavigationMode === 'orbit'}
             disabled={disabled}
             onClick={() => s.setMobileNavigationMode('orbit')}
           >
             <Orbit size={14} strokeWidth={1.6} aria-hidden="true" />
             {t.controls.orbit}
+          </button>
+          <button
+            type="button"
+            aria-pressed={s.mobileNavigationMode === 'drag'}
+            disabled={disabled}
+            onClick={() => s.setMobileNavigationMode('drag')}
+          >
+            <HandGrab size={14} strokeWidth={1.6} aria-hidden="true" />
+            {t.controls.drag}
           </button>
         </div>
         <span className="toolbar-divider mobile-navigation-divider" />
