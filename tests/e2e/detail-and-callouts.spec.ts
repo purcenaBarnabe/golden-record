@@ -1,4 +1,5 @@
 import { test, expect, type Locator } from '@playwright/test'
+import { revealEngravingMarkers } from './helpers/interaction'
 
 async function expectClearSubject(card: Locator) {
   await expect(card).toBeVisible()
@@ -102,7 +103,7 @@ test('macro callouts reserve a reading rail and restore the inspected view after
 }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await page
     .getByRole('button', { name: 'Explore hydrogen transition', exact: true })
     .hover({ timeout: 60_000 })

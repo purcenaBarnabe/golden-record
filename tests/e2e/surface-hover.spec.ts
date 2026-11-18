@@ -11,7 +11,7 @@ async function coverProjection(page: Page) {
   const equations: number[][] = []
   for (const id of ['playback', 'scan', 'pulsars', 'hydrogen']) {
     const item = inscriptions.find((item) => item.id === id)!
-    const [u, v] = item.point
+    const [u, v] = item.markerPoint
     const box = (await page
       .locator(`.annotation[data-inscription="${id}"] .annotation-dot`)
       .boundingBox())!
@@ -126,6 +126,7 @@ test('each actual engraving opens its card with markers hidden and remains reach
       await page.mouse.move(point.x, point.y)
       const card = page.locator(`[data-inscription="${cut.id}"] .annotation-card`)
       await expect(card).toBeVisible()
+      await expect(anchor).toHaveCSS('opacity', '0')
       await card.evaluate((element) => element.setAttribute('data-stability', 'original'))
       const box = (await card.boundingBox())!
       // A slow approach exceeds the ordinary leave grace period. The safe

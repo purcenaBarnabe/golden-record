@@ -120,11 +120,12 @@ export function ExhibitPanels() {
               </dl>
               <p>
                 Drag to orbit on desktop; right-drag to pan. On mobile, Drag moves the display with
-                one finger, and Orbit rotates it. Switch modes below the title. Scroll toward the
-                pointer or pinch to zoom up to 128×. The desktop microscope control opens a 96×
+                one finger, and Orbit rotates it. Switch modes in the bottom toolbar. Scroll toward
+                the pointer or pinch to zoom up to 128×. The desktop microscope control opens a 96×
                 surface study under raking light. Choose “See it close up” for a diagram close-up.
                 At deep zoom, use a marker to open its information card; orbit stays on the chosen
-                face. Reset view returns to the pedestal.
+                face. Engraving markers appear after your first drag, orbit, or zoom. Reset view
+                returns to the pedestal.
               </p>
               <p className="reference-note">
                 Record thickness follows the original construction notes in the Sagan papers. Cover

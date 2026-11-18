@@ -8,7 +8,7 @@ describe('Artwork coordinates and picking', () => {
     expect(artworkPosition([1, 1], 0.1524)).toEqual([0.1524, -0.1524, 0.0018])
   })
   it.each(inscriptions)(
-    'picks $id at its visible marker, with the vertical UV axis flipped',
+    'picks $id at its inspection target, with the vertical UV axis flipped',
     ({ point: [u, v], id }) => {
       expect(inscriptionAtUv(u, 1 - v)?.id).toBe(id)
     },

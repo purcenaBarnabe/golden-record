@@ -13,7 +13,7 @@ import { useProjectedSubject } from './use-projected-subject'
 export function Annotations() {
   const hovered = useExhibitStore((s) => s.hovered)
   const selected = useExhibitStore((s) => s.selected)
-  const markers = useExhibitStore((s) => s.annotations)
+  const markers = useExhibitStore((s) => s.hasInteracted)
   const setHovered = useExhibitStore((s) => s.setAnnotationHovered)
   const clearHover = useExhibitStore((s) => s.clearHover)
   const inspectEngraving = useExhibitStore((s) => s.inspectEngraving)
@@ -44,7 +44,7 @@ export function Annotations() {
         <Html
           key={item.id}
           position={
-            artworkPosition(item.point, COVER_RADIUS).map((v, i) =>
+            artworkPosition(item.markerPoint, COVER_RADIUS).map((v, i) =>
               i === 2 ? COVER_FACE_Z + 0.0004 : v,
             ) as [number, number, number]
           }

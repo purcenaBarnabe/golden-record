@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { revealEngravingMarkers } from './helpers/interaction'
 
 test('the gallery is a single uncluttered viewport in both themes', async ({ page }) => {
   const errors: string[] = []
@@ -78,9 +79,45 @@ test('all eight engravings remain keyboard accessible with markers hidden', asyn
   }
 })
 
+for (const interaction of ['orbit', 'pan', 'wheel', 'zoom button'] as const) {
+  test(`engraving markers fade in after the first ${interaction}`, async ({ page }) => {
+    await page.goto('/')
+    await expect(page.locator('#artifact')).toHaveAttribute('aria-busy', 'false', {
+      timeout: 60_000,
+    })
+    const markers = page.locator('.annotation-dot')
+    await expect(markers).toHaveCount(8)
+    await expect(markers.first()).toHaveCSS('opacity', '0')
+    await expect(page.getByRole('button', { name: /engraving markers/ })).toHaveCount(0)
+    const icon = markers.first().locator('span')
+    await expect(icon).toHaveCSS('border-radius', '50%')
+    const box = (await icon.boundingBox())!
+    expect(box.width).toBe(box.height)
+    await expect(markers.first()).toHaveCSS('transition-duration', '0.45s')
+
+    if (interaction === 'zoom button') {
+      await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
+    } else {
+      await page.mouse.move(40, 500)
+      if (interaction === 'wheel') await page.mouse.wheel(0, -100)
+      else {
+        const button = interaction === 'pan' ? 'right' : 'left'
+        await page.mouse.down({ button })
+        await page.mouse.move(70, 510, { steps: 5 })
+        await page.mouse.up({ button })
+      }
+    }
+    for (const marker of await markers.all()) await expect(marker).toHaveCSS('opacity', '1')
+    await page.getByRole('button', { name: 'Reset view', exact: true }).click()
+    await expect(markers.first()).toHaveCSS('opacity', '1')
+    await page.reload()
+    await expect(markers.first()).toHaveCSS('opacity', '0')
+  })
+}
+
 test('hover cards open explanations and navigate between engravings', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await page
     .getByRole('button', { name: 'Explore hydrogen transition', exact: true })
     .hover({ timeout: 60_000 })
@@ -97,7 +134,7 @@ test('hover cards open explanations and navigate between engravings', async ({ p
 
 test('cards stay mounted while the pointer crosses every part of each card', async ({ page }) => {
   await page.goto('/')
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await expect(page.locator('.annotation-dot')).toHaveCount(8, { timeout: 60_000 })
   for (const id of [
     'playback',
@@ -135,7 +172,7 @@ test('cards stay mounted while the pointer crosses every part of each card', asy
 test('carving inspection focuses a diagram and zoom reaches 128 times', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await page
     .getByRole('button', { name: 'Explore hydrogen transition', exact: true })
     .hover({ timeout: 60_000 })
@@ -170,7 +207,7 @@ test('surface controls rotate the display to the record and preserve inspection 
 }) => {
   await page.goto('/')
   await expect(page.locator('.annotation-dot')).toHaveCount(8, { timeout: 60_000 })
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await expect(page.locator('.annotation-dot').first()).toHaveCSS('opacity', '1')
   await page.getByRole('button', { name: 'Zoom in', exact: true }).click()
   await expect(page.getByRole('status')).toContainText('Zoom 125%')
@@ -214,7 +251,7 @@ test('mobile remains one viewport without overflow in light and dark modes', asy
     ),
   ).toBe(true)
   await page.getByRole('button', { name: 'Switch to dark mode' }).click()
-  await page.getByRole('button', { name: 'Show engraving markers' }).click()
+  await revealEngravingMarkers(page)
   await page.getByRole('button', { name: 'Explore hydrogen transition', exact: true }).click()
   await expect(page.getByRole('dialog')).toContainText('A universal measure')
 })

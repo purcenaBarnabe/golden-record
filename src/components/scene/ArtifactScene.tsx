@@ -281,7 +281,7 @@ function SceneContent({ onReady }: { onReady: () => void }) {
         onStart={() => {
           moving.current = false
           manual.current = true
-          useExhibitStore.getState().clearHover()
+          useExhibitStore.getState().interactWithView()
         }}
         onEnd={() =>
           useExhibitStore

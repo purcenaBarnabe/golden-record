@@ -38,18 +38,16 @@ function Fallback() {
   )
 }
 
-export function ArtifactViewer() {
-  const [ready, setReady] = useState(false)
+export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: () => void }) {
   const [mounted, setMounted] = useState(false)
   const [available, setAvailable] = useState(true)
   const artifact = useExhibitStore((s) => s.artifact)
   const setPanel = useExhibitStore((s) => s.setPanel)
   const zoom = useExhibitStore((s) => s.zoom)
-  const onReady = useCallback(() => setReady(true), [])
   const onUnavailable = useCallback(() => {
-    setReady(true)
+    onReady()
     setAvailable(false)
-  }, [])
+  }, [onReady])
   useEffect(() => setMounted(true), [])
   return (
     <div className="artifact-viewer" id="artifact" aria-busy={!ready}>
@@ -71,7 +69,7 @@ export function ArtifactViewer() {
         ))}
       <div className="gallery-bottom">
         <p className="gesture-hint">Scroll to zoom · Drag to orbit · Right-drag to pan</p>
-        <ViewerControls disabled={!available || !ready} loading={!ready || !mounted} />
+        <ViewerControls disabled={!available || !ready} />
         <p className="surface-caption" aria-live="polite">
           {artifact === 'cover' ? (
             <>

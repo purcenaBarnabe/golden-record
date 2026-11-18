@@ -26,7 +26,7 @@ interface ExhibitState {
   artifact: Artifact
   mobileNavigationMode: NavigationMode
   setMobileNavigationMode: (mode: NavigationMode) => void
-  annotations: boolean
+  hasInteracted: boolean
   lighting: Lighting
   selected: InscriptionId | null
   hovered: HoverTarget | null
@@ -47,7 +47,7 @@ interface ExhibitState {
   inspectEngraving: (id: InscriptionId) => void
   inspectTexture: () => void
   setPanel: (panel: ExhibitState['panel']) => void
-  toggleAnnotations: () => void
+  interactWithView: () => void
   toggleLighting: () => void
   changeZoom: (delta: number) => void
   syncZoom: (zoom: number) => void
@@ -61,7 +61,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   mobileNavigationMode: 'drag',
   setMobileNavigationMode: (mobileNavigationMode) =>
     set({ ...dismissHover(), mobileNavigationMode }),
-  annotations: false,
+  hasInteracted: false,
   lighting: 'gallery',
   selected: null,
   hovered: null,
@@ -139,6 +139,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   inspectEngraving: (focus) =>
     set((s) => ({
       ...dismissHover(),
+      hasInteracted: true,
       focus,
       artifact: 'cover',
       view: 'front',
@@ -150,6 +151,7 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
   inspectTexture: () =>
     set((s) => ({
       ...dismissHover(),
+      hasInteracted: true,
       focus: `${s.artifact}-texture`,
       view: s.artifact === 'cover' ? 'front' : 'back',
       zoom: TEXTURE_ZOOM,
@@ -159,11 +161,12 @@ export const useExhibitStore = create<ExhibitState>((set, get) => ({
       viewRevision: s.viewRevision + 1,
     })),
   setPanel: (panel) => set({ ...dismissHover(), panel, selected: null }),
-  toggleAnnotations: () => set((s) => ({ ...dismissHover(), annotations: !s.annotations })),
+  interactWithView: () => set({ ...dismissHover(), hasInteracted: true }),
   toggleLighting: () => set((s) => ({ lighting: s.lighting === 'gallery' ? 'raking' : 'gallery' })),
   changeZoom: (delta) =>
     set((s) => ({
       ...dismissHover(),
+      hasInteracted: true,
       zoom: clampZoom(delta > 0 ? s.zoom * 1.25 : s.zoom / 1.25),
       zoomRevision: s.zoomRevision + 1,
     })),

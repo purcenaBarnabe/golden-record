@@ -11,6 +11,8 @@ export interface Inscription {
   unit: string
   // Normalized coordinates on the front face; origin at the upper left.
   point: [number, number]
+  // Keep information markers beside the artwork without shifting inspection targets.
+  markerPoint: [number, number]
   bounds: [number, number, number, number]
   crop: [number, number, number, number]
 }
@@ -26,6 +28,7 @@ export const inscriptions: Inscription[] = [
     fact: '16⅔',
     unit: 'revolutions per minute',
     point: [0.35, 0.21],
+    markerPoint: [0.45, 0.3],
     bounds: [0.12, 0.14, 0.28, 0.29],
     crop: [0.1, 0.13, 0.31, 0.31],
   },
@@ -39,6 +42,7 @@ export const inscriptions: Inscription[] = [
     fact: '≈ 1',
     unit: 'hour per side',
     point: [0.33, 0.51],
+    markerPoint: [0.43, 0.52],
     bounds: [0.12, 0.47, 0.28, 0.11],
     crop: [0.1, 0.46, 0.31, 0.13],
   },
@@ -52,6 +56,7 @@ export const inscriptions: Inscription[] = [
     fact: '≈ 8',
     unit: 'milliseconds per line',
     point: [0.72, 0.2],
+    markerPoint: [0.67, 0.12],
     bounds: [0.47, 0.14, 0.39, 0.15],
     crop: [0.46, 0.14, 0.41, 0.15],
   },
@@ -65,6 +70,7 @@ export const inscriptions: Inscription[] = [
     fact: 'Vertical',
     unit: 'image scanning',
     point: [0.78, 0.35],
+    markerPoint: [0.91, 0.35],
     bounds: [0.58, 0.3, 0.28, 0.11],
     crop: [0.58, 0.3, 0.29, 0.12],
   },
@@ -78,6 +84,7 @@ export const inscriptions: Inscription[] = [
     fact: '512',
     unit: 'lines in a complete picture',
     point: [0.73, 0.47],
+    markerPoint: [0.8, 0.47],
     bounds: [0.59, 0.41, 0.16, 0.13],
     crop: [0.58, 0.4, 0.18, 0.15],
   },
@@ -91,6 +98,7 @@ export const inscriptions: Inscription[] = [
     fact: '1:1',
     unit: 'circle aspect ratio',
     point: [0.73, 0.61],
+    markerPoint: [0.8, 0.61],
     bounds: [0.59, 0.55, 0.16, 0.13],
     crop: [0.58, 0.54, 0.18, 0.15],
   },
@@ -104,6 +112,7 @@ export const inscriptions: Inscription[] = [
     fact: '14',
     unit: 'pulsars locate our Sun',
     point: [0.29, 0.72],
+    markerPoint: [0.8, 0.75],
     bounds: [0.12, 0.58, 0.62, 0.38],
     crop: [0.11, 0.55, 0.63, 0.4],
   },
@@ -117,6 +126,7 @@ export const inscriptions: Inscription[] = [
     fact: '≈ 0.70',
     unit: 'nanoseconds per time unit',
     point: [0.7, 0.86],
+    markerPoint: [0.79, 0.87],
     bounds: [0.6, 0.81, 0.16, 0.09],
     crop: [0.59, 0.8, 0.18, 0.11],
   },

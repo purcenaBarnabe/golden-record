@@ -19,7 +19,7 @@ test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
 })
 
-test('mobile controls fit on one row and keep the mode buttons below the subtitle', async ({
+test('mobile controls fit on one row with the surface switch below the subtitle', async ({
   page,
 }) => {
   await page.goto('/')
@@ -31,6 +31,16 @@ test('mobile controls fit on one row and keep the mode buttons below the subtitl
     { width: 844, height: 390 },
   ]) {
     await page.setViewportSize(viewport)
+    // Resize is asynchronous on mobile. Read related rectangles in one browser
+    // task and wait for the new viewport before comparing their positions.
+    await expect
+      .poll(() =>
+        page.evaluate(() => ({
+          width: innerWidth,
+          height: innerHeight,
+        })),
+      )
+      .toEqual(viewport)
     await expect(page.getByRole('button', { name: 'Inspect surface texture' })).toBeHidden()
     await expect(page.getByRole('button', { name: /Use (raking|studio) light/ })).toBeHidden()
     await expect(page.getByRole('button', { name: 'Drag', exact: true })).toHaveAttribute(
@@ -41,16 +51,26 @@ test('mobile controls fit on one row and keep the mode buttons below the subtitl
       'aria-pressed',
       'false',
     )
-    const modes = (await page.getByRole('group', { name: 'Touch navigation' }).boundingBox())!
-    const subtitle = (await page.getByText('Voyager, 1977', { exact: true }).boundingBox())!
-    expect(modes.y).toBeGreaterThan(subtitle.y + subtitle.height)
-    expect(modes.x).toBe(subtitle.x)
-    const toolbar = (await page.getByRole('toolbar').boundingBox())!
+    const { modes, subtitle, surface, toolbar } = await page.evaluate(() => {
+      const bounds = (selector: string) =>
+        document.querySelector(selector)!.getBoundingClientRect().toJSON()
+      return {
+        modes: bounds('.mobile-navigation-modes'),
+        subtitle: bounds('.gallery-title p'),
+        surface: bounds('.surface-switch'),
+        toolbar: bounds('.viewer-toolbar'),
+      }
+    })
+    expect(surface.y).toBeGreaterThan(subtitle.y + subtitle.height)
+    expect(surface.x).toBe(subtitle.x)
+    expect(modes.y).toBeGreaterThanOrEqual(toolbar.y)
+    expect(modes.y + modes.height).toBeLessThanOrEqual(toolbar.y + toolbar.height)
     expect(toolbar.x).toBeGreaterThanOrEqual(12)
     expect(toolbar.x + toolbar.width).toBeLessThanOrEqual(viewport.width - 12)
     expect(toolbar.height).toBeLessThan(65)
-    for (const label of ['Zoom out', 'Zoom in', 'Reset view', 'Show engraving markers'])
+    for (const label of ['Drag', 'Orbit', 'Zoom out', 'Zoom in', 'Reset view'])
       await expect(page.getByRole('button', { name: label, exact: true })).toBeInViewport()
+    await expect(page.getByRole('button', { name: /engraving markers/ })).toHaveCount(0)
     await surfaceSwitch.tap()
     await expect(surfaceSwitch).toBeChecked()
     await expect(page.locator('.surface-caption')).toContainText('Side 1')
@@ -68,15 +88,18 @@ test('mobile starts with one-finger dragging, keeps pinch zoom, and can switch t
   const drag = page.getByRole('button', { name: 'Drag', exact: true })
   const orbit = page.getByRole('button', { name: 'Orbit', exact: true })
   const marker = page.locator('[data-inscription="playback"] .annotation-dot')
+  await expect(marker).toHaveCSS('opacity', '0')
   const before = (await marker.boundingBox())!
   const session = await page.context().newCDPSession(page)
   try {
     await swipe(session, 300, 180, 500)
+    await expect(marker).toHaveCSS('opacity', '1')
     await expect.poll(async () => before.x - (await marker.boundingBox())!.x).toBeGreaterThan(30)
     expect(Math.abs((await marker.boundingBox())!.y - before.y)).toBeLessThan(2)
     await expect(surfaceSwitch).not.toBeChecked()
     await expect(drag).toHaveAttribute('aria-pressed', 'true')
     await page.getByRole('button', { name: 'Reset view' }).tap()
+    await expect(marker).toHaveCSS('opacity', '1')
     await expect
       .poll(async () => Math.abs((await marker.boundingBox())!.x - before.x))
       .toBeLessThan(2)
