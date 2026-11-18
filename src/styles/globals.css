@@ -404,15 +404,13 @@ p {
 .annotation-action + .annotation-action {
   margin-top: 3px;
 }
-.annotation-action,
-.inspect-carving {
+.annotation-action {
   transition:
     background 0.18s ease,
     box-shadow 0.18s ease,
     transform 0.18s ease;
 }
-.annotation-action:focus-visible,
-.inspect-carving:focus-visible {
+.annotation-action:focus-visible {
   background: var(--surface);
   box-shadow:
     0 0 0 1px var(--line),
@@ -420,8 +418,7 @@ p {
   outline-offset: 2px;
 }
 @media (hover: hover) {
-  .annotation-action:hover,
-  .inspect-carving:hover {
+  .annotation-action:hover {
     background: var(--surface);
     box-shadow:
       0 0 0 1px var(--line),
@@ -429,14 +426,12 @@ p {
     transform: translateY(-1px);
   }
 }
-.annotation-action:active,
-.inspect-carving:active {
+.annotation-action:active {
   transform: translateY(0);
   box-shadow: 0 0 0 1px var(--line);
 }
 @media (prefers-reduced-motion: reduce) {
-  .annotation-action,
-  .inspect-carving {
+  .annotation-action {
     transform: none !important;
   }
 }
@@ -536,26 +531,11 @@ p {
   border-bottom: 1px solid var(--line);
   padding-bottom: 4px;
 }
-.inspect-carving {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  width: 100%;
-  padding: 13px;
-  margin-top: 24px;
-  font-size: 14px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 3px;
-}
 .detail-pagination {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid var(--line);
-  margin-top: 27px;
-  padding-top: 15px;
+  margin-top: 20px;
 }
 .detail-pagination > span {
   font-size: 13px;

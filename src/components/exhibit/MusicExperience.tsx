@@ -497,13 +497,13 @@ export function MusicExperience() {
                 </div>
               )}
               <div className="music-sources">
-                <a href={NASA_MUSIC} target="_blank" rel="noreferrer">
+                <a href={NASA_MUSIC} target="_blank" rel="noopener noreferrer">
                   {t.music.catalog} <ArrowUpRight size={11} />
                 </a>
-                <a href={MUSIC_CREDITS} target="_blank" rel="noreferrer">
+                <a href={MUSIC_CREDITS} target="_blank" rel="noopener noreferrer">
                   {t.music.credits} <ArrowUpRight size={11} />
                 </a>
-                <a href={AUDIO_ARCHIVE} target="_blank" rel="noreferrer">
+                <a href={AUDIO_ARCHIVE} target="_blank" rel="noopener noreferrer">
                   {t.music.archive} <ArrowUpRight size={11} />
                 </a>
               </div>

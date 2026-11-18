@@ -14,7 +14,7 @@ test.describe('Brazilian Portuguese', () => {
     page.on('pageerror', (error) => errors.push(error.message))
     await page.goto('/')
     await expect(page.locator('html')).toHaveAttribute('lang', 'pt-BR')
-    await expect(page).toHaveTitle(ptBR.title)
+    await expect(page).toHaveTitle(ptBR.seo.title)
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       'content',
       ptBR.description,
@@ -45,7 +45,10 @@ test.describe('Brazilian Portuguese', () => {
       await expect(page.getByRole('dialog')).toHaveAccessibleName(copy.title)
       await expect(page.getByRole('dialog')).toContainText(copy.explanation)
       await expect(page.getByRole('img', { name: ptBR.details.image(copy.category) })).toBeVisible()
-      await expect(page.getByRole('button', { name: ptBR.details.inspect })).toBeVisible()
+      await expect(
+        page.getByRole('dialog').getByRole('button', { name: ptBR.details.inspect }),
+      ).toHaveCount(0)
+      await expect(page.locator('.detail-pagination')).toHaveCSS('border-top-width', '0px')
       await page.getByRole('button', { name: ptBR.details.next }).click()
     }
     await page.keyboard.press('Escape')

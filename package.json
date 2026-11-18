@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "assets": "node scripts/prepare-assets.mjs"
+    "assets": "node scripts/prepare-assets.mjs",
+    "assets:social": "node scripts/create-social-assets.mjs"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

@@ -212,8 +212,15 @@ test('carving inspection focuses a diagram and zoom reaches 128 times', async ({
   await page.getByRole('button', { name: 'Explore record & rotation', exact: true }).focus()
   await page.keyboard.press('Enter')
   await expect(page.getByRole('dialog')).toContainText('How to play a world')
-  await page.getByRole('button', { name: 'See it close up' }).click()
+  await expect(
+    page.getByRole('dialog').getByRole('button', { name: 'See it close up' }),
+  ).toHaveCount(0)
+  await expect(page.locator('.detail-pagination')).toHaveCSS('border-top-width', '0px')
+  await page.keyboard.press('Escape')
   await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(page.getByRole('status')).toContainText('Zoom 100%')
+  await page.getByRole('button', { name: 'Explore record & rotation', exact: true }).focus()
+  await page.getByRole('button', { name: 'See it close up' }).click()
   await expect(page.getByRole('status')).toContainText('Zoom 1800%')
 })
 

@@ -8,7 +8,12 @@ export type InscriptionCopy = Pick<
 export const en = {
   title: 'The Golden Record',
   description:
-    'Voyager’s Golden Record, exhibited on a pedestal. Orbit the artifact, inspect its metal surfaces, and explore its engraved instructions.',
+    'Explore Voyager’s Golden Record in 3D. Inspect the engraved cover, discover its message from Earth, and listen to the 27 musical selections sent into space.',
+  seo: {
+    title: 'Voyager Golden Record — Interactive 3D Exhibit',
+    imageAlt:
+      'The engraved Golden Record cover beside the title The Golden Record, an interactive 3D exhibit.',
+  },
   language: { label: 'Language', auto: 'Automatic', short: 'EN' },
   exhibit: {
     skip: 'Skip to inspection controls',
@@ -65,6 +70,8 @@ export const en = {
       'Drag to orbit on desktop; right-drag to pan. On mobile, Drag moves the display with one finger, and Orbit rotates it. Switch modes in the bottom toolbar. Scroll toward the pointer or pinch to zoom up to 128×. Choose “See it close up” for a diagram close-up, and use the desktop lighting control to reveal its surface details. At deep zoom, use a marker to open its information card; orbit stays on the chosen face. All engraving markers appear once for three seconds after the first drag, orbit, or zoom. Hovering an engraving then reveals its own marker while it or its card is active. Reset view returns to the pedestal.',
     reference:
       'Record thickness follows the original construction notes in the Sagan papers. Cover dimensions, small edge bevels, engraving depth, and display spacing remain estimates from photographs. Microscopic grain, brushing, and groove shape are material reconstructions, not measurements of a flight article. The cover artwork is a vector transcription; the label derives from NASA’s photograph. This is an independent reconstruction, not a 3D scan.',
+    overview: 'NASA · The Golden Record',
+    code: 'Source code · GitHub',
     manufacture: 'NASA · Materials and manufacture',
     diagrams: 'NASA · Cover diagrams',
     notes: 'Library of Congress · Construction notes',

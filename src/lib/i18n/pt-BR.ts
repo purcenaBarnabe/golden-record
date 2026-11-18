@@ -3,7 +3,12 @@ import type { Messages } from './en'
 export const ptBR: Messages = {
   title: 'O Disco de Ouro',
   description:
-    'O Disco de Ouro das sondas Voyager, exposto em um pedestal. Gire o artefato, examine suas superfícies metálicas e explore as instruções gravadas na capa.',
+    'Explore o Disco de Ouro das sondas Voyager em 3D. Examine a capa gravada, descubra sua mensagem da Terra e ouça as 27 seleções musicais enviadas ao espaço.',
+  seo: {
+    title: 'Disco de Ouro das Voyager — Exposição interativa em 3D',
+    imageAlt:
+      'A capa gravada do Disco de Ouro ao lado do título em inglês The Golden Record, uma exposição interativa em 3D.',
+  },
   language: { label: 'Idioma', auto: 'Automático', short: 'PT' },
   exhibit: {
     skip: 'Ir para os controles de inspeção',
@@ -60,6 +65,8 @@ export const ptBR: Messages = {
       'No computador, arraste para girar e arraste com o botão direito para deslocar. No celular, Arrastar move a exposição com um dedo e Girar a rotaciona. Alterne entre os modos na barra inferior. Role em direção ao ponteiro ou use o gesto de pinça para ampliar até 128×. Escolha “Ver de perto” para ampliar um diagrama e use o controle de iluminação no computador para revelar os detalhes da superfície. Com grande ampliação, use um marcador para abrir o cartão de informações; a rotação permanece na face escolhida. Todos os marcadores das gravações aparecem uma única vez, por três segundos, após o primeiro movimento de arrastar, girar ou ampliar. Depois, passar o ponteiro sobre uma gravação revela seu marcador enquanto ela ou seu cartão estiver ativo. Redefinir visualização retorna à vista do pedestal.',
     reference:
       'A espessura do disco segue as notas de construção originais nos documentos de Sagan. As dimensões da capa, os pequenos chanfros nas bordas, a profundidade das gravações e o espaçamento da exposição são estimativas feitas a partir de fotografias. A granulação microscópica, o escovamento e a forma dos sulcos são reconstruções dos materiais, e não medições de uma peça enviada ao espaço. A arte da capa é uma transcrição vetorial; o rótulo deriva de uma fotografia da NASA. Esta é uma reconstrução independente, e não uma digitalização 3D.',
+    overview: 'NASA · O Disco de Ouro',
+    code: 'Código-fonte · GitHub',
     manufacture: 'NASA · Materiais e fabricação',
     diagrams: 'NASA · Diagramas da capa',
     notes: 'Biblioteca do Congresso dos EUA · Notas de construção',

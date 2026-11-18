@@ -1,7 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { useRef } from 'react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Focus, X } from 'lucide-react'
-import { inscriptions, NASA_COVER, NASA_MAKING } from '../../lib/inscriptions'
+import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react'
+import { inscriptions, NASA_COVER, NASA_MAKING, NASA_OVERVIEW } from '../../lib/inscriptions'
+import { SOURCE_URL } from '../../lib/seo'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { DiagramPreview } from './DiagramPreview'
 import { useI18n } from '../../lib/i18n'
@@ -12,7 +13,6 @@ export function ExhibitPanels() {
   const selected = useExhibitStore((s) => s.selected)
   const setPanel = useExhibitStore((s) => s.setPanel)
   const setSelected = useExhibitStore((s) => s.setSelected)
-  const inspectEngraving = useExhibitStore((s) => s.inspectEngraving)
   const index = inscriptions.findIndex((item) => item.id === selected)
   const source = inscriptions[index]
   const item = source ? { ...source, ...t.inscriptions[source.id] } : undefined
@@ -65,12 +65,15 @@ export function ExhibitPanels() {
                 <strong>{item.fact}</strong>
                 <span>{item.unit}</span>
               </div>
-              <a className="source-link" href={NASA_COVER} target="_blank" rel="noreferrer">
+              <a
+                className="source-link"
+                href={NASA_COVER}
+                target="_blank"
+                rel="noopener noreferrer"
+                hrefLang="en"
+              >
                 {t.details.source} <ArrowUpRight size={13} />
               </a>
-              <button className="inspect-carving" onClick={() => inspectEngraving(item.id)}>
-                <Focus size={15} /> {t.details.inspect} <ArrowUpRight size={13} />
-              </button>
               <div className="detail-pagination">
                 <button
                   aria-label={t.details.previous}
@@ -117,23 +120,29 @@ export function ExhibitPanels() {
               <p>{t.about.instructions}</p>
               <p className="reference-note">{t.about.reference}</p>
               <div className="reference-links">
-                <a href={NASA_MAKING} target="_blank" rel="noreferrer">
+                <a href={NASA_OVERVIEW} target="_blank" rel="noopener noreferrer" hrefLang="en">
+                  {t.about.overview} <ArrowUpRight size={13} />
+                </a>
+                <a href={NASA_MAKING} target="_blank" rel="noopener noreferrer">
                   {t.about.manufacture} <ArrowUpRight size={13} />
                 </a>
-                <a href={NASA_COVER} target="_blank" rel="noreferrer">
+                <a href={SOURCE_URL} target="_blank" rel="noopener noreferrer" hrefLang="en">
+                  {t.about.code} <ArrowUpRight size={13} />
+                </a>
+                <a href={NASA_COVER} target="_blank" rel="noopener noreferrer">
                   {t.about.diagrams} <ArrowUpRight size={13} />
                 </a>
                 <a
                   href="https://tile.loc.gov/storage-services/service/mss/mss85590/038/038.pdf"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {t.about.notes} <ArrowUpRight size={13} />
                 </a>
                 <a
                   href="https://commons.wikimedia.org/wiki/File:Voyager_plaque.svg"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
                   {t.about.transcription} <ArrowUpRight size={13} />
                 </a>
