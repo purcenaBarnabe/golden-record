@@ -3,6 +3,7 @@ import { DOMParser } from '@xmldom/xmldom'
 import ClipperLib from 'clipper-lib'
 import { Color, ShapeUtils, Vector2 } from 'three'
 import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader.js'
+import { packCoverRelief } from './pack-cover.mjs'
 
 // SVGLoader reads inline CSS through the browser's element.style API. In Node,
 // promote those declarations to SVG presentation attributes before parsing.
@@ -259,3 +260,4 @@ await fs.writeFile(
 console.log(
   `Built recessed cover: ${triangles} triangles, three-facet walls, ${DEPTH * 1e6} µm estimated depth, ${(buffer.length / 1048576).toFixed(2)} MiB.`,
 )
+await packCoverRelief()

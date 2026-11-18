@@ -1,0 +1,180 @@
+{
+  "baselineCommit": "fb975e3e05fb24f130fcffe72c7bd00fe391a37c",
+  "performanceParent": "b83324d",
+  "createdAt": "2026-11-18T04:51:43.307Z",
+  "scene": {
+    "desktop": {
+      "baseline": {
+        "samples": 7,
+        "medianMs": 1060.2000000476837,
+        "minMs": 1044.1000001430511,
+        "maxMs": 1063.4000000953674,
+        "medianStartupBytes": 11405900,
+        "medianLongTaskMs": 230
+      },
+      "candidate": {
+        "samples": 7,
+        "medianMs": 568.3999998569489,
+        "minMs": 561.8000001907349,
+        "maxMs": 585.5999999046326,
+        "medianStartupBytes": 4338970,
+        "medianLongTaskMs": 359
+      },
+      "readinessReductionPercent": 46.38747407740196,
+      "transferReductionPercent": 61.95854776913703
+    },
+    "mobile": {
+      "baseline": {
+        "samples": 7,
+        "medianMs": 10702.899999856949,
+        "minMs": 10648.199999809265,
+        "maxMs": 10747.100000143051,
+        "medianStartupBytes": 11384568,
+        "medianLongTaskMs": 1074
+      },
+      "candidate": {
+        "samples": 7,
+        "medianMs": 4987.399999856949,
+        "minMs": 4954,
+        "maxMs": 4995.5,
+        "medianStartupBytes": 4317638,
+        "medianLongTaskMs": 1081
+      },
+      "readinessReductionPercent": 53.40141457059667,
+      "transferReductionPercent": 62.074643499867534
+    }
+  },
+  "fallback": {
+    "desktop": {
+      "baseline": {
+        "samples": 3,
+        "medianMs": 463.90000009536743,
+        "minMs": 450.5,
+        "maxMs": 470.40000009536743,
+        "medianStartupBytes": 1905197,
+        "medianLongTaskMs": 0
+      },
+      "candidate": {
+        "samples": 3,
+        "medianMs": 164.5,
+        "minMs": 159.90000009536743,
+        "maxMs": 165.60000014305115,
+        "medianStartupBytes": 1896243,
+        "medianLongTaskMs": 0
+      },
+      "readinessReductionPercent": 64.53977150976881,
+      "transferReductionPercent": 0.46997764535635644
+    },
+    "mobile": {
+      "baseline": {
+        "samples": 3,
+        "medianMs": 1988.8999998569489,
+        "minMs": 1978.6999998092651,
+        "maxMs": 1993.8000001907349,
+        "medianStartupBytes": 1905197,
+        "medianLongTaskMs": 61
+      },
+      "candidate": {
+        "samples": 3,
+        "medianMs": 1939.2999999523163,
+        "minMs": 1926.0999999046326,
+        "maxMs": 1945.7000000476837,
+        "medianStartupBytes": 1896243,
+        "medianLongTaskMs": 54
+      },
+      "readinessReductionPercent": 2.493840811916137,
+      "transferReductionPercent": 0.46997764535635644
+    }
+  },
+  "quality": {
+    "pairs": 36,
+    "exactPairs": 36,
+    "maximumChangedPercent": 0
+  },
+  "environment": {
+    "host": {
+      "platform": "darwin",
+      "release": "25.6.0",
+      "cpu": "Apple M4 Pro",
+      "node": "v22.17.1"
+    },
+    "browser": ["157.0.8103.79"],
+    "renderer": ["ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)"],
+    "packages": {
+      "three": "0.183.2",
+      "@react-three/fiber": "9.8.2",
+      "@react-three/drei": "10.7.9",
+      "meshoptimizer": "1.0.1",
+      "three-mesh-bvh": "0.8.3",
+      "react": "19.3.1",
+      "vite": "8.3.8",
+      "@playwright/test": "1.65.1"
+    }
+  },
+  "geometry": {
+    "version": 1,
+    "codec": "meshoptimizer 1.0.1 + gzip; no quantization",
+    "source": "cover-relief.bin",
+    "rawBytes": 9732776,
+    "packedBytes": 3625685,
+    "gzipBytes": 2674800,
+    "sourceSha256": "8af608ee213d1828816523467bc432184e8cf02d5749d49c2205be3732cc322b",
+    "packageSha256": "329c615d9fb5fc2f0629b54ebe3e581220d312b6651d8542a054cc033c57221a",
+    "derivedUVMask": 7
+  },
+  "runtime": {
+    "node": "v22.17.1",
+    "zlib": "1.3.0.1-motley-780819f"
+  },
+  "productionArtifacts": {
+    "baseline": [
+      {
+        "file": "ArtifactScene-aL-ZmRxz.js",
+        "bytes": 1050411,
+        "sha256": "95c073b55a4ff56651b9a0f1ad7caad157f38174e94b4823f2daaacb4da7d6b9"
+      },
+      {
+        "file": "index-B3k-ZJZ4.css",
+        "bytes": 32891,
+        "sha256": "3b49c5bfe660e2d95ed82c681f60ec09e9c49e8b2ffa3899cd861e5d0fa0d058"
+      },
+      {
+        "file": "index-C5x7SzQw.js",
+        "bytes": 341734,
+        "sha256": "cc0491a0859d552ca43c7cb3a30d15e5ea92fa1a9e399a7a55092d674d60ad97"
+      },
+      {
+        "file": "routes-CLn-6HaQ.js",
+        "bytes": 112203,
+        "sha256": "117b785b515dcbad3b1f70b604e82f46d344a57494691a9ae07bcb8b915f038c"
+      }
+    ],
+    "candidate": [
+      {
+        "file": "ArtifactScene-DLqiUGeV.js",
+        "bytes": 1030763,
+        "sha256": "2a60849d929aaabe31cbf86bc8654899eae0fc81469b654f4ca3f478f6365eac"
+      },
+      {
+        "file": "cover-relief.pack.bin",
+        "bytes": 2674800,
+        "sha256": "329c615d9fb5fc2f0629b54ebe3e581220d312b6651d8542a054cc033c57221a"
+      },
+      {
+        "file": "index-DZPnKquG.js",
+        "bytes": 341734,
+        "sha256": "cbf28fbfdd3d2bf4a10187cf8e590cb684a488ac55c5948ef614c29c8c2fe3f4"
+      },
+      {
+        "file": "index-uPq0RU2D.css",
+        "bytes": 31165,
+        "sha256": "8f6478b9707d269c389800f872933b7ed1238e26cb3754d4e4bb3c9e5721f6c1"
+      },
+      {
+        "file": "routes-B4qVdnmn.js",
+        "bytes": 112066,
+        "sha256": "f6b99eab1b7d6de7c8f87af022ff0b270e3ceda861eb2734f1d7f7ac397ef33f"
+      }
+    ]
+  }
+}

@@ -32,7 +32,7 @@ yarn format:check
 
 The end-to-end suite uses installed Google Chrome and native GPU WebGL. Unit checks cover geometry, malformed geometry assets, coordinates, hover ownership, music order/search, and lightweight picking. Browser checks also cover theme-storage failures and information-dialog focus restoration. Audio interaction tests serve a generated WAV fixture to exercise browser media behavior without relying on the archive.
 
-The latest maintenance review passed TypeScript, formatting, and focused geometry, picking, placement, and catalog checks in an isolated offline environment. The full Vitest suite could not start there because the installed native bindings were macOS-only. The production build, browser suite, asset regeneration, deployed Cloudflare policy, and current dependency advisories remain unverified by that review. The focused checks do not replace the full verification commands above.
+The [initial-load performance review](docs/PERFORMANCE.md) documents the codebase audit, primary-source research, measured cold-load results, visual checks, and reproduction commands. The build packs the engraving losslessly while keeping the original geometry as a compatibility fallback. No geometry precision, texture resolution, shadow quality, or zoom range is reduced.
 
 ## Reference fidelity
 

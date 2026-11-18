@@ -1,0 +1,5353 @@
+{
+  "createdAt": "2026-11-18T04:48:19.628Z",
+  "mode": "scene",
+  "host": {
+    "platform": "darwin",
+    "release": "25.6.0",
+    "cpu": "Apple M4 Pro",
+    "node": "v22.17.1"
+  },
+  "methodology": "Fresh Chrome process/context per sample; HTTP cache and service workers disabled; identical readiness probes; reduced-motion enabled. Hardware GPU. Ready = later of controls-ready and a GPU fence completing after the entire first main-framebuffer scene frame. Alternating variant order per pair.",
+  "profiles": {
+    "desktop": {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dpr": 1,
+      "cpuRate": 1,
+      "latencyMs": 0,
+      "downloadBytesPerSecond": -1
+    },
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 2,
+      "cpuRate": 4,
+      "latencyMs": 40,
+      "downloadBytesPerSecond": 1250000
+    }
+  },
+  "samples": [
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 1,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1057,
+      "controlsReadyMs": 1021.8999998569489,
+      "firstSceneDrawMs": 1012.2999999523163,
+      "firstSceneFrameMs": 1057,
+      "ttfbMs": 1.5,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 765.8999998569489,
+          "duration": 227
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.19999980926513672
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.8000001907348633
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 3.8999998569488525,
+          "responseStart": 5.699999809265137,
+          "responseEnd": 5.699999809265137,
+          "duration": 1.7999999523162842,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4,
+          "responseStart": 6.299999952316284,
+          "responseEnd": 12.899999856948853,
+          "duration": 8.899999856948853,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4.099999904632568,
+          "responseStart": 7.799999952316284,
+          "responseEnd": 9.099999904632568,
+          "duration": 5,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.5,
+          "responseStart": 12.699999809265137,
+          "responseEnd": 12.799999952316284,
+          "duration": 1.2999999523162842,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.5,
+          "responseStart": 12.5,
+          "responseEnd": 12.799999952316284,
+          "duration": 1.2999999523162842,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 37.69999980926514,
+          "responseStart": 38.69999980926514,
+          "responseEnd": 38.799999952316284,
+          "duration": 1.1000001430511475,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 45.89999985694885,
+          "responseStart": 47.69999980926514,
+          "responseEnd": 67.09999990463257,
+          "duration": 21.200000047683716,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 438.2999999523163,
+          "responseStart": 439.7999999523163,
+          "responseEnd": 466.09999990463257,
+          "duration": 27.799999952316284,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 445.5,
+          "responseStart": 449.7999999523163,
+          "responseEnd": 455.69999980926514,
+          "duration": 10.199999809265137,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 445.59999990463257,
+          "responseStart": 450,
+          "responseEnd": 451,
+          "duration": 5.400000095367432,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 445.59999990463257,
+          "responseStart": 456.19999980926514,
+          "responseEnd": 456.5,
+          "duration": 10.900000095367432,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 445.59999990463257,
+          "responseStart": 456.7999999523163,
+          "responseEnd": 466.69999980926514,
+          "duration": 21.09999990463257,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1018.5,
+          "responseStart": 1019.7999999523163,
+          "responseEnd": 1020,
+          "duration": 1.5,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006125,
+        "ScriptDuration": 0.403495,
+        "TaskDuration": 0.479095,
+        "JSHeapUsedSize": 21561060
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 1,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 561.8000001907349,
+      "controlsReadyMs": 548.1000001430511,
+      "firstSceneDrawMs": 290.5,
+      "firstSceneFrameMs": 561.8000001907349,
+      "ttfbMs": 2.1000001430511475,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 187.80000019073486,
+          "duration": 64
+        },
+        {
+          "startTime": 252.60000014305115,
+          "duration": 288
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.10000014305114746
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.7000000476837158
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 4.200000047683716,
+          "responseStart": 5.700000047683716,
+          "responseEnd": 5.900000095367432,
+          "duration": 1.7000000476837158,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 4.300000190734863,
+          "responseStart": 8.200000047683716,
+          "responseEnd": 9.400000095367432,
+          "duration": 5.099999904632568,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 4.300000190734863,
+          "responseStart": 6.300000190734863,
+          "responseEnd": 12.800000190734863,
+          "duration": 8.5,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.200000047683716,
+          "responseStart": 12.400000095367432,
+          "responseEnd": 12.600000143051147,
+          "duration": 1.4000000953674316,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.300000190734863,
+          "responseStart": 12.600000143051147,
+          "responseEnd": 12.800000190734863,
+          "duration": 1.5,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 36.5,
+          "responseStart": 38.40000009536743,
+          "responseEnd": 52.30000019073486,
+          "duration": 15.800000190734863,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 40.700000047683716,
+          "responseStart": 41.40000009536743,
+          "responseEnd": 41.5,
+          "duration": 0.7999999523162842,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 143.10000014305115,
+          "responseStart": 144.80000019073486,
+          "responseEnd": 156.70000004768372,
+          "duration": 13.599999904632568,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 143.20000004768372,
+          "responseStart": 144.90000009536743,
+          "responseEnd": 145.40000009536743,
+          "duration": 2.200000047683716,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 143.20000004768372,
+          "responseStart": 145.20000004768372,
+          "responseEnd": 146.90000009536743,
+          "duration": 3.700000047683716,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 143.30000019073486,
+          "responseStart": 146.20000004768372,
+          "responseEnd": 146.60000014305115,
+          "duration": 3.299999952316284,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 143.30000019073486,
+          "responseStart": 146.70000004768372,
+          "responseEnd": 157.20000004768372,
+          "duration": 13.899999856948853,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 546,
+          "responseStart": 547.5,
+          "responseEnd": 547.6000001430511,
+          "duration": 1.6000001430511475,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006718,
+        "ScriptDuration": 0.412766,
+        "TaskDuration": 0.475864,
+        "JSHeapUsedSize": 24661756
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 2,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 569,
+      "controlsReadyMs": 569,
+      "firstSceneDrawMs": 295.89999985694885,
+      "firstSceneFrameMs": 566,
+      "ttfbMs": 1.5999999046325684,
+      "firstContentfulPaintMs": 28,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 192.5,
+          "duration": 66
+        },
+        {
+          "startTime": 258.59999990463257,
+          "duration": 291
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0.09999990463256836
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.5
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 5,
+          "responseStart": 6.699999809265137,
+          "responseEnd": 7,
+          "duration": 2,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 5.099999904632568,
+          "responseStart": 9.099999904632568,
+          "responseEnd": 10.199999809265137,
+          "duration": 5.099999904632568,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 5.099999904632568,
+          "responseStart": 7.8999998569488525,
+          "responseEnd": 14.199999809265137,
+          "duration": 9.099999904632568,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.899999856948853,
+          "responseStart": 13,
+          "responseEnd": 13.199999809265137,
+          "duration": 1.2999999523162842,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.899999856948853,
+          "responseStart": 12.899999856948853,
+          "responseEnd": 13.099999904632568,
+          "duration": 1.2000000476837158,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 37.39999985694885,
+          "responseStart": 39.19999980926514,
+          "responseEnd": 53.09999990463257,
+          "duration": 15.700000047683716,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 41.39999985694885,
+          "responseStart": 42.09999990463257,
+          "responseEnd": 42.299999952316284,
+          "duration": 0.9000000953674316,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 149,
+          "responseStart": 151.5,
+          "responseEnd": 151.89999985694885,
+          "duration": 2.8999998569488525,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 149,
+          "responseStart": 150.69999980926514,
+          "responseEnd": 154,
+          "duration": 5,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 149,
+          "responseStart": 150.5,
+          "responseEnd": 162,
+          "duration": 13,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 149.09999990463257,
+          "responseStart": 152,
+          "responseEnd": 152.69999980926514,
+          "duration": 3.5999999046325684,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 149.09999990463257,
+          "responseStart": 152.69999980926514,
+          "responseEnd": 159.79999995231628,
+          "duration": 10.700000047683716,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 566.8999998569489,
+          "responseStart": 568.2999999523163,
+          "responseEnd": 568.5999999046326,
+          "duration": 1.7000000476837158,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006715,
+        "ScriptDuration": 0.41765,
+        "TaskDuration": 0.480783,
+        "JSHeapUsedSize": 29438588
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 2,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1044.1000001430511,
+      "controlsReadyMs": 1019.9000000953674,
+      "firstSceneDrawMs": 1009.7000000476837,
+      "firstSceneFrameMs": 1044.1000001430511,
+      "ttfbMs": 1.7000000476837158,
+      "firstContentfulPaintMs": 32,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 762.6000001430511,
+          "duration": 228
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.10000014305114746
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.7999999523162842
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 3.9000000953674316,
+          "responseStart": 5.6000001430511475,
+          "responseEnd": 5.800000190734863,
+          "duration": 1.9000000953674316,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4,
+          "responseStart": 8.700000047683716,
+          "responseEnd": 11.400000095367432,
+          "duration": 7.400000095367432,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4,
+          "responseStart": 6.300000190734863,
+          "responseEnd": 15.300000190734863,
+          "duration": 11.300000190734863,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11,
+          "responseStart": 12.700000047683716,
+          "responseEnd": 12.900000095367432,
+          "duration": 1.9000000953674316,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11,
+          "responseStart": 12.800000190734863,
+          "responseEnd": 12.900000095367432,
+          "duration": 1.9000000953674316,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 39.10000014305115,
+          "responseStart": 40,
+          "responseEnd": 40.200000047683716,
+          "duration": 1.0999999046325684,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 46.40000009536743,
+          "responseStart": 48.30000019073486,
+          "responseEnd": 62.40000009536743,
+          "duration": 16,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 435.40000009536743,
+          "responseStart": 436.80000019073486,
+          "responseEnd": 462,
+          "duration": 26.59999990463257,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 442.40000009536743,
+          "responseStart": 446.40000009536743,
+          "responseEnd": 452,
+          "duration": 9.599999904632568,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 442.5,
+          "responseStart": 446.7000000476837,
+          "responseEnd": 447.60000014305115,
+          "duration": 5.1000001430511475,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 442.5,
+          "responseStart": 447.40000009536743,
+          "responseEnd": 448.10000014305115,
+          "duration": 5.6000001430511475,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 442.60000014305115,
+          "responseStart": 450.7000000476837,
+          "responseEnd": 462.80000019073486,
+          "duration": 20.200000047683716,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1016.9000000953674,
+          "responseStart": 1018.1000001430511,
+          "responseEnd": 1018.4000000953674,
+          "duration": 1.5,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.00677,
+        "ScriptDuration": 0.396789,
+        "TaskDuration": 0.470981,
+        "JSHeapUsedSize": 21607460
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 3,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1046.2999999523163,
+      "controlsReadyMs": 1016.4000000953674,
+      "firstSceneDrawMs": 1005.2999999523163,
+      "firstSceneFrameMs": 1046.2999999523163,
+      "ttfbMs": 2.1000001430511475,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 760.4000000953674,
+          "duration": 226
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.19999980926513672
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.9000000953674316
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 4.400000095367432,
+          "responseStart": 6.299999952316284,
+          "responseEnd": 6.6000001430511475,
+          "duration": 2.200000047683716,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4.6000001430511475,
+          "responseStart": 8.5,
+          "responseEnd": 10.299999952316284,
+          "duration": 5.699999809265137,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4.6000001430511475,
+          "responseStart": 7.1000001430511475,
+          "responseEnd": 14.200000047683716,
+          "duration": 9.599999904632568,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.900000095367432,
+          "responseStart": 13.5,
+          "responseEnd": 13.700000047683716,
+          "duration": 1.7999999523162842,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.900000095367432,
+          "responseStart": 13.200000047683716,
+          "responseEnd": 13.5,
+          "duration": 1.5999999046325684,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 41.10000014305115,
+          "responseStart": 42.10000014305115,
+          "responseEnd": 42.10000014305115,
+          "duration": 1,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 49.40000009536743,
+          "responseStart": 51.10000014305115,
+          "responseEnd": 65.40000009536743,
+          "duration": 16,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 437.60000014305115,
+          "responseStart": 439.2999999523163,
+          "responseEnd": 463.10000014305115,
+          "duration": 25.5,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 444.7999999523163,
+          "responseStart": 449.60000014305115,
+          "responseEnd": 450.10000014305115,
+          "duration": 5.300000190734863,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 444.7999999523163,
+          "responseStart": 449.5,
+          "responseEnd": 455.5,
+          "duration": 10.700000047683716,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 444.90000009536743,
+          "responseStart": 453.5,
+          "responseEnd": 453.90000009536743,
+          "duration": 9,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 445,
+          "responseStart": 454.2000000476837,
+          "responseEnd": 463.40000009536743,
+          "duration": 18.40000009536743,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1012.5,
+          "responseStart": 1013.7999999523163,
+          "responseEnd": 1013.9000000953674,
+          "duration": 1.4000000953674316,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006767,
+        "ScriptDuration": 0.392599,
+        "TaskDuration": 0.468842,
+        "JSHeapUsedSize": 20990912
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 3,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 567.2999999523163,
+      "controlsReadyMs": 567.2999999523163,
+      "firstSceneDrawMs": 293.60000014305115,
+      "firstSceneFrameMs": 564.2999999523163,
+      "ttfbMs": 1.7000000476837158,
+      "firstContentfulPaintMs": 32,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 187.70000004768372,
+          "duration": 67
+        },
+        {
+          "startTime": 254.79999995231628,
+          "duration": 295
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.09999990463256836
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.7000002861022949
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 5.400000095367432,
+          "responseStart": 7.6000001430511475,
+          "responseEnd": 7.900000095367432,
+          "duration": 2.5,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 5.5,
+          "responseStart": 10,
+          "responseEnd": 11.600000143051147,
+          "duration": 6.1000001430511475,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 5.5,
+          "responseStart": 8.5,
+          "responseEnd": 14.600000143051147,
+          "duration": 9.100000143051147,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 12.700000047683716,
+          "responseStart": 13.700000047683716,
+          "responseEnd": 13.900000095367432,
+          "duration": 1.2000000476837158,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 12.700000047683716,
+          "responseStart": 13.900000095367432,
+          "responseEnd": 14,
+          "duration": 1.2999999523162842,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 36.700000047683716,
+          "responseStart": 38.60000014305115,
+          "responseEnd": 53.40000009536743,
+          "duration": 16.700000047683716,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 40.90000009536743,
+          "responseStart": 41.60000014305115,
+          "responseEnd": 41.799999952316284,
+          "duration": 0.8999998569488525,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 147,
+          "responseStart": 149,
+          "responseEnd": 151.5,
+          "duration": 4.5,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 147,
+          "responseStart": 148.90000009536743,
+          "responseEnd": 156.79999995231628,
+          "duration": 9.799999952316284,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 147.10000014305115,
+          "responseStart": 149.20000004768372,
+          "responseEnd": 149.79999995231628,
+          "duration": 2.6999998092651367,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 147.10000014305115,
+          "responseStart": 150.5,
+          "responseEnd": 150.70000004768372,
+          "duration": 3.5999999046325684,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 147.10000014305115,
+          "responseStart": 150.90000009536743,
+          "responseEnd": 153.40000009536743,
+          "duration": 6.299999952316284,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 565.1000001430511,
+          "responseStart": 566.2999999523163,
+          "responseEnd": 566.6000001430511,
+          "duration": 1.5,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.003884,
+        "ScriptDuration": 0.42516,
+        "TaskDuration": 0.486467,
+        "JSHeapUsedSize": 29249564
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 4,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 585.5999999046326,
+      "controlsReadyMs": 585.5999999046326,
+      "firstSceneDrawMs": 313.40000009536743,
+      "firstSceneFrameMs": 582.4000000953674,
+      "ttfbMs": 1.5999999046325684,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 208,
+          "duration": 66
+        },
+        {
+          "startTime": 274.40000009536743,
+          "duration": 293
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.20000004768371582
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 1.0000007152557373
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 5,
+          "responseStart": 7,
+          "responseEnd": 7.200000047683716,
+          "duration": 2.200000047683716,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 5,
+          "responseStart": 7.900000095367432,
+          "responseEnd": 15.299999952316284,
+          "duration": 10.299999952316284,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 5.099999904632568,
+          "responseStart": 9.700000047683716,
+          "responseEnd": 11.299999952316284,
+          "duration": 6.200000047683716,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 12.400000095367432,
+          "responseStart": 13.5,
+          "responseEnd": 13.799999952316284,
+          "duration": 1.3999998569488525,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 12.599999904632568,
+          "responseStart": 13.900000095367432,
+          "responseEnd": 13.900000095367432,
+          "duration": 1.3000001907348633,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 38,
+          "responseStart": 39.799999952316284,
+          "responseEnd": 64.09999990463257,
+          "duration": 26.09999990463257,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 42.40000009536743,
+          "responseStart": 43.09999990463257,
+          "responseEnd": 43.299999952316284,
+          "duration": 0.8999998569488525,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 165.09999990463257,
+          "responseStart": 166.70000004768372,
+          "responseEnd": 176.70000004768372,
+          "duration": 11.600000143051147,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 165.20000004768372,
+          "responseStart": 167.20000004768372,
+          "responseEnd": 167.40000009536743,
+          "duration": 2.200000047683716,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 165.20000004768372,
+          "responseStart": 167.5,
+          "responseEnd": 167.79999995231628,
+          "duration": 2.5999999046325684,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 165.20000004768372,
+          "responseStart": 166.90000009536743,
+          "responseEnd": 170,
+          "duration": 4.799999952316284,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 165.20000004768372,
+          "responseStart": 168,
+          "responseEnd": 175.90000009536743,
+          "duration": 10.700000047683716,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 583.4000000953674,
+          "responseStart": 584.7000000476837,
+          "responseEnd": 585,
+          "duration": 1.5999999046325684,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006692,
+        "ScriptDuration": 0.423567,
+        "TaskDuration": 0.489997,
+        "JSHeapUsedSize": 26059488
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 4,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1062.2999999523163,
+      "controlsReadyMs": 1031.4000000953674,
+      "firstSceneDrawMs": 1020.5999999046326,
+      "firstSceneFrameMs": 1062.2999999523163,
+      "ttfbMs": 1.5999999046325684,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 770.2999999523163,
+          "duration": 231
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.10000014305114746
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.5999999046325684
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 4.400000095367432,
+          "responseStart": 6.400000095367432,
+          "responseEnd": 6.599999904632568,
+          "duration": 2.1999998092651367,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4.5,
+          "responseStart": 8.5,
+          "responseEnd": 9.700000047683716,
+          "duration": 5.200000047683716,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4.5,
+          "responseStart": 7.5,
+          "responseEnd": 15.299999952316284,
+          "duration": 10.799999952316284,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.5,
+          "responseStart": 13.099999904632568,
+          "responseEnd": 13.200000047683716,
+          "duration": 1.7000000476837158,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.5,
+          "responseStart": 13.599999904632568,
+          "responseEnd": 13.599999904632568,
+          "duration": 2.0999999046325684,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 40.700000047683716,
+          "responseStart": 41.700000047683716,
+          "responseEnd": 41.799999952316284,
+          "duration": 1.0999999046325684,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 48.5,
+          "responseStart": 50.40000009536743,
+          "responseEnd": 64.40000009536743,
+          "duration": 15.900000095367432,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 439.59999990463257,
+          "responseStart": 442.09999990463257,
+          "responseEnd": 468,
+          "duration": 28.40000009536743,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 448.09999990463257,
+          "responseStart": 452.59999990463257,
+          "responseEnd": 453.7000000476837,
+          "duration": 5.6000001430511475,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 448.09999990463257,
+          "responseStart": 452.7999999523163,
+          "responseEnd": 453.40000009536743,
+          "duration": 5.300000190734863,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 448.2000000476837,
+          "responseStart": 455.5,
+          "responseEnd": 455.90000009536743,
+          "duration": 7.700000047683716,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 448.2999999523163,
+          "responseStart": 455.90000009536743,
+          "responseEnd": 461.40000009536743,
+          "duration": 13.100000143051147,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1027.7000000476837,
+          "responseStart": 1028.7999999523163,
+          "responseEnd": 1029,
+          "duration": 1.2999999523162842,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006958,
+        "ScriptDuration": 0.408995,
+        "TaskDuration": 0.487388,
+        "JSHeapUsedSize": 19903596
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 5,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1062.8000001907349,
+      "controlsReadyMs": 1033.1000001430511,
+      "firstSceneDrawMs": 1022.8000001907349,
+      "firstSceneFrameMs": 1062.8000001907349,
+      "ttfbMs": 2.1000001430511475,
+      "firstContentfulPaintMs": 32,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 772,
+          "duration": 232
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 1.000000238418579
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 4.800000190734863,
+          "responseStart": 6.6000001430511475,
+          "responseEnd": 6.800000190734863,
+          "duration": 2,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4.900000095367432,
+          "responseStart": 9.200000047683716,
+          "responseEnd": 10.5,
+          "duration": 5.599999904632568,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4.900000095367432,
+          "responseStart": 8.100000143051147,
+          "responseEnd": 14.700000047683716,
+          "duration": 9.799999952316284,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 12,
+          "responseStart": 13.100000143051147,
+          "responseEnd": 13.400000095367432,
+          "duration": 1.4000000953674316,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 12,
+          "responseStart": 13.5,
+          "responseEnd": 13.600000143051147,
+          "duration": 1.6000001430511475,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 40.700000047683716,
+          "responseStart": 41.60000014305115,
+          "responseEnd": 41.60000014305115,
+          "duration": 0.9000000953674316,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 49,
+          "responseStart": 50.80000019073486,
+          "responseEnd": 64.80000019073486,
+          "duration": 15.800000190734863,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 438.30000019073486,
+          "responseStart": 440.40000009536743,
+          "responseEnd": 464,
+          "duration": 25.699999809265137,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 445.2000000476837,
+          "responseStart": 448.90000009536743,
+          "responseEnd": 449.40000009536743,
+          "duration": 4.200000047683716,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 445.2000000476837,
+          "responseStart": 448.7000000476837,
+          "responseEnd": 450.7000000476837,
+          "duration": 5.5,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 445.30000019073486,
+          "responseStart": 449.60000014305115,
+          "responseEnd": 450,
+          "duration": 4.699999809265137,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 445.30000019073486,
+          "responseStart": 450.10000014305115,
+          "responseEnd": 454.30000019073486,
+          "duration": 9,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1030.9000000953674,
+          "responseStart": 1032.2000000476837,
+          "responseEnd": 1032.3000001907349,
+          "duration": 1.4000000953674316,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006241,
+        "ScriptDuration": 0.408812,
+        "TaskDuration": 0.48258,
+        "JSHeapUsedSize": 21572992
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 5,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 568.3999998569489,
+      "controlsReadyMs": 568.3999998569489,
+      "firstSceneDrawMs": 296.89999985694885,
+      "firstSceneFrameMs": 565.5999999046326,
+      "ttfbMs": 1.6999998092651367,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 192.39999985694885,
+          "duration": 66
+        },
+        {
+          "startTime": 258.39999985694885,
+          "duration": 293
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0.09999990463256836
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.4999997615814209
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 5.5,
+          "responseStart": 7.799999952316284,
+          "responseEnd": 8.099999904632568,
+          "duration": 2.5999999046325684,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 5.699999809265137,
+          "responseStart": 9.799999952316284,
+          "responseEnd": 11.299999952316284,
+          "duration": 5.6000001430511475,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 5.699999809265137,
+          "responseStart": 8.699999809265137,
+          "responseEnd": 15.699999809265137,
+          "duration": 10,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 13,
+          "responseStart": 14.399999856948853,
+          "responseEnd": 14.5,
+          "duration": 1.5,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 13,
+          "responseStart": 14.299999952316284,
+          "responseEnd": 14.5,
+          "duration": 1.5,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 38.09999990463257,
+          "responseStart": 40,
+          "responseEnd": 53.89999985694885,
+          "duration": 15.799999952316284,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 42.39999985694885,
+          "responseStart": 43.09999990463257,
+          "responseEnd": 43.299999952316284,
+          "duration": 0.9000000953674316,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 151.59999990463257,
+          "responseStart": 153.79999995231628,
+          "responseEnd": 154.19999980926514,
+          "duration": 2.5999999046325684,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 151.59999990463257,
+          "responseStart": 153.19999980926514,
+          "responseEnd": 155.59999990463257,
+          "duration": 4,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 151.59999990463257,
+          "responseStart": 153.09999990463257,
+          "responseEnd": 161,
+          "duration": 9.400000095367432,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 151.69999980926514,
+          "responseStart": 154.39999985694885,
+          "responseEnd": 155,
+          "duration": 3.3000001907348633,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 151.69999980926514,
+          "responseStart": 154.79999995231628,
+          "responseEnd": 159.09999990463257,
+          "duration": 7.400000095367432,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 566.2999999523163,
+          "responseStart": 567.5,
+          "responseEnd": 567.7999999523163,
+          "duration": 1.5,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006659,
+        "ScriptDuration": 0.421546,
+        "TaskDuration": 0.486796,
+        "JSHeapUsedSize": 27324556
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 6,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 584,
+      "controlsReadyMs": 584,
+      "firstSceneDrawMs": 299,
+      "firstSceneFrameMs": 580.7999999523163,
+      "ttfbMs": 1.5999999046325684,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 194,
+          "duration": 66
+        },
+        {
+          "startTime": 260.7999999523163,
+          "duration": 303
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.19999980926513672
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 1
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 4.700000047683716,
+          "responseStart": 6.599999904632568,
+          "responseEnd": 7,
+          "duration": 2.299999952316284,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 4.799999952316284,
+          "responseStart": 9.200000047683716,
+          "responseEnd": 10.5,
+          "duration": 5.700000047683716,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 4.799999952316284,
+          "responseStart": 7.900000095367432,
+          "responseEnd": 14.599999904632568,
+          "duration": 9.799999952316284,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.5,
+          "responseStart": 12.900000095367432,
+          "responseEnd": 13.099999904632568,
+          "duration": 1.5999999046325684,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.5,
+          "responseStart": 13,
+          "responseEnd": 13.099999904632568,
+          "duration": 1.5999999046325684,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 37.799999952316284,
+          "responseStart": 39.59999990463257,
+          "responseEnd": 53.700000047683716,
+          "duration": 15.900000095367432,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 42.40000009536743,
+          "responseStart": 43.299999952316284,
+          "responseEnd": 43.40000009536743,
+          "duration": 1,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 151.5,
+          "responseStart": 153,
+          "responseEnd": 156.70000004768372,
+          "duration": 5.200000047683716,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 151.5,
+          "responseStart": 152.79999995231628,
+          "responseEnd": 162.90000009536743,
+          "duration": 11.400000095367432,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 151.59999990463257,
+          "responseStart": 153.20000004768372,
+          "responseEnd": 153.90000009536743,
+          "duration": 2.3000001907348633,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 151.59999990463257,
+          "responseStart": 154.70000004768372,
+          "responseEnd": 155.70000004768372,
+          "duration": 4.1000001430511475,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 151.59999990463257,
+          "responseStart": 155.5,
+          "responseEnd": 159.40000009536743,
+          "duration": 7.800000190734863,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 581.9000000953674,
+          "responseStart": 583.2000000476837,
+          "responseEnd": 583.5999999046326,
+          "duration": 1.6999998092651367,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006827,
+        "ScriptDuration": 0.431702,
+        "TaskDuration": 0.49591,
+        "JSHeapUsedSize": 27045652
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 6,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1060.2000000476837,
+      "controlsReadyMs": 1031.4000000953674,
+      "firstSceneDrawMs": 1021.6000001430511,
+      "firstSceneFrameMs": 1060.2000000476837,
+      "ttfbMs": 1.4000000953674316,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 768.1000001430511,
+          "duration": 234
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.09999990463256836
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.4999997615814209
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 4,
+          "responseStart": 5.700000047683716,
+          "responseEnd": 5.900000095367432,
+          "duration": 1.9000000953674316,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4,
+          "responseStart": 8,
+          "responseEnd": 9,
+          "duration": 5,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4,
+          "responseStart": 7,
+          "responseEnd": 15.300000190734863,
+          "duration": 11.300000190734863,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.200000047683716,
+          "responseStart": 13.400000095367432,
+          "responseEnd": 13.700000047683716,
+          "duration": 2.5,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.300000190734863,
+          "responseStart": 13.5,
+          "responseEnd": 13.700000047683716,
+          "duration": 2.3999998569488525,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 40.40000009536743,
+          "responseStart": 41.40000009536743,
+          "responseEnd": 41.5,
+          "duration": 1.0999999046325684,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 48.5,
+          "responseStart": 50.40000009536743,
+          "responseEnd": 64.70000004768372,
+          "duration": 16.200000047683716,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 434.7000000476837,
+          "responseStart": 436.40000009536743,
+          "responseEnd": 461.80000019073486,
+          "duration": 27.100000143051147,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 441.90000009536743,
+          "responseStart": 444.60000014305115,
+          "responseEnd": 445.10000014305115,
+          "duration": 3.200000047683716,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 441.90000009536743,
+          "responseStart": 444.30000019073486,
+          "responseEnd": 446.90000009536743,
+          "duration": 5,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 442,
+          "responseStart": 445.2000000476837,
+          "responseEnd": 445.60000014305115,
+          "duration": 3.6000001430511475,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 442,
+          "responseStart": 445.7000000476837,
+          "responseEnd": 454.5,
+          "duration": 12.5,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1028.4000000953674,
+          "responseStart": 1029.6000001430511,
+          "responseEnd": 1029.8000001907349,
+          "duration": 1.4000000953674316,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.007025,
+        "ScriptDuration": 0.414149,
+        "TaskDuration": 0.490813,
+        "JSHeapUsedSize": 20699816
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 7,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 1063.4000000953674,
+      "controlsReadyMs": 1035.5,
+      "firstSceneDrawMs": 1025.7000000476837,
+      "firstSceneFrameMs": 1063.4000000953674,
+      "ttfbMs": 1.5,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 11405900,
+      "longTasks": [
+        {
+          "startTime": 776.5,
+          "duration": 230
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 28,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 14,
+          "duration": 0.20000004768371582
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.7000007629394531
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 4.1000001430511475,
+          "responseStart": 6,
+          "responseEnd": 6.200000047683716,
+          "duration": 2.0999999046325684,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 4.299999952316284,
+          "responseStart": 8.400000095367432,
+          "responseEnd": 9.799999952316284,
+          "duration": 5.5,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 4.299999952316284,
+          "responseStart": 6.799999952316284,
+          "responseEnd": 15.100000143051147,
+          "duration": 10.800000190734863,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 11.200000047683716,
+          "responseStart": 12.5,
+          "responseEnd": 12.799999952316284,
+          "duration": 1.5999999046325684,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 11.200000047683716,
+          "responseStart": 14,
+          "responseEnd": 14.200000047683716,
+          "duration": 3,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 39.5,
+          "responseStart": 40.5,
+          "responseEnd": 40.60000014305115,
+          "duration": 1.1000001430511475,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 47.200000047683716,
+          "responseStart": 49,
+          "responseEnd": 63.10000014305115,
+          "duration": 15.900000095367432,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 442.2999999523163,
+          "responseStart": 443.60000014305115,
+          "responseEnd": 465.60000014305115,
+          "duration": 23.300000190734863,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 449.5,
+          "responseStart": 455.7999999523163,
+          "responseEnd": 456.2000000476837,
+          "duration": 6.700000047683716,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 449.5,
+          "responseStart": 454.40000009536743,
+          "responseEnd": 462.40000009536743,
+          "duration": 12.900000095367432,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 449.5,
+          "responseStart": 462.2000000476837,
+          "responseEnd": 462.60000014305115,
+          "duration": 13.100000143051147,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 449.5,
+          "responseStart": 462.60000014305115,
+          "responseEnd": 466.40000009536743,
+          "duration": 16.90000009536743,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 1033.5,
+          "responseStart": 1034.7000000476837,
+          "responseEnd": 1034.9000000953674,
+          "duration": 1.4000000953674316,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.006919,
+        "ScriptDuration": 0.410512,
+        "TaskDuration": 0.487534,
+        "JSHeapUsedSize": 20457312
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "desktop",
+      "run": 7,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 567.3999998569489,
+      "controlsReadyMs": 567.3999998569489,
+      "firstSceneDrawMs": 293.39999985694885,
+      "firstSceneFrameMs": 564.3999998569489,
+      "ttfbMs": 2.0999999046325684,
+      "firstContentfulPaintMs": 36,
+      "startupBytes": 4338970,
+      "longTasks": [
+        {
+          "startTime": 188.19999980926514,
+          "duration": 66
+        },
+        {
+          "startTime": 254.69999980926514,
+          "duration": 298
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.10000014305114746
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 0.9000000953674316
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 5,
+          "responseStart": 7.099999904632568,
+          "responseEnd": 7.3999998569488525,
+          "duration": 2.3999998569488525,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 5.099999904632568,
+          "responseStart": 8.299999952316284,
+          "responseEnd": 14.799999952316284,
+          "duration": 9.700000047683716,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 5.199999809265137,
+          "responseStart": 9.5,
+          "responseEnd": 11,
+          "duration": 5.800000190734863,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 12.299999952316284,
+          "responseStart": 13.299999952316284,
+          "responseEnd": 13.5,
+          "duration": 1.2000000476837158,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 12.5,
+          "responseStart": 13.599999904632568,
+          "responseEnd": 13.699999809265137,
+          "duration": 1.1999998092651367,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 36.09999990463257,
+          "responseStart": 38,
+          "responseEnd": 52.299999952316284,
+          "duration": 16.200000047683716,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 40.299999952316284,
+          "responseStart": 41,
+          "responseEnd": 41.09999990463257,
+          "duration": 0.7999999523162842,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 147.5,
+          "responseStart": 148.89999985694885,
+          "responseEnd": 156.59999990463257,
+          "duration": 9.099999904632568,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 147.59999990463257,
+          "responseStart": 149.29999995231628,
+          "responseEnd": 149.69999980926514,
+          "duration": 2.0999999046325684,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 147.59999990463257,
+          "responseStart": 149.79999995231628,
+          "responseEnd": 150.39999985694885,
+          "duration": 2.799999952316284,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 147.59999990463257,
+          "responseStart": 149.09999990463257,
+          "responseEnd": 151.5,
+          "duration": 3.9000000953674316,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 147.59999990463257,
+          "responseStart": 150.29999995231628,
+          "responseEnd": 154.79999995231628,
+          "duration": 7.200000047683716,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/instrument-serif-latin-400-normal-DnYpCC2O.woff2",
+          "startTime": 565.1999998092651,
+          "responseStart": 566.5,
+          "responseEnd": 566.8999998569489,
+          "duration": 1.7000000476837158,
+          "transferSize": 21332,
+          "encodedBodySize": 21032,
+          "decodedBodySize": 21032,
+          "initiatorType": "css"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.003878,
+        "ScriptDuration": 0.426755,
+        "TaskDuration": 0.489454,
+        "JSHeapUsedSize": 26106452
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 1,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10718.099999904633,
+      "controlsReadyMs": 10718.099999904633,
+      "firstSceneDrawMs": 10015.099999904633,
+      "firstSceneFrameMs": 10705.899999856949,
+      "ttfbMs": 41,
+      "firstContentfulPaintMs": 172,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 630.7999999523163,
+          "duration": 58
+        },
+        {
+          "startTime": 9575.5,
+          "duration": 51
+        },
+        {
+          "startTime": 9628.099999904633,
+          "duration": 71
+        },
+        {
+          "startTime": 9701.699999809265,
+          "duration": 161
+        },
+        {
+          "startTime": 9871.199999809265,
+          "duration": 59
+        },
+        {
+          "startTime": 9931,
+          "duration": 733
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0.2999999523162842
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 4.40000057220459
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 62.09999990463257,
+          "responseStart": 102.5,
+          "responseEnd": 121.5,
+          "duration": 59.40000009536743,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 62.09999990463257,
+          "responseStart": 102.79999995231628,
+          "responseEnd": 255.89999985694885,
+          "duration": 193.79999995231628,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 62.19999980926514,
+          "responseStart": 104.89999985694885,
+          "responseEnd": 179.19999980926514,
+          "duration": 117,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 130.29999995231628,
+          "responseStart": 170.5,
+          "responseEnd": 208,
+          "duration": 77.70000004768372,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 130.59999990463257,
+          "responseStart": 171.09999990463257,
+          "responseEnd": 209.19999980926514,
+          "duration": 78.59999990463257,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 312.19999980926514,
+          "responseStart": 352.5,
+          "responseEnd": 358.09999990463257,
+          "duration": 45.90000009536743,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 350,
+          "responseStart": 390.39999985694885,
+          "responseEnd": 622,
+          "duration": 272,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 796.5,
+          "responseStart": 836.7999999523163,
+          "responseEnd": 9575.399999856949,
+          "duration": 8778.899999856949,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 812.5999999046326,
+          "responseStart": 853.5,
+          "responseEnd": 1934.5999999046326,
+          "duration": 1122,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 813.1999998092651,
+          "responseStart": 853.6999998092651,
+          "responseEnd": 1224.1999998092651,
+          "duration": 411,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 813.1999998092651,
+          "responseStart": 853.5,
+          "responseEnd": 1229.1999998092651,
+          "duration": 416,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 813.1999998092651,
+          "responseStart": 854.1999998092651,
+          "responseEnd": 2276.899999856949,
+          "duration": 1463.7000000476837,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024826,
+        "ScriptDuration": 1.244263,
+        "TaskDuration": 1.749318,
+        "JSHeapUsedSize": 23498592
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 1,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4987.399999856949,
+      "controlsReadyMs": 4987.399999856949,
+      "firstSceneDrawMs": 4308.5,
+      "firstSceneFrameMs": 4975.899999856949,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 176,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 596.2999999523163,
+          "duration": 52
+        },
+        {
+          "startTime": 3935.0999999046326,
+          "duration": 60
+        },
+        {
+          "startTime": 3995.7999999523163,
+          "duration": 234
+        },
+        {
+          "startTime": 4230,
+          "duration": 730
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.09999990463256836
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 2.999999523162842
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 62.19999980926514,
+          "responseStart": 103.59999990463257,
+          "responseEnd": 126.89999985694885,
+          "duration": 64.70000004768372,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 63,
+          "responseStart": 106,
+          "responseEnd": 179.79999995231628,
+          "duration": 116.79999995231628,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 63,
+          "responseStart": 103.89999985694885,
+          "responseEnd": 260.09999990463257,
+          "duration": 197.09999990463257,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 137.89999985694885,
+          "responseStart": 178.19999980926514,
+          "responseEnd": 213.5,
+          "duration": 75.60000014305115,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 138.5,
+          "responseStart": 179.09999990463257,
+          "responseEnd": 215.79999995231628,
+          "duration": 77.29999995231628,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 317.89999985694885,
+          "responseStart": 358.2999999523163,
+          "responseEnd": 586.7999999523163,
+          "duration": 268.90000009536743,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 326.2999999523163,
+          "responseStart": 366.59999990463257,
+          "responseEnd": 368.19999980926514,
+          "duration": 41.89999985694885,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 757.7999999523163,
+          "responseStart": 798.2999999523163,
+          "responseEnd": 1178.1999998092651,
+          "duration": 420.39999985694885,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 757.7999999523163,
+          "responseStart": 798.1999998092651,
+          "responseEnd": 1883.7999999523163,
+          "duration": 1126,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 757.7999999523163,
+          "responseStart": 798.1999998092651,
+          "responseEnd": 3885.5,
+          "duration": 3127.7000000476837,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 757.8999998569489,
+          "responseStart": 798.2999999523163,
+          "responseEnd": 1173.5,
+          "duration": 415.60000014305115,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 757.8999998569489,
+          "responseStart": 798.8999998569489,
+          "responseEnd": 2225.699999809265,
+          "duration": 1467.7999999523163,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.026917,
+        "ScriptDuration": 1.203562,
+        "TaskDuration": 1.532274,
+        "JSHeapUsedSize": 8841840
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 2,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4982.5,
+      "controlsReadyMs": 4982.5,
+      "firstSceneDrawMs": 4311.5,
+      "firstSceneFrameMs": 4969.400000095367,
+      "ttfbMs": 40.90000009536743,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 591.8000001907349,
+          "duration": 53
+        },
+        {
+          "startTime": 3933.9000000953674,
+          "duration": 62
+        },
+        {
+          "startTime": 3997.9000000953674,
+          "duration": 235
+        },
+        {
+          "startTime": 4233.800000190735,
+          "duration": 720
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0.09999990463256836
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.4999997615814209
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 3.999999761581421
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 61.200000047683716,
+          "responseStart": 101.80000019073486,
+          "responseEnd": 123.90000009536743,
+          "duration": 62.700000047683716,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 61.30000019073486,
+          "responseStart": 104.10000014305115,
+          "responseEnd": 176.60000014305115,
+          "duration": 115.29999995231628,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 61.30000019073486,
+          "responseStart": 102.20000004768372,
+          "responseEnd": 257.10000014305115,
+          "duration": 195.79999995231628,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 134.80000019073486,
+          "responseStart": 175,
+          "responseEnd": 210.10000014305115,
+          "duration": 75.29999995231628,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 134.80000019073486,
+          "responseStart": 175.5,
+          "responseEnd": 212.60000014305115,
+          "duration": 77.79999995231628,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 314,
+          "responseStart": 354.30000019073486,
+          "responseEnd": 583.6000001430511,
+          "duration": 269.60000014305115,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 323.40000009536743,
+          "responseStart": 363.7000000476837,
+          "responseEnd": 365.2000000476837,
+          "duration": 41.799999952316284,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 752.8000001907349,
+          "responseStart": 793.2000000476837,
+          "responseEnd": 3881.2000000476837,
+          "duration": 3128.399999856949,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 753.7000000476837,
+          "responseStart": 794,
+          "responseEnd": 1169.2000000476837,
+          "duration": 415.5,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 753.7000000476837,
+          "responseStart": 793.9000000953674,
+          "responseEnd": 1173.9000000953674,
+          "duration": 420.2000000476837,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 753.7000000476837,
+          "responseStart": 793.9000000953674,
+          "responseEnd": 1879.4000000953674,
+          "duration": 1125.7000000476837,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 753.7000000476837,
+          "responseStart": 799.3000001907349,
+          "responseEnd": 2221.4000000953674,
+          "duration": 1467.7000000476837,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024781,
+        "ScriptDuration": 1.191838,
+        "TaskDuration": 1.523045,
+        "JSHeapUsedSize": 14667484
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 2,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10698.399999856949,
+      "controlsReadyMs": 10698.399999856949,
+      "firstSceneDrawMs": 10004.799999952316,
+      "firstSceneFrameMs": 10684.299999952316,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 172,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 636,
+          "duration": 60
+        },
+        {
+          "startTime": 9626.799999952316,
+          "duration": 68
+        },
+        {
+          "startTime": 9697.399999856949,
+          "duration": 158
+        },
+        {
+          "startTime": 9856.5,
+          "duration": 63
+        },
+        {
+          "startTime": 9920.599999904633,
+          "duration": 723
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0.5
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 3.000000476837158
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 60.5,
+          "responseStart": 101.39999985694885,
+          "responseEnd": 123.59999990463257,
+          "duration": 63.09999990463257,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 61,
+          "responseStart": 101.69999980926514,
+          "responseEnd": 257,
+          "duration": 196,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 61.299999952316284,
+          "responseStart": 103.5,
+          "responseEnd": 176.5,
+          "duration": 115.20000004768372,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 134.69999980926514,
+          "responseStart": 175.09999990463257,
+          "responseEnd": 210.09999990463257,
+          "duration": 75.40000009536743,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 134.69999980926514,
+          "responseStart": 175.29999995231628,
+          "responseEnd": 212.5,
+          "duration": 77.80000019073486,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 314.59999990463257,
+          "responseStart": 355.19999980926514,
+          "responseEnd": 356.69999980926514,
+          "duration": 42.09999990463257,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 352.59999990463257,
+          "responseStart": 393.19999980926514,
+          "responseEnd": 627.5999999046326,
+          "duration": 275,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 799.5999999046326,
+          "responseStart": 840,
+          "responseEnd": 9578.799999952316,
+          "duration": 8779.200000047684,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 814.1999998092651,
+          "responseStart": 854.5999999046326,
+          "responseEnd": 1230.0999999046326,
+          "duration": 415.90000009536743,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 814.1999998092651,
+          "responseStart": 854.5999999046326,
+          "responseEnd": 1934.5,
+          "duration": 1120.3000001907349,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 814.2999999523163,
+          "responseStart": 854.5999999046326,
+          "responseEnd": 1225.2999999523163,
+          "duration": 411,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 815,
+          "responseStart": 855.5,
+          "responseEnd": 2277.7999999523163,
+          "duration": 1462.7999999523163,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024467,
+        "ScriptDuration": 1.238977,
+        "TaskDuration": 1.716094,
+        "JSHeapUsedSize": 11151372
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 3,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10659,
+      "controlsReadyMs": 10659,
+      "firstSceneDrawMs": 9993.300000190735,
+      "firstSceneFrameMs": 10644.400000095367,
+      "ttfbMs": 40.80000019073486,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 630.8000001907349,
+          "duration": 60
+        },
+        {
+          "startTime": 9616,
+          "duration": 71
+        },
+        {
+          "startTime": 9688.700000047684,
+          "duration": 160
+        },
+        {
+          "startTime": 9850,
+          "duration": 65
+        },
+        {
+          "startTime": 9916.400000095367,
+          "duration": 687
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0.7000000476837158
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 2.500000476837158
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 61.700000047683716,
+          "responseStart": 102.20000004768372,
+          "responseEnd": 120.30000019073486,
+          "duration": 58.60000014305115,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 61.80000019073486,
+          "responseStart": 104.60000014305115,
+          "responseEnd": 175.60000014305115,
+          "duration": 113.79999995231628,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 61.80000019073486,
+          "responseStart": 102.60000014305115,
+          "responseEnd": 254.80000019073486,
+          "duration": 193,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 131.30000019073486,
+          "responseStart": 171.60000014305115,
+          "responseEnd": 207.90000009536743,
+          "duration": 76.59999990463257,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 131.30000019073486,
+          "responseStart": 172,
+          "responseEnd": 209.20000004768372,
+          "duration": 77.89999985694885,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 318.40000009536743,
+          "responseStart": 358.90000009536743,
+          "responseEnd": 361.30000019073486,
+          "duration": 42.90000009536743,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 347.90000009536743,
+          "responseStart": 388.30000019073486,
+          "responseEnd": 621.9000000953674,
+          "duration": 274,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 796.8000001907349,
+          "responseStart": 837.1000001430511,
+          "responseEnd": 9569.300000190735,
+          "duration": 8772.5,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 812.4000000953674,
+          "responseStart": 852.8000001907349,
+          "responseEnd": 1933.4000000953674,
+          "duration": 1121,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 812.5,
+          "responseStart": 852.9000000953674,
+          "responseEnd": 1222.9000000953674,
+          "duration": 410.40000009536743,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 812.5,
+          "responseStart": 852.8000001907349,
+          "responseEnd": 1227.9000000953674,
+          "duration": 415.40000009536743,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 812.5,
+          "responseStart": 853.2000000476837,
+          "responseEnd": 2275.5,
+          "duration": 1463,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.025611,
+        "ScriptDuration": 1.204824,
+        "TaskDuration": 1.678671,
+        "JSHeapUsedSize": 9951756
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 3,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4995.5,
+      "controlsReadyMs": 4995.5,
+      "firstSceneDrawMs": 4350.799999952316,
+      "firstSceneFrameMs": 4983.900000095367,
+      "ttfbMs": 40.90000009536743,
+      "firstContentfulPaintMs": 164,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 592.2000000476837,
+          "duration": 52
+        },
+        {
+          "startTime": 3936.7000000476837,
+          "duration": 85
+        },
+        {
+          "startTime": 4022.5999999046326,
+          "duration": 243
+        },
+        {
+          "startTime": 4266.400000095367,
+          "duration": 703
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 2.1000001430511475
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 61.5,
+          "responseStart": 101.90000009536743,
+          "responseEnd": 124.09999990463257,
+          "duration": 62.59999990463257,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 61.59999990463257,
+          "responseStart": 102.20000004768372,
+          "responseEnd": 257.40000009536743,
+          "duration": 195.80000019073486,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 62.40000009536743,
+          "responseStart": 104.29999995231628,
+          "responseEnd": 179.29999995231628,
+          "duration": 116.89999985694885,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 133.20000004768372,
+          "responseStart": 173.40000009536743,
+          "responseEnd": 210.40000009536743,
+          "duration": 77.20000004768372,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 133.5,
+          "responseStart": 174,
+          "responseEnd": 211.79999995231628,
+          "duration": 78.29999995231628,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 314.59999990463257,
+          "responseStart": 355.2000000476837,
+          "responseEnd": 583.7999999523163,
+          "duration": 269.2000000476837,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 324.40000009536743,
+          "responseStart": 364.7999999523163,
+          "responseEnd": 366.7000000476837,
+          "duration": 42.299999952316284,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 758.5999999046326,
+          "responseStart": 798.9000000953674,
+          "responseEnd": 3886.2000000476837,
+          "duration": 3127.600000143051,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 758.7999999523163,
+          "responseStart": 799.0999999046326,
+          "responseEnd": 1174.2000000476837,
+          "duration": 415.40000009536743,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 758.7999999523163,
+          "responseStart": 799,
+          "responseEnd": 1178.7000000476837,
+          "duration": 419.90000009536743,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 758.7999999523163,
+          "responseStart": 799,
+          "responseEnd": 1884.5999999046326,
+          "duration": 1125.7999999523163,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 758.7999999523163,
+          "responseStart": 799.7000000476837,
+          "responseEnd": 2226.2999999523163,
+          "duration": 1467.5,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024592,
+        "ScriptDuration": 1.175947,
+        "TaskDuration": 1.558206,
+        "JSHeapUsedSize": 18440808
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 4,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4954,
+      "controlsReadyMs": 4954,
+      "firstSceneDrawMs": 4306.900000095367,
+      "firstSceneFrameMs": 4942,
+      "ttfbMs": 40.80000019073486,
+      "firstContentfulPaintMs": 176,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 593.8000001907349,
+          "duration": 53
+        },
+        {
+          "startTime": 3929.5,
+          "duration": 64
+        },
+        {
+          "startTime": 3994.800000190735,
+          "duration": 235
+        },
+        {
+          "startTime": 4230.5,
+          "duration": 697
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.20000004768371582
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 3.299999713897705
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 59.80000019073486,
+          "responseStart": 100.60000014305115,
+          "responseEnd": 124.10000014305115,
+          "duration": 64.29999995231628,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 60.200000047683716,
+          "responseStart": 102.90000009536743,
+          "responseEnd": 179.10000014305115,
+          "duration": 118.90000009536743,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 60.200000047683716,
+          "responseStart": 100.90000009536743,
+          "responseEnd": 257.30000019073486,
+          "duration": 197.10000014305115,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 132.60000014305115,
+          "responseStart": 173.40000009536743,
+          "responseEnd": 210.40000009536743,
+          "duration": 77.79999995231628,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 132.90000009536743,
+          "responseStart": 173.60000014305115,
+          "responseEnd": 211.70000004768372,
+          "duration": 78.79999995231628,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 314.5,
+          "responseStart": 355.2000000476837,
+          "responseEnd": 584.9000000953674,
+          "duration": 270.40000009536743,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 324,
+          "responseStart": 364.2000000476837,
+          "responseEnd": 366.5,
+          "duration": 42.5,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 753.8000001907349,
+          "responseStart": 794.2000000476837,
+          "responseEnd": 3881.300000190735,
+          "duration": 3127.5,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 754,
+          "responseStart": 794.4000000953674,
+          "responseEnd": 1174,
+          "duration": 420,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 754,
+          "responseStart": 794.2000000476837,
+          "responseEnd": 1879.7000000476837,
+          "duration": 1125.7000000476837,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 754.4000000953674,
+          "responseStart": 794.7000000476837,
+          "responseEnd": 1169.2000000476837,
+          "duration": 414.7999999523163,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 754.4000000953674,
+          "responseStart": 795,
+          "responseEnd": 2221.600000143051,
+          "duration": 1467.2000000476837,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024209,
+        "ScriptDuration": 1.164688,
+        "TaskDuration": 1.492577,
+        "JSHeapUsedSize": 21730668
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 4,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10702.899999856949,
+      "controlsReadyMs": 10702.899999856949,
+      "firstSceneDrawMs": 10000.099999904633,
+      "firstSceneFrameMs": 10688.299999952316,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 635.7999999523163,
+          "duration": 60
+        },
+        {
+          "startTime": 9627.399999856949,
+          "duration": 69
+        },
+        {
+          "startTime": 9698.700000047684,
+          "duration": 156
+        },
+        {
+          "startTime": 9855.899999856949,
+          "duration": 64
+        },
+        {
+          "startTime": 9920.099999904633,
+          "duration": 725
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0.09999990463256836
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 3.8000001907348633
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 61.200000047683716,
+          "responseStart": 102.09999990463257,
+          "responseEnd": 123.89999985694885,
+          "duration": 62.69999980926514,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 62,
+          "responseStart": 104.29999995231628,
+          "responseEnd": 179.29999995231628,
+          "duration": 117.29999995231628,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 62,
+          "responseStart": 102.5,
+          "responseEnd": 257.2000000476837,
+          "duration": 195.20000004768372,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 132.70000004768372,
+          "responseStart": 173,
+          "responseEnd": 209.29999995231628,
+          "duration": 76.59999990463257,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 132.70000004768372,
+          "responseStart": 173.89999985694885,
+          "responseEnd": 211.59999990463257,
+          "duration": 78.89999985694885,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 315,
+          "responseStart": 355.2999999523163,
+          "responseEnd": 356.89999985694885,
+          "duration": 41.89999985694885,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 353.7999999523163,
+          "responseStart": 394.2000000476837,
+          "responseEnd": 628.0999999046326,
+          "duration": 274.2999999523163,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 804.2999999523163,
+          "responseStart": 845.2000000476837,
+          "responseEnd": 9578.899999856949,
+          "duration": 8774.599999904633,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 819.7999999523163,
+          "responseStart": 860.2000000476837,
+          "responseEnd": 1940.7999999523163,
+          "duration": 1121,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 819.8999998569489,
+          "responseStart": 860.2999999523163,
+          "responseEnd": 1230.3999998569489,
+          "duration": 410.5,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 819.8999998569489,
+          "responseStart": 860.2000000476837,
+          "responseEnd": 1235.0999999046326,
+          "duration": 415.2000000476837,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 820,
+          "responseStart": 860.7999999523163,
+          "responseEnd": 2284,
+          "duration": 1464,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.026633,
+        "ScriptDuration": 1.240235,
+        "TaskDuration": 1.76426,
+        "JSHeapUsedSize": 11135608
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 5,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10747.100000143051,
+      "controlsReadyMs": 10747.100000143051,
+      "firstSceneDrawMs": 10021.900000095367,
+      "firstSceneFrameMs": 10734.200000047684,
+      "ttfbMs": 40.60000014305115,
+      "firstContentfulPaintMs": 176,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 636.7000000476837,
+          "duration": 60
+        },
+        {
+          "startTime": 763.6000001430511,
+          "duration": 55
+        },
+        {
+          "startTime": 9639.300000190735,
+          "duration": 69
+        },
+        {
+          "startTime": 9710.600000143051,
+          "duration": 164
+        },
+        {
+          "startTime": 9875.600000143051,
+          "duration": 66
+        },
+        {
+          "startTime": 9942,
+          "duration": 748
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0.39999985694885254
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0.40000009536743164
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 2.5999996662139893
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 60.700000047683716,
+          "responseStart": 101.10000014305115,
+          "responseEnd": 125.20000004768372,
+          "duration": 64.5,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 60.80000019073486,
+          "responseStart": 102.10000014305115,
+          "responseEnd": 258.40000009536743,
+          "duration": 197.59999990463257,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 61.40000009536743,
+          "responseStart": 103.70000004768372,
+          "responseEnd": 177.90000009536743,
+          "duration": 116.5,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 136.40000009536743,
+          "responseStart": 176.60000014305115,
+          "responseEnd": 211.60000014305115,
+          "duration": 75.20000004768372,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 136.80000019073486,
+          "responseStart": 177.40000009536743,
+          "responseEnd": 214,
+          "duration": 77.19999980926514,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 314.80000019073486,
+          "responseStart": 355.10000014305115,
+          "responseEnd": 355.40000009536743,
+          "duration": 40.59999990463257,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 352.90000009536743,
+          "responseStart": 393.30000019073486,
+          "responseEnd": 628,
+          "duration": 275.09999990463257,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 813.4000000953674,
+          "responseStart": 853.8000001907349,
+          "responseEnd": 9589.700000047684,
+          "duration": 8776.299999952316,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 831,
+          "responseStart": 871.6000001430511,
+          "responseEnd": 1952.9000000953674,
+          "duration": 1121.9000000953674,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 831.3000001907349,
+          "responseStart": 871.6000001430511,
+          "responseEnd": 1242.4000000953674,
+          "duration": 411.09999990463257,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 831.3000001907349,
+          "responseStart": 871.6000001430511,
+          "responseEnd": 1247.2000000476837,
+          "duration": 415.89999985694885,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 831.3000001907349,
+          "responseStart": 872,
+          "responseEnd": 2294.800000190735,
+          "duration": 1463.5,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.026517,
+        "ScriptDuration": 1.288034,
+        "TaskDuration": 1.842738,
+        "JSHeapUsedSize": 10777704
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 5,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4975.099999904633,
+      "controlsReadyMs": 4975.099999904633,
+      "firstSceneDrawMs": 4329.299999952316,
+      "firstSceneFrameMs": 4963,
+      "ttfbMs": 41,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 597.0999999046326,
+          "duration": 58
+        },
+        {
+          "startTime": 717.2000000476837,
+          "duration": 52
+        },
+        {
+          "startTime": 3946.7999999523163,
+          "duration": 59
+        },
+        {
+          "startTime": 4006.7000000476837,
+          "duration": 238
+        },
+        {
+          "startTime": 4244.899999856949,
+          "duration": 703
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.6000001430511475
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 3.4000000953674316
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 61.39999985694885,
+          "responseStart": 103,
+          "responseEnd": 121.89999985694885,
+          "duration": 60.5,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 62.59999990463257,
+          "responseStart": 105.09999990463257,
+          "responseEnd": 177.20000004768372,
+          "duration": 114.60000014305115,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 62.59999990463257,
+          "responseStart": 103.20000004768372,
+          "responseEnd": 256.2999999523163,
+          "duration": 193.70000004768372,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 133,
+          "responseStart": 173.29999995231628,
+          "responseEnd": 209.5,
+          "duration": 76.5,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 133.39999985694885,
+          "responseStart": 173.79999995231628,
+          "responseEnd": 210.70000004768372,
+          "duration": 77.30000019073486,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 317,
+          "responseStart": 357.7000000476837,
+          "responseEnd": 587.5,
+          "duration": 270.5,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 326.2999999523163,
+          "responseStart": 366.59999990463257,
+          "responseEnd": 367.89999985694885,
+          "duration": 41.59999990463257,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 769.2999999523163,
+          "responseStart": 810.7000000476837,
+          "responseEnd": 1188.5999999046326,
+          "duration": 419.2999999523163,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 769.2999999523163,
+          "responseStart": 810.7000000476837,
+          "responseEnd": 1894.2000000476837,
+          "duration": 1124.9000000953674,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 769.2999999523163,
+          "responseStart": 809.7999999523163,
+          "responseEnd": 3895.7999999523163,
+          "duration": 3126.5,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 769.3999998569489,
+          "responseStart": 810.7999999523163,
+          "responseEnd": 1183.7999999523163,
+          "duration": 414.40000009536743,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 769.3999998569489,
+          "responseStart": 811.3999998569489,
+          "responseEnd": 2236.2999999523163,
+          "duration": 1466.9000000953674,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.025403,
+        "ScriptDuration": 1.190945,
+        "TaskDuration": 1.573239,
+        "JSHeapUsedSize": 8529512
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 6,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4995.299999952316,
+      "controlsReadyMs": 4995.299999952316,
+      "firstSceneDrawMs": 4331.400000095367,
+      "firstSceneFrameMs": 4983.700000047684,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 596.2000000476837,
+          "duration": 54
+        },
+        {
+          "startTime": 3939.5,
+          "duration": 64
+        },
+        {
+          "startTime": 4005.2999999523163,
+          "duration": 240
+        },
+        {
+          "startTime": 4246.099999904633,
+          "duration": 723
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0.20000004768371582
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 3.5999999046325684
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 61.299999952316284,
+          "responseStart": 101.70000004768372,
+          "responseEnd": 123.90000009536743,
+          "duration": 62.60000014305115,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 61.90000009536743,
+          "responseStart": 102.29999995231628,
+          "responseEnd": 257.2000000476837,
+          "duration": 195.29999995231628,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 62.09999990463257,
+          "responseStart": 104.5,
+          "responseEnd": 176.79999995231628,
+          "duration": 114.70000004768372,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 134.79999995231628,
+          "responseStart": 175.20000004768372,
+          "responseEnd": 210.29999995231628,
+          "duration": 75.5,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 134.79999995231628,
+          "responseStart": 175.59999990463257,
+          "responseEnd": 212.70000004768372,
+          "duration": 77.90000009536743,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 318.09999990463257,
+          "responseStart": 358.59999990463257,
+          "responseEnd": 588.2999999523163,
+          "duration": 270.2000000476837,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 327.7000000476837,
+          "responseStart": 367.90000009536743,
+          "responseEnd": 370.09999990463257,
+          "duration": 42.39999985694885,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 759.7000000476837,
+          "responseStart": 800,
+          "responseEnd": 1178.7000000476837,
+          "duration": 419,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 759.7000000476837,
+          "responseStart": 800,
+          "responseEnd": 1885.2999999523163,
+          "duration": 1125.5999999046326,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 759.7000000476837,
+          "responseStart": 800,
+          "responseEnd": 3887.0999999046326,
+          "duration": 3127.399999856949,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 760.0999999046326,
+          "responseStart": 800.2999999523163,
+          "responseEnd": 1173.7999999523163,
+          "duration": 413.7000000476837,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 760.0999999046326,
+          "responseStart": 800.5,
+          "responseEnd": 2227.5999999046326,
+          "duration": 1467.5,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.026179,
+        "ScriptDuration": 1.19809,
+        "TaskDuration": 1.562574,
+        "JSHeapUsedSize": 8528640
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 6,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10648.199999809265,
+      "controlsReadyMs": 10648.199999809265,
+      "firstSceneDrawMs": 10008.199999809265,
+      "firstSceneFrameMs": 10635.799999952316,
+      "ttfbMs": 41,
+      "firstContentfulPaintMs": 172,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 635.0999999046326,
+          "duration": 61
+        },
+        {
+          "startTime": 9629.699999809265,
+          "duration": 68
+        },
+        {
+          "startTime": 9700.199999809265,
+          "duration": 161
+        },
+        {
+          "startTime": 9862.799999952316,
+          "duration": 65
+        },
+        {
+          "startTime": 9928,
+          "duration": 666
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 4.1000001430511475
+        }
+      },
+      "mainDrawCalls": 60,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 62.09999990463257,
+          "responseStart": 102.69999980926514,
+          "responseEnd": 121.09999990463257,
+          "duration": 59,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 62.299999952316284,
+          "responseStart": 102.89999985694885,
+          "responseEnd": 255.5,
+          "duration": 193.20000004768372,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 62.59999990463257,
+          "responseStart": 105.39999985694885,
+          "responseEnd": 174.89999985694885,
+          "duration": 112.29999995231628,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 132.69999980926514,
+          "responseStart": 173.19999980926514,
+          "responseEnd": 208.69999980926514,
+          "duration": 76,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 132.69999980926514,
+          "responseStart": 173.29999995231628,
+          "responseEnd": 209.89999985694885,
+          "duration": 77.20000004768372,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 312.19999980926514,
+          "responseStart": 352.59999990463257,
+          "responseEnd": 354,
+          "duration": 41.80000019073486,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 349.89999985694885,
+          "responseStart": 390.89999985694885,
+          "responseEnd": 626.2999999523163,
+          "duration": 276.40000009536743,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 808.3999998569489,
+          "responseStart": 848.6999998092651,
+          "responseEnd": 9583.199999809265,
+          "duration": 8774.799999952316,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 823.7999999523163,
+          "responseStart": 864.0999999046326,
+          "responseEnd": 1945.0999999046326,
+          "duration": 1121.2999999523163,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 824,
+          "responseStart": 864.2999999523163,
+          "responseEnd": 1234.6999998092651,
+          "duration": 410.69999980926514,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 824,
+          "responseStart": 864.2999999523163,
+          "responseEnd": 1239.2999999523163,
+          "duration": 415.2999999523163,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 824,
+          "responseStart": 864.6999998092651,
+          "responseEnd": 2287.0999999046326,
+          "duration": 1463.0999999046326,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.024355,
+        "ScriptDuration": 1.185335,
+        "TaskDuration": 1.675648,
+        "JSHeapUsedSize": 10501900
+      }
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 7,
+      "url": "http://127.0.0.1:3100",
+      "browser": "157.0.8103.79",
+      "readyMs": 10719.5,
+      "controlsReadyMs": 10719.5,
+      "firstSceneDrawMs": 10006.299999952316,
+      "firstSceneFrameMs": 10704.700000047684,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 176,
+      "startupBytes": 11384568,
+      "longTasks": [
+        {
+          "startTime": 635.5,
+          "duration": 60
+        },
+        {
+          "startTime": 9622.200000047684,
+          "duration": 69
+        },
+        {
+          "startTime": 9693.799999952316,
+          "duration": 160
+        },
+        {
+          "startTime": 9854.599999904633,
+          "duration": 66
+        },
+        {
+          "startTime": 9921.200000047684,
+          "duration": 739
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 40,
+          "duration": 0
+        },
+        "linkProgram": {
+          "count": 20,
+          "duration": 0.5
+        },
+        "getProgramParameter": {
+          "count": 57,
+          "duration": 3.200000286102295
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3100/assets/index-B3k-ZJZ4.css",
+          "startTime": 62.200000047683716,
+          "responseStart": 102.70000004768372,
+          "responseEnd": 125.20000004768372,
+          "duration": 63,
+          "transferSize": 7814,
+          "encodedBodySize": 7514,
+          "decodedBodySize": 32891,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/routes-CLn-6HaQ.js",
+          "startTime": 62.200000047683716,
+          "responseStart": 104.89999985694885,
+          "responseEnd": 177.79999995231628,
+          "duration": 115.59999990463257,
+          "transferSize": 39257,
+          "encodedBodySize": 38957,
+          "decodedBodySize": 112203,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/index-C5x7SzQw.js",
+          "startTime": 62.200000047683716,
+          "responseStart": 103.09999990463257,
+          "responseEnd": 258.2999999523163,
+          "duration": 196.09999990463257,
+          "transferSize": 109573,
+          "encodedBodySize": 109273,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 136.89999985694885,
+          "responseStart": 177.09999990463257,
+          "responseEnd": 212.70000004768372,
+          "duration": 75.80000019073486,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 137.59999990463257,
+          "responseStart": 178.20000004768372,
+          "responseEnd": 213.79999995231628,
+          "duration": 76.20000004768372,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3100/favicon.svg",
+          "startTime": 315.39999985694885,
+          "responseStart": 355.7000000476837,
+          "responseEnd": 361.39999985694885,
+          "duration": 46,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/ArtifactScene-aL-ZmRxz.js",
+          "startTime": 351.59999990463257,
+          "responseStart": 391.89999985694885,
+          "responseEnd": 626.7000000476837,
+          "duration": 275.10000014305115,
+          "transferSize": 287771,
+          "encodedBodySize": 287471,
+          "decodedBodySize": 1050411,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/cover-relief.bin",
+          "startTime": 799.5,
+          "responseStart": 839.7999999523163,
+          "responseEnd": 9575.200000047684,
+          "duration": 8775.700000047684,
+          "transferSize": 9733076,
+          "encodedBodySize": 9732776,
+          "decodedBodySize": 9732776,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-albedo.webp",
+          "startTime": 814.7000000476837,
+          "responseStart": 855,
+          "responseEnd": 1935.7000000476837,
+          "duration": 1121,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-anisotropy.webp",
+          "startTime": 814.7999999523163,
+          "responseStart": 855.2000000476837,
+          "responseEnd": 1225.2999999523163,
+          "duration": 410.5,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-roughness.webp",
+          "startTime": 814.7999999523163,
+          "responseStart": 855.0999999046326,
+          "responseEnd": 1230.3999998569489,
+          "duration": 415.59999990463257,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3100/assets/record-relief.webp",
+          "startTime": 815.3999998569489,
+          "responseStart": 855.7000000476837,
+          "responseEnd": 2277.899999856949,
+          "duration": 1462.5,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.025532,
+        "ScriptDuration": 1.262945,
+        "TaskDuration": 1.772766,
+        "JSHeapUsedSize": 12709544
+      }
+    },
+    {
+      "variant": "candidate",
+      "profile": "mobile",
+      "run": 7,
+      "url": "http://127.0.0.1:3104",
+      "browser": "157.0.8103.79",
+      "readyMs": 4991,
+      "controlsReadyMs": 4991,
+      "firstSceneDrawMs": 4327.700000047684,
+      "firstSceneFrameMs": 4978.599999904633,
+      "ttfbMs": 40.799999952316284,
+      "firstContentfulPaintMs": 168,
+      "startupBytes": 4317638,
+      "longTasks": [
+        {
+          "startTime": 594.4000000953674,
+          "duration": 54
+        },
+        {
+          "startTime": 3934.2999999523163,
+          "duration": 65
+        },
+        {
+          "startTime": 4001.0999999046326,
+          "duration": 239
+        },
+        {
+          "startTime": 4240.700000047684,
+          "duration": 724
+        }
+      ],
+      "shaderCalls": {
+        "compileShader": {
+          "count": 26,
+          "duration": 0.6000001430511475
+        },
+        "linkProgram": {
+          "count": 13,
+          "duration": 0
+        },
+        "getProgramParameter": {
+          "count": 39,
+          "duration": 2.6000003814697266
+        }
+      },
+      "mainDrawCalls": 80,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "resources": [
+        {
+          "name": "http://127.0.0.1:3104/assets/index-uPq0RU2D.css",
+          "startTime": 59.799999952316284,
+          "responseStart": 100.20000004768372,
+          "responseEnd": 122.5,
+          "duration": 62.700000047683716,
+          "transferSize": 7584,
+          "encodedBodySize": 7284,
+          "decodedBodySize": 31165,
+          "initiatorType": "link"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/routes-B4qVdnmn.js",
+          "startTime": 60.40000009536743,
+          "responseStart": 102.79999995231628,
+          "responseEnd": 175.5,
+          "duration": 115.09999990463257,
+          "transferSize": 39308,
+          "encodedBodySize": 39008,
+          "decodedBodySize": 112066,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/index-DZPnKquG.js",
+          "startTime": 60.40000009536743,
+          "responseStart": 100.90000009536743,
+          "responseEnd": 255.79999995231628,
+          "duration": 195.39999985694885,
+          "transferSize": 109572,
+          "encodedBodySize": 109272,
+          "decodedBodySize": 341734,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+          "startTime": 133.5,
+          "responseStart": 173.90000009536743,
+          "responseEnd": 209.09999990463257,
+          "duration": 75.59999990463257,
+          "transferSize": 14500,
+          "encodedBodySize": 14200,
+          "decodedBodySize": 14200,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+          "startTime": 133.5,
+          "responseStart": 174.20000004768372,
+          "responseEnd": 211.40000009536743,
+          "duration": 77.90000009536743,
+          "transferSize": 14604,
+          "encodedBodySize": 14304,
+          "decodedBodySize": 14304,
+          "initiatorType": "css"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/ArtifactScene-DLqiUGeV.js",
+          "startTime": 314.5,
+          "responseStart": 354.7999999523163,
+          "responseEnd": 584.5999999046326,
+          "duration": 270.09999990463257,
+          "transferSize": 279074,
+          "encodedBodySize": 278774,
+          "decodedBodySize": 1030763,
+          "initiatorType": "script"
+        },
+        {
+          "name": "http://127.0.0.1:3104/favicon.svg",
+          "startTime": 324,
+          "responseStart": 364.2999999523163,
+          "responseEnd": 366.2000000476837,
+          "duration": 42.200000047683716,
+          "transferSize": 711,
+          "encodedBodySize": 411,
+          "decodedBodySize": 411,
+          "initiatorType": "other"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/cover-relief.pack.bin",
+          "startTime": 755.0999999046326,
+          "responseStart": 795.5999999046326,
+          "responseEnd": 3879.9000000953674,
+          "duration": 3124.800000190735,
+          "transferSize": 2675100,
+          "encodedBodySize": 2674800,
+          "decodedBodySize": 2674800,
+          "initiatorType": "fetch"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-anisotropy.webp",
+          "startTime": 755.2000000476837,
+          "responseStart": 795.7000000476837,
+          "responseEnd": 1167.7999999523163,
+          "duration": 412.59999990463257,
+          "transferSize": 92390,
+          "encodedBodySize": 92090,
+          "decodedBodySize": 92090,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-roughness.webp",
+          "startTime": 755.2000000476837,
+          "responseStart": 795.7000000476837,
+          "responseEnd": 1172.5,
+          "duration": 417.2999999523163,
+          "transferSize": 93608,
+          "encodedBodySize": 93308,
+          "decodedBodySize": 93308,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-albedo.webp",
+          "startTime": 755.2000000476837,
+          "responseStart": 795.5999999046326,
+          "responseEnd": 1878.4000000953674,
+          "duration": 1123.2000000476837,
+          "transferSize": 387400,
+          "encodedBodySize": 387100,
+          "decodedBodySize": 387100,
+          "initiatorType": "img"
+        },
+        {
+          "name": "http://127.0.0.1:3104/assets/record-relief.webp",
+          "startTime": 755.2000000476837,
+          "responseStart": 796.0999999046326,
+          "responseEnd": 2220.2999999523163,
+          "duration": 1465.0999999046326,
+          "transferSize": 600834,
+          "encodedBodySize": 600534,
+          "decodedBodySize": 600534,
+          "initiatorType": "img"
+        }
+      ],
+      "metrics": {
+        "LayoutDuration": 0.025651,
+        "ScriptDuration": 1.199866,
+        "TaskDuration": 1.540129,
+        "JSHeapUsedSize": 20354604
+      }
+    }
+  ]
+}

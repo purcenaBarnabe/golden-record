@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../');
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Instrument Serif', serif;
@@ -321,7 +321,7 @@ p {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #fff3dacc;
+  background: #ffffff2e;
   color: #59421b;
   font-family: var(--font-display);
   font-size: 18px;
@@ -332,7 +332,7 @@ p {
 }
 .annotation-dot:hover > span,
 .annotation-dot:focus-visible > span {
-  background: #fff8e6;
+  background: #ffffff52;
 }
 .annotation.show-marker .annotation-dot,
 .annotation-dot:focus-visible {

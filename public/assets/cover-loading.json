@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "codec": "meshoptimizer 1.0.1 + gzip; no quantization",
+  "source": "cover-relief.bin",
+  "rawBytes": 9732776,
+  "packedBytes": 3625685,
+  "gzipBytes": 2674800,
+  "sourceSha256": "8af608ee213d1828816523467bc432184e8cf02d5749d49c2205be3732cc322b",
+  "packageSha256": "329c615d9fb5fc2f0629b54ebe3e581220d312b6651d8542a054cc033c57221a",
+  "derivedUVMask": 7
+}

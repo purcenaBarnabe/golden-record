@@ -1,4 +1,4 @@
-import { BufferAttribute, BufferGeometry, FileLoader, Loader } from 'three'
+import { BufferAttribute, BufferGeometry } from 'three'
 
 export interface CoverRelief {
   face: BufferGeometry
@@ -31,12 +31,13 @@ export function parseCoverRelief(buffer: ArrayBuffer): CoverRelief {
   let cursor = 32
   for (const [i, count] of counts.entries()) {
     const attributes = new Float32Array(buffer, cursor, count * 8)
-    if (attributes.some((value) => !Number.isFinite(value)))
-      throw new Error('Invalid cover relief attributes')
+    for (let j = 0; j < attributes.length; j++)
+      if (!Number.isFinite(attributes[j])) throw new Error('Invalid cover relief attributes')
     cursor += attributes.byteLength
     if (indexed) {
       const indices = new Uint32Array(buffer, cursor, header[5 + i])
-      if (indices.some((index) => index >= count)) throw new Error('Invalid cover relief indices')
+      for (let j = 0; j < indices.length; j++)
+        if (indices[j] >= count) throw new Error('Invalid cover relief indices')
       cursor += indices.byteLength
     }
   }
@@ -64,29 +65,4 @@ export function parseCoverRelief(buffer: ArrayBuffer): CoverRelief {
     return geometry
   })
   return { face: geometries[0], bevel: geometries[1], floor: geometries[2] }
-}
-
-export class EngravedCoverLoader extends Loader<CoverRelief> {
-  load(
-    url: string,
-    onLoad: (relief: CoverRelief) => void,
-    onProgress?: (event: ProgressEvent) => void,
-    onError?: (error: unknown) => void,
-  ) {
-    new FileLoader(this.manager)
-      .setPath(this.path)
-      .setResponseType('arraybuffer')
-      .load(
-        url,
-        (data) => {
-          try {
-            onLoad(parseCoverRelief(data as ArrayBuffer))
-          } catch (error) {
-            onError?.(error)
-          }
-        },
-        onProgress,
-        onError,
-      )
-  }
 }

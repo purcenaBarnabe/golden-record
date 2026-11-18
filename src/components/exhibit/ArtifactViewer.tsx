@@ -1,10 +1,11 @@
-import { Component, lazy, Suspense, useCallback, useEffect, useState, type ReactNode } from 'react'
+import { Component, useCallback, useEffect, useState, type ReactNode } from 'react'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { ViewerControls } from './ViewerControls'
 
-const Scene = lazy(() =>
-  import('../scene/ArtifactScene').then((m) => ({ default: m.ArtifactScene })),
-)
+const loadScene = () => import('../scene/ArtifactScene')
+// Start the split chunk while the gallery hydrates, without loading WebGL during SSR.
+if (typeof window !== 'undefined') void loadScene().catch(() => {})
+type SceneComponent = (typeof import('../scene/ArtifactScene'))['ArtifactScene']
 
 class SceneBoundary extends Component<
   { children: ReactNode; onUnavailable: () => void },
@@ -39,7 +40,7 @@ function Fallback() {
 }
 
 export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: () => void }) {
-  const [mounted, setMounted] = useState(false)
+  const [Scene, setScene] = useState<SceneComponent | null>(null)
   const [available, setAvailable] = useState(true)
   const artifact = useExhibitStore((s) => s.artifact)
   const setPanel = useExhibitStore((s) => s.setPanel)
@@ -48,7 +49,20 @@ export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: ()
     onReady()
     setAvailable(false)
   }, [onReady])
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    let active = true
+    loadScene().then(
+      (module) => {
+        if (active) setScene(() => module.ArtifactScene)
+      },
+      () => {
+        if (active) onUnavailable()
+      },
+    )
+    return () => {
+      active = false
+    }
+  }, [onUnavailable])
   return (
     <div className="artifact-viewer" id="artifact" aria-busy={!ready}>
       {!ready && (
@@ -57,16 +71,15 @@ export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: ()
           <span>Preparing the record</span>
         </div>
       )}
-      {mounted &&
-        (available ? (
+      {!available ? (
+        <Fallback />
+      ) : (
+        Scene && (
           <SceneBoundary onUnavailable={onUnavailable}>
-            <Suspense fallback={null}>
-              <Scene onReady={onReady} onUnavailable={onUnavailable} />
-            </Suspense>
+            <Scene onReady={onReady} onUnavailable={onUnavailable} />
           </SceneBoundary>
-        ) : (
-          <Fallback />
-        ))}
+        )
+      )}
       <div className="gallery-bottom">
         <p className="gesture-hint">Scroll to zoom · Drag to orbit · Right-drag to pan</p>
         <ViewerControls disabled={!available || !ready} />

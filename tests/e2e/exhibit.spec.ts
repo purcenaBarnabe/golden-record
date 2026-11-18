@@ -257,6 +257,12 @@ test('mobile remains one viewport without overflow in light and dark modes', asy
 })
 
 test('the reference photograph, information and music work without WebGL', async ({ page }) => {
+  const assetRequests: string[] = []
+  page.on('request', (request) => {
+    const path = new URL(request.url()).pathname
+    if (/cover-relief\.|record-(albedo|roughness|anisotropy|relief)\.webp/.test(path))
+      assetRequests.push(path)
+  })
   await page.addInitScript(() => {
     const original = HTMLCanvasElement.prototype.getContext
     HTMLCanvasElement.prototype.getContext = function (
@@ -282,4 +288,5 @@ test('the reference photograph, information and music work without WebGL', async
   await page.locator('.listen-caption').click()
   await expect(page.getByRole('dialog')).toHaveAccessibleName('The Sounds of Earth')
   await expect(page.locator('.music-track')).toHaveCount(27)
+  expect(assetRequests).toEqual([])
 })

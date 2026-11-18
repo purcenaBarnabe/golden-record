@@ -1,0 +1,326 @@
+[
+  {
+    "name": "desktop-light-cover-studio",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-cover-raking",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-cover-macro",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-cover-96x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-cover-128x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-record-studio",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-record-raking",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-record-96x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-light-record-128x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-cover-studio",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-cover-raking",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-cover-macro",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-cover-96x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-cover-128x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-record-studio",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-record-raking",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-record-96x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "desktop-dark-record-128x",
+    "width": 1440,
+    "height": 1000,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-cover-studio",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-cover-raking",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-cover-macro",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-cover-96x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-cover-128x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-record-studio",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-record-raking",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-record-96x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-light-record-128x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-cover-studio",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-cover-raking",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-cover-macro",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-cover-96x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-cover-128x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-record-studio",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-record-raking",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-record-96x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  },
+  {
+    "name": "mobile-dark-record-128x",
+    "width": 780,
+    "height": 1688,
+    "meanAbsoluteChannelDifference": 0,
+    "pixelsDifferentByMoreThanOne": 0,
+    "changedPercent": 0,
+    "maxChannelDifference": 0
+  }
+]

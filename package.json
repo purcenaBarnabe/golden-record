@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3000 --strictPort",
-    "build": "vite build",
+    "build": "node scripts/pack-cover.mjs && vite build",
     "deploy": "yarn build && wrangler pages deploy dist/client --project-name voyager-golden-record --branch main",
     "start": "vite preview --config vite.static.config.ts --outDir dist/client --host 127.0.0.1 --port 3000 --strictPort",
     "format": "prettier --write .",
@@ -29,6 +29,7 @@
     "@tanstack/react-router": "^1.169.5",
     "@tanstack/react-start": "^1.169.5",
     "lucide-react": "^0.577.0",
+    "meshoptimizer": "1.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.18",

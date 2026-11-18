@@ -3,7 +3,8 @@ import { useTexture } from '@react-three/drei'
 import { Matrix4, SRGBColorSpace, Vector2, type Texture } from 'three'
 import { useLoader, useThree, type ThreeEvent } from '@react-three/fiber'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
-import { EngravedCoverLoader } from '../../lib/engraved-cover'
+import { EngravedCoverLoader } from '../../lib/cover-loader'
+import { COVER_RELIEF_URL, RECORD_TEXTURE_URLS } from '../../lib/exhibit-assets'
 import { onDisc } from '../../lib/surface-picking'
 import { createMetalMaterial } from '../../lib/metal-finish'
 import { AUTO_HOVER_MAX_ZOOM } from '../../lib/inspection'
@@ -57,7 +58,7 @@ function Edge({
 }
 
 export function CoverModel() {
-  const relief = useLoader(EngravedCoverLoader, '/assets/cover-relief.bin')
+  const relief = useLoader(EngravedCoverLoader, COVER_RELIEF_URL)
   const picker = useMemo(() => new EngravingPicker(relief), [relief])
   const clip = useMemo(() => new Matrix4(), [])
   const cutOffset = useMemo(() => new Matrix4().makeTranslation(0, 0, -0.000001), [])
@@ -172,12 +173,7 @@ export function CoverModel() {
 }
 
 export function AudioRecordModel() {
-  const textures = useTexture([
-    '/assets/record-albedo.webp',
-    '/assets/record-roughness.webp',
-    '/assets/record-anisotropy.webp',
-    '/assets/record-relief.webp',
-  ])
+  const textures = useTexture(RECORD_TEXTURE_URLS)
   const [color, roughness, anisotropy, relief] = useMemo(
     () => textures.map((t, i) => finishTexture(t, i === 0)),
     [textures],

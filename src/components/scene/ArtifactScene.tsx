@@ -1,6 +1,6 @@
-import { memo, Suspense, useEffect, useLayoutEffect, useRef } from 'react'
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Environment, Lightformer, OrbitControls, SoftShadows } from '@react-three/drei'
+import { OrbitControls, SoftShadows } from '@react-three/drei'
 import { ACESFilmicToneMapping, MathUtils, MOUSE, PCFSoftShadowMap, TOUCH, Vector3 } from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import { CoverModel, AudioRecordModel } from './RecordModel'
@@ -13,6 +13,8 @@ import { artworkPosition, inscriptions } from '../../lib/inscriptions'
 import { MAX_ZOOM, MIN_ZOOM, SURFACE_FOCUS } from '../../lib/inspection'
 import { COVER_RADIUS } from './RecordModel'
 import { useMobileControls } from '../../hooks/use-mobile-controls'
+import { StudioEnvironment } from './StudioEnvironment'
+import { prepareExhibitAssets } from '../../lib/preload-exhibit'
 
 const INITIAL_CAMERA = new Vector3(0.245, 0.18, 1.1)
 const INITIAL_DISTANCE = INITIAL_CAMERA.length()
@@ -20,62 +22,6 @@ const ORBIT_MOUSE_BUTTONS = { LEFT: MOUSE.ROTATE, MIDDLE: MOUSE.DOLLY, RIGHT: MO
 const DRAG_MOUSE_BUTTONS = { LEFT: MOUSE.PAN, MIDDLE: MOUSE.DOLLY, RIGHT: MOUSE.PAN }
 const ORBIT_TOUCHES = { ONE: TOUCH.ROTATE, TWO: TOUCH.DOLLY_PAN }
 const DRAG_TOUCHES = { ONE: TOUCH.PAN, TWO: TOUCH.DOLLY_PAN }
-
-const StudioEnvironment = memo(function StudioEnvironment() {
-  return (
-    <Environment resolution={1024} frames={2} near={0.1} far={20}>
-      <Lightformer
-        form="rect"
-        intensity={4.5}
-        position={[-1, 0.8, 4]}
-        target={[0, 0, 0]}
-        scale={[0.55, 5, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={1.1}
-        position={[2.7, 1, 3]}
-        target={[0, 0, 0]}
-        scale={[2, 4, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={0.35}
-        position={[0, 0.5, 5]}
-        target={[0, 0, 0]}
-        scale={[8, 8, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={3}
-        position={[1.8, 1.3, -4]}
-        target={[0, 0, 0]}
-        scale={[1.5, 5, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={1.1}
-        position={[-2, 0.7, -3]}
-        target={[0, 0, 0]}
-        scale={[1.3, 4, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={0.38}
-        position={[0, 0.4, -5]}
-        target={[0, 0, 0]}
-        scale={[8, 8, 1]}
-      />
-      <Lightformer
-        form="rect"
-        intensity={2}
-        position={[0, 4, 0]}
-        target={[0, 0, 0]}
-        scale={[5, 3, 1]}
-      />
-    </Environment>
-  )
-})
 
 function SceneContent({ onReady }: { onReady: () => void }) {
   const controls = useRef<OrbitControlsImpl>(null)
@@ -225,7 +171,6 @@ function SceneContent({ onReady }: { onReady: () => void }) {
   return (
     <>
       <color attach="background" args={[dark ? '#000000' : '#ffffff']} />
-      <SoftShadows size={12} samples={24} focus={0.4} />
       <ambientLight intensity={dark ? 0.19 : 0.65} />
       <directionalLight
         position={[-0.7, 1.3, 0.8]}
@@ -309,6 +254,24 @@ function ContextGuard({ onUnavailable }: { onUnavailable: () => void }) {
   return null
 }
 
+function PreparedScene({ onReady }: { onReady: () => void }) {
+  const [prepared, setPrepared] = useState(false)
+  useEffect(() => {
+    let active = true
+    const complete = () => {
+      if (active) setPrepared(true)
+    }
+    // This effect only runs after Canvas has successfully created WebGL.
+    // Mount from fulfilled loader caches without a second suspense reveal delay.
+    // Failed loads still reach the existing scene error boundary.
+    prepareExhibitAssets().then(complete, complete)
+    return () => {
+      active = false
+    }
+  }, [])
+  return prepared ? <SceneContent onReady={onReady} /> : null
+}
+
 export function ArtifactScene({
   onReady,
   onUnavailable,
@@ -336,8 +299,9 @@ export function ArtifactScene({
       }}
     >
       <ContextGuard onUnavailable={onUnavailable} />
+      <SoftShadows size={12} samples={24} focus={0.4} />
       <Suspense fallback={null}>
-        <SceneContent onReady={onReady} />
+        <PreparedScene onReady={onReady} />
       </Suspense>
     </Canvas>
   )
