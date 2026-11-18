@@ -10,6 +10,14 @@ export const ptBR: Messages = {
       'A capa gravada do Disco de Ouro ao lado do título em inglês The Golden Record, uma exposição interativa em 3D.',
   },
   language: { label: 'Idioma', auto: 'Automático', short: 'PT' },
+  welcome: {
+    title: 'Parabéns, Voyager 1!',
+    description: 'A um dia-luz da Terra.',
+    source: 'Acompanhe a Voyager na NASA',
+    voyager: 'Sonda Voyager usando um chapéu de festa rosa',
+    close: 'Fechar celebração',
+    explore: 'Vamos explorar',
+  },
   exhibit: {
     skip: 'Ir para os controles de inspeção',
     options: 'Opções da exposição',

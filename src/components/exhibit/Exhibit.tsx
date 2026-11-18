@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { observeExhibit } from '../../lib/exhibit-observability'
 import { useI18n } from '../../lib/i18n'
 import { LanguagePicker } from './LanguagePicker'
+import { WelcomeCelebration } from './WelcomeCelebration'
 
 export function Exhibit() {
   const { t } = useI18n()
@@ -61,6 +62,7 @@ export function Exhibit() {
       </main>
       <ExhibitPanels />
       <MusicExperience />
+      <WelcomeCelebration ready={viewerReady} />
     </div>
   )
 }

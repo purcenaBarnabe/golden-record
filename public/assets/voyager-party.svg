@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="420" viewBox="0 0 520 420" fill="none">
+  <defs>
+    <linearGradient id="rim" x1="212" y1="116" x2="293" y2="263" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e8eff0"/>
+      <stop offset=".55" stop-color="#bccacf"/>
+      <stop offset="1" stop-color="#71858f"/>
+    </linearGradient>
+    <radialGradient id="dish" cx="0" cy="0" r="1" gradientTransform="translate(228 148) rotate(49) scale(138 102)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset=".53" stop-color="#f4f7f7"/>
+      <stop offset=".82" stop-color="#dce5e7"/>
+      <stop offset="1" stop-color="#a6b9c1"/>
+    </radialGradient>
+    <linearGradient id="foil" x1="211" y1="239" x2="293" y2="317" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f3dfac"/>
+      <stop offset=".4" stop-color="#d9b66b"/>
+      <stop offset=".7" stop-color="#bc9148"/>
+      <stop offset="1" stop-color="#896139"/>
+    </linearGradient>
+    <linearGradient id="record" x1="251" y1="267" x2="276" y2="294" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0ba"/>
+      <stop offset=".5" stop-color="#ddbe72"/>
+      <stop offset="1" stop-color="#b18b48"/>
+    </linearGradient>
+    <linearGradient id="rtg" x1="-13" y1="0" x2="13" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3b4c56"/>
+      <stop offset=".42" stop-color="#84969f"/>
+      <stop offset="1" stop-color="#35444c"/>
+    </linearGradient>
+    <linearGradient id="hat" x1="244" y1="77" x2="290" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f5d1d7"/>
+      <stop offset=".55" stop-color="#e6aebd"/>
+      <stop offset="1" stop-color="#c78097"/>
+    </linearGradient>
+    <g id="generator" stroke="#566973" stroke-width="1.2">
+      <path d="M-12-14h24v28h-24z" fill="url(#rtg)"/>
+      <path d="M-10-12v24m5-25v27m5-27v27m5-27v27m5-26v25" stroke="#c5d0d2" stroke-width="1.5"/>
+      <ellipse cy="14" rx="12" ry="3.5" fill="#657983"/>
+      <ellipse cy="-14" rx="12" ry="3.5" fill="#b6c4c9"/>
+      <path d="M-9-14H9" stroke="#e2e8e7"/>
+      <path d="M-14-9v18m28-18v18" stroke="#9aaeb7" stroke-width="2"/>
+    </g>
+  </defs>
+  <!-- Open magnetometer truss, tapering toward its outboard sensor. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="m283 256 165-137 6 6-156 143Z" fill="#a2b4bc" fill-opacity=".08" stroke="#697f8d" stroke-width="1.8"/>
+    <path d="M283 256l30.6-2.3 2.4-25.1 28.8-3.5 4.2-23.9 27-4.7 6-22.7 25.2-5.9 7.8-21.5 23.4-7.1 9.6-20.3" stroke="#8ea3ae" stroke-width="1.4"/>
+    <path d="m299 264 153-142" stroke="#e0e9e9" stroke-width=".8"/>
+    <path d="m443 117 16-12 10 12-16 12Z" fill="#a7b9c1" stroke="#617783" stroke-width="1.3"/>
+    <path d="m447 117 12-8 6 7-12 9Z" fill="#dce5e6"/>
+    <path d="m459 105 6-11m1 22 10-4" stroke="#8ba0ab" stroke-width="1.8"/>
+  </g>
+  <!-- Science boom, scan platform, and the paired camera apertures. -->
+  <g stroke="#6e818c" stroke-width="1.5" stroke-linejoin="round">
+    <path d="m291 272 92-9 3 16-89 10m9-18 12 15 15-18 14 17 14-20 15 15"/>
+    <path d="m300 280 84-9" stroke="#b8c7cd"/>
+    <path d="m380 261 16-5 10 15-8 17-15-8Z" fill="#9aadb5"/>
+    <path d="m392 259 25-6 17 13-5 23-28 4-6-15Z" fill="#bdcbd0"/>
+    <path d="m417 253 17 13-25 6-14-12" fill="#e0e7e7"/>
+    <path d="m409 272 25-6-5 23-23 5Z" fill="#8299a6"/>
+    <ellipse cx="416" cy="279" rx="6" ry="8" transform="rotate(17 416 279)" fill="#334b5b"/>
+    <ellipse cx="416" cy="277" rx="3" ry="4" transform="rotate(17 416 277)" fill="#95b3c2" stroke="none"/>
+    <path d="m397 269-9 1-2 11 12-1" fill="#617987"/>
+    <path d="m400 261 11-3m-8 7 12-3" stroke="#f0f4ef"/>
+  </g>
+  <!-- Power boom with three separate finned radioisotope generators. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="m211 264-80 26-4-9 82-29m-15 6-8 13-13-6-9 13-13-6-9 13" stroke="#718590" stroke-width="1.7"/>
+    <path d="m206 258-78 27" stroke="#d1dce0" stroke-width="1"/>
+    <path d="m136 286-81 34" stroke="#9aadb5" stroke-width="4"/>
+    <use href="#generator" transform="translate(119 296) rotate(68)"/>
+    <use href="#generator" transform="translate(91 307) rotate(68)"/>
+    <use href="#generator" transform="translate(63 318) rotate(68)"/>
+  </g>
+  <!-- Fine plasma-wave antenna elements remain readable against either theme. -->
+  <g stroke-linecap="round">
+    <path d="m239 298-123 108m162-106 151 90" stroke="#bd9d60" stroke-width="1.6"/>
+    <path d="m240 299-28 25m65-24 29 18" stroke="#e3c78c" stroke-width="2.2"/>
+    <path d="m243 299-20 11m52-11 20 4" stroke="#6b818c" stroke-width="3.5"/>
+  </g>
+  <!-- Faceted thermal blankets around the equipment bus. -->
+  <g stroke="#947444" stroke-width="1.2" stroke-linejoin="round">
+    <path d="m216 240 53-10 34 24 1 36-40 29-49-14-18-34Z" fill="url(#foil)"/>
+    <path d="m216 240 27 25 60-11-34-24Z" fill="#efd7a0"/>
+    <path d="m197 271 28 7 18-13-27-25Z" fill="#d9b76f"/>
+    <path d="m225 278 39 8 39-32-60 11Z" fill="#dfbd76"/>
+    <path d="m197 271 18 34 10-27Z" fill="#8c7248"/>
+    <path d="m225 278 39 8v33l-49-14Z" fill="#c69e57"/>
+    <path d="m264 286 40-32v36l-40 29Z" fill="#aa8044"/>
+    <path d="m218 243 9 16 13 6m-40 6 13-7 12 14m-8 24 19-7 7 17m23-25 12 4 23-6m-15-43 6 16-10 9" stroke="#f7e4b4" stroke-width="1"/>
+    <path d="m232 245 15 12 15-8 9 9m-42 26 7 11 15-3 6 19m19-25 8 9 8-6" stroke="#a47c3e" stroke-width=".9"/>
+    <path d="m211 265 5 15-7 7-6-15Z" fill="#485a64" stroke="#687e88"/>
+    <path d="m205 273 7-3m-5 7 7-3m-5 7 6-3" stroke="#a9bac1"/>
+    <ellipse cx="254" cy="241" rx="23" ry="9" fill="#8b9ca3" stroke="#647a85"/>
+    <path d="m234 239 4-21 23-5 12 23q-17 12-39 3Z" fill="#c1cdd0" stroke="#7d929d"/>
+    <path d="m241 222-2 13m23-17 6 16" stroke="#eef2ef"/>
+  </g>
+  <!-- The Golden Record, a small warm glint on the equipment bus. -->
+  <g transform="rotate(-10 267 279)">
+    <circle cx="267" cy="279" r="15" fill="url(#record)" stroke="#8f6e36" stroke-width="1.3"/>
+    <circle cx="267" cy="279" r="11.5" stroke="#fff0bd" stroke-width=".7"/>
+    <circle cx="267" cy="279" r="9.5" stroke="#be9952" stroke-width=".6"/>
+    <circle cx="267" cy="279" r="6.7" stroke="#bd9650" stroke-width=".6"/>
+    <circle cx="267" cy="279" r="4" fill="#f2db9e" stroke="#b78f48" stroke-width=".7"/>
+    <circle cx="267" cy="279" r="1.2" fill="#8f713c"/>
+    <path d="m257 269 3-2m-6 7 2-3" stroke="#fff2cb" stroke-linecap="round"/>
+  </g>
+  <!-- A sculpted parabolic dish: rolled rim, concave bowl, and feed tripod. -->
+  <g transform="rotate(-18 256 181)">
+    <ellipse cx="256" cy="188" rx="103" ry="75" fill="url(#rim)" stroke="#718893" stroke-width="1.4"/>
+    <path d="M154 186c11 44 62 77 112 74 44-2 80-27 92-62" stroke="#92a7b0" stroke-width="1.1"/>
+    <ellipse cx="256" cy="181" rx="103" ry="73" fill="url(#dish)" stroke="#a0b3bc" stroke-width="1.4"/>
+    <ellipse cx="256" cy="179" rx="99" ry="69" stroke="#faffff" stroke-width="2.2"/>
+    <path d="M167 155c15-25 49-39 83-41" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M174 199c24 33 73 49 110 35 29-10 48-30 56-55" stroke="#cedbdf" stroke-width=".9"/>
+    <path d="M187 143q59 103 140 13M202 125q-7 91 95 111" stroke="#b6c7cf" stroke-width=".75" opacity=".7"/>
+    <path d="m167 151 73 10 106-8m-106 8 20 88" stroke="#8a9fa9" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="m168 150 72 10 105-8m-104 10 20 86" stroke="#f8fcfa" stroke-width=".8" stroke-linecap="round"/>
+    <circle cx="168" cy="151" r="2.5" fill="#8da1ab"/>
+    <circle cx="345" cy="153" r="2.5" fill="#8da1ab"/>
+    <circle cx="260" cy="248" r="2.5" fill="#8da1ab"/>
+    <path d="m231 151 15-2 5 17-16 3Z" fill="#c1a166" stroke="#897343" stroke-width="1.2"/>
+    <path d="m231 151 7-5 15-2-7 5Z" fill="#f1ddb0" stroke="#a08a5e" stroke-width="1"/>
+    <path d="m246 149 7-5 4 16-6 6Z" fill="#947a4c"/>
+    <path d="m235 155 9-1" stroke="#f7e6bd" stroke-width="1.7"/>
+  </g>
+  <!-- Soft striped paper, a turned-up brim, and a little fluffy pompom. -->
+  <g transform="rotate(8 267 118)" stroke-linejoin="round">
+    <path d="m234 128 19-72 44 64q-27 19-63 8Z" fill="url(#hat)" stroke="#b87d91" stroke-width="1.3"/>
+    <path d="m253 56 44 64q-8 6-14 7Z" fill="#b9738b" opacity=".2"/>
+    <path d="m245 94 29-8 9 13-42 11Z" fill="#f9e7c9"/>
+    <path d="m245 92 8-31" stroke="#ffe6e9" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M234 128q34 10 63-8" stroke="#bd8c78" stroke-width="6" stroke-linecap="round"/>
+    <path d="M234 126q34 10 63-8" stroke="#f9e7c9" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M236 125q31 9 58-6" stroke="#fff5df" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M246 51q-2-8 5-6 5-7 8 0 8 0 4 7 4 7-4 8-5 6-9 0-8 0-4-9Z" fill="#f7e3bf"/>
+    <circle cx="253" cy="51" r="5.5" fill="#fff1d6"/>
+    <circle cx="251" cy="49" r="2.2" fill="#fffaf0"/>
+  </g>
+</svg>

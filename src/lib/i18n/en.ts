@@ -15,6 +15,14 @@ export const en = {
       'The engraved Golden Record cover beside the title The Golden Record, an interactive 3D exhibit.',
   },
   language: { label: 'Language', auto: 'Automatic', short: 'EN' },
+  welcome: {
+    title: 'Congrats, Voyager 1!',
+    description: 'One light-day from Earth.',
+    source: 'Track Voyager on NASA',
+    voyager: 'Voyager spacecraft wearing a pink party hat',
+    close: 'Close celebration',
+    explore: 'Let’s explore',
+  },
   exhibit: {
     skip: 'Skip to inspection controls',
     options: 'Exhibit options',
