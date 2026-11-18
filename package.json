@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 3000 --strictPort",
-    "build": "node scripts/pack-cover.mjs && vite build",
+    "build": "node scripts/pack-cover.mjs && vite build && node scripts/upload-sourcemaps.mjs",
     "deploy": "yarn build && wrangler pages deploy dist/client --project-name voyager-golden-record --branch main",
     "start": "vite preview --config vite.static.config.ts --outDir dist/client --host 127.0.0.1 --port 3000 --strictPort",
     "format": "prettier --write .",
@@ -25,6 +25,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
+    "@sentry/react": "11.14.0",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-router": "^1.169.5",
     "@tanstack/react-start": "^1.169.5",
@@ -39,6 +40,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
+    "@sentry/cli": "3.8.2",
     "@types/node": "^22.19.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",

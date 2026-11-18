@@ -18,6 +18,8 @@ export default defineConfig({
     ? undefined
     : {
         command: 'yarn dev',
+        // Routine UI tests must never send synthetic errors to the real project.
+        env: { VITE_SENTRY_DSN: process.env.PLAYWRIGHT_SENTRY_DSN || '' },
         url: 'http://127.0.0.1:3000',
         reuseExistingServer: false,
         timeout: 30_000,

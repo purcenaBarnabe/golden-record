@@ -1,4 +1,4 @@
-import { useId, useLayoutEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useId, useLayoutEffect, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import {
   calloutCorridor,
@@ -8,6 +8,7 @@ import {
   type ScreenRect,
 } from '../../lib/callout-placement'
 import { useExhibitStore, type HoverTarget } from '../../stores/use-exhibit-store'
+import { trackInteraction } from '../../lib/observability'
 
 export const withinAnnotation = (target: HoverTarget, element: EventTarget | null) =>
   element instanceof Element && Boolean(element.closest(`[data-inscription="${target}"]`))
@@ -36,6 +37,13 @@ export function AnnotationCard({
   const projection = useRef(projectSubject)
   projection.current = projectSubject
   const owner = useId()
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (card.current && getComputedStyle(card.current).visibility === 'visible')
+        trackInteraction('infocard.previewed', { inscription: target })
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [target])
   const enter = () => useExhibitStore.getState().setAnnotationHovered(target)
   const leave = (relatedTarget: EventTarget | null) => {
     const next = relatedTarget instanceof Element ? relatedTarget : null

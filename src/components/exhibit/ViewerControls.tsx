@@ -4,6 +4,7 @@ import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { useShallow } from 'zustand/react/shallow'
 import { IconButton } from '../ui/IconButton'
 import { MAX_ZOOM, MIN_ZOOM } from '../../lib/inspection'
+import { trackInteraction } from '../../lib/observability'
 
 export function ViewerControls({ disabled }: { disabled: boolean }) {
   const s = useExhibitStore(
@@ -70,7 +71,14 @@ export function ViewerControls({ disabled }: { disabled: boolean }) {
         >
           <Microscope size={20} strokeWidth={1.7} />
         </IconButton>
-        <IconButton label="Reset view" onClick={s.reset} disabled={disabled}>
+        <IconButton
+          label="Reset view"
+          onClick={() => {
+            trackInteraction('artifact.reset')
+            s.reset()
+          }}
+          disabled={disabled}
+        >
           <RotateCcw size={18} strokeWidth={1.7} />
         </IconButton>
         <IconButton

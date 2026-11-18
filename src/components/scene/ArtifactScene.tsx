@@ -15,6 +15,7 @@ import { COVER_RADIUS } from './RecordModel'
 import { useMobileControls } from '../../hooks/use-mobile-controls'
 import { StudioEnvironment } from './StudioEnvironment'
 import { prepareExhibitAssets } from '../../lib/preload-exhibit'
+import { reportFailure, trackInteraction } from '../../lib/observability'
 
 const INITIAL_CAMERA = new Vector3(0.245, 0.18, 1.1)
 const INITIAL_DISTANCE = INITIAL_CAMERA.length()
@@ -228,14 +229,16 @@ function SceneContent({ onReady }: { onReady: () => void }) {
           manual.current = true
           useExhibitStore.getState().interactWithView()
         }}
-        onEnd={() =>
+        onEnd={() => {
           useExhibitStore
             .getState()
             .syncZoom(
               (INITIAL_DISTANCE * fit) /
                 camera.position.distanceTo(controls.current?.target ?? new Vector3()),
             )
-        }
+          const state = useExhibitStore.getState()
+          trackInteraction('artifact.manipulated', { artifact: state.artifact, zoom: state.zoom })
+        }}
       />
     </>
   )
@@ -246,6 +249,9 @@ function ContextGuard({ onUnavailable }: { onUnavailable: () => void }) {
   useEffect(() => {
     const lost = (event: Event) => {
       event.preventDefault()
+      reportFailure(new Error('WebGL context lost'), 'webgl', {
+        artifact: useExhibitStore.getState().artifact,
+      })
       onUnavailable()
     }
     canvas.addEventListener('webglcontextlost', lost)

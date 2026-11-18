@@ -1,6 +1,7 @@
-import { Component, useCallback, useEffect, useState, type ReactNode } from 'react'
+import { Component, useCallback, useEffect, useState, type ErrorInfo, type ReactNode } from 'react'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { ViewerControls } from './ViewerControls'
+import { finishSceneObservation, reportFailure, trackInteraction } from '../../lib/observability'
 
 const loadScene = () => import('../scene/ArtifactScene')
 // Start the split chunk while the gallery hydrates, without loading WebGL during SSR.
@@ -15,7 +16,8 @@ class SceneBoundary extends Component<
   static getDerivedStateFromError() {
     return { failed: true }
   }
-  componentDidCatch() {
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    reportFailure(error, 'scene', { component_stack: info.componentStack ?? '' })
     this.props.onUnavailable()
   }
   render() {
@@ -45,7 +47,13 @@ export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: ()
   const artifact = useExhibitStore((s) => s.artifact)
   const setPanel = useExhibitStore((s) => s.setPanel)
   const zoom = useExhibitStore((s) => s.zoom)
+  const sceneReady = useCallback(() => {
+    finishSceneObservation('ok')
+    onReady()
+  }, [onReady])
   const onUnavailable = useCallback(() => {
+    finishSceneObservation('error')
+    trackInteraction('scene.unavailable')
     onReady()
     setAvailable(false)
   }, [onReady])
@@ -55,8 +63,11 @@ export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: ()
       (module) => {
         if (active) setScene(() => module.ArtifactScene)
       },
-      () => {
-        if (active) onUnavailable()
+      (error: unknown) => {
+        if (active) {
+          reportFailure(error, 'scene.chunk')
+          onUnavailable()
+        }
       },
     )
     return () => {
@@ -76,7 +87,7 @@ export function ArtifactViewer({ ready, onReady }: { ready: boolean; onReady: ()
       ) : (
         Scene && (
           <SceneBoundary onUnavailable={onUnavailable}>
-            <Scene onReady={onReady} onUnavailable={onUnavailable} />
+            <Scene onReady={sceneReady} onUnavailable={onUnavailable} />
           </SceneBoundary>
         )
       )}

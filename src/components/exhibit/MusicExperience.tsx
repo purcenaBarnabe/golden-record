@@ -14,6 +14,7 @@ import {
 } from 'lucide-react'
 import {
   AUDIO_ARCHIVE,
+  filterTracks,
   formatTime,
   MUSIC_CREDITS,
   NASA_MUSIC,
@@ -22,6 +23,15 @@ import {
 } from '../../lib/music'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { MusicTrackList } from './MusicTrackList'
+import {
+  beginOperation,
+  reportFailure,
+  trackInteraction,
+  type ObservationAttributes,
+} from '../../lib/observability'
+
+const trackAttributes = (track: RecordTrack | null): ObservationAttributes =>
+  track ? { track_id: track.id, program: track.kind } : {}
 
 export function MusicExperience() {
   const open = useExhibitStore((s) => s.panel === 'music')
@@ -40,21 +50,47 @@ export function MusicExperience() {
   const current = useRef<RecordTrack | null>(null)
   const request = useRef(0)
   const returnFocus = useRef<HTMLElement | null>(null)
+  const startup = useRef<ReturnType<typeof beginOperation> | undefined>(undefined)
+  const buffering = useRef<ReturnType<typeof beginOperation> | undefined>(undefined)
+  const reportedFailure = useRef<number | null>(null)
+  const playbackActive = useRef(false)
+  const seekTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const volumeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const clearSearch = useCallback(() => setQuery(''), [])
+
+  const playbackFailed = useCallback((reason: unknown, code: string) => {
+    if (reportedFailure.current === request.current) return
+    reportedFailure.current = request.current
+    startup.current?.('error')
+    startup.current = undefined
+    buffering.current?.('error')
+    buffering.current = undefined
+    reportFailure(reason, 'audio', { ...trackAttributes(current.current), code })
+  }, [])
 
   const start = useCallback(() => {
     const element = audio.current
     if (!element) return
     const generation = ++request.current
+    reportedFailure.current = null
+    startup.current?.('cancelled')
+    startup.current = beginOperation('audio.startup', trackAttributes(current.current))
+    trackInteraction('audio.play_requested', trackAttributes(current.current))
     setLoading(true)
     setError(null)
     if (element.error) element.load()
     void element.play().catch((reason: unknown) => {
-      if (
-        request.current !== generation ||
-        (reason instanceof DOMException && reason.name === 'AbortError')
-      )
+      if (request.current !== generation) return
+      if (reason instanceof DOMException && reason.name === 'AbortError') {
+        startup.current?.('cancelled')
+        startup.current = undefined
         return
+      }
+      if (reason instanceof DOMException && reason.name === 'NotAllowedError') {
+        startup.current?.('cancelled')
+        startup.current = undefined
+        trackInteraction('audio.play_blocked', trackAttributes(current.current))
+      } else playbackFailed(reason, reason instanceof Error ? reason.name : 'play_rejected')
       setLoading(false)
       setPlaying(false)
       setError(
@@ -63,13 +99,18 @@ export function MusicExperience() {
           : 'This recording could not load. Retry or open the audio archive below.',
       )
     })
-  }, [])
+  }, [playbackFailed])
 
   const choose = useCallback(
     (track: RecordTrack) => {
       const element = audio.current
       if (!element) return
       if (current.current?.id !== track.id) {
+        startup.current?.('cancelled')
+        buffering.current?.('cancelled')
+        buffering.current = undefined
+        playbackActive.current = false
+        trackInteraction('audio.track_selected', trackAttributes(track))
         ++request.current
         element.pause()
         current.current = track
@@ -96,6 +137,7 @@ export function MusicExperience() {
     (direction: number) => {
       const track = current.current
       if (!track) return
+      trackInteraction('audio.skipped', { ...trackAttributes(track), direction })
       if (direction < 0 && (audio.current?.currentTime ?? 0) > 3) {
         audio.current!.currentTime = 0
         setElapsed(0)
@@ -113,6 +155,12 @@ export function MusicExperience() {
   )
 
   const stop = () => {
+    trackInteraction('audio.stopped', trackAttributes(current.current))
+    startup.current?.('cancelled')
+    startup.current = undefined
+    buffering.current?.('cancelled')
+    buffering.current = undefined
+    playbackActive.current = false
     ++request.current
     audio.current?.pause()
     audio.current?.removeAttribute('src')
@@ -170,11 +218,35 @@ export function MusicExperience() {
   useEffect(() => {
     if (!open) setQuery('')
   }, [open])
+  useEffect(() => {
+    if (!open || !query.trim()) return
+    const timer = setTimeout(
+      () =>
+        trackInteraction('audio.searched', {
+          program: kind,
+          results: filterTracks(kind, query).length,
+        }),
+      600,
+    )
+    return () => clearTimeout(timer)
+  }, [kind, open, query])
+  useEffect(
+    () => () => {
+      startup.current?.('cancelled')
+      buffering.current?.('cancelled')
+      clearTimeout(seekTimer.current)
+      clearTimeout(volumeTimer.current)
+    },
+    [],
+  )
 
   const seek = (value: number) => {
     if (!audio.current || !Number.isFinite(audio.current.duration)) return
     audio.current.currentTime = value
     setElapsed(value)
+    clearTimeout(seekTimer.current)
+    const attributes = { ...trackAttributes(current.current), position_seconds: Math.round(value) }
+    seekTimer.current = setTimeout(() => trackInteraction('audio.seeked', attributes), 300)
   }
   const updateDuration = () => {
     const element = audio.current
@@ -198,22 +270,48 @@ export function MusicExperience() {
           if (audio.current) setElapsed(audio.current.currentTime)
         }}
         onPlaying={() => {
+          startup.current?.('ok')
+          startup.current = undefined
+          buffering.current?.('ok')
+          buffering.current = undefined
+          if (!playbackActive.current)
+            trackInteraction('audio.playing', trackAttributes(current.current))
+          playbackActive.current = true
           setPlaying(true)
           setLoading(false)
           setError(null)
         }}
         onPause={() => {
+          if (playbackActive.current)
+            trackInteraction('audio.paused', trackAttributes(current.current))
+          playbackActive.current = false
+          buffering.current?.('cancelled')
+          buffering.current = undefined
           setPlaying(false)
           setLoading(false)
         }}
-        onWaiting={() => setLoading(true)}
+        onWaiting={() => {
+          if (playbackActive.current && !buffering.current) {
+            buffering.current = beginOperation('audio.buffering', trackAttributes(current.current))
+            trackInteraction('audio.buffering', trackAttributes(current.current))
+          }
+          setLoading(true)
+        }}
         onCanPlay={() => {
           setLoading(false)
           updateDuration()
         }}
-        onEnded={() => skip(1)}
+        onEnded={() => {
+          trackInteraction('audio.ended', trackAttributes(current.current))
+          skip(1)
+        }}
         onError={() => {
           if (current.current) {
+            playbackFailed(
+              new Error('Audio recording could not load'),
+              `media_${audio.current?.error?.code ?? 'unknown'}`,
+            )
+            playbackActive.current = false
             setPlaying(false)
             setLoading(false)
             setSeekable(false)
@@ -266,6 +364,7 @@ export function MusicExperience() {
                 <button
                   aria-pressed={kind === 'music'}
                   onClick={() => {
+                    trackInteraction('audio.collection_changed', { program: 'music' })
                     setKind('music')
                     setQuery('')
                   }}
@@ -275,6 +374,7 @@ export function MusicExperience() {
                 <button
                   aria-pressed={kind === 'voices'}
                   onClick={() => {
+                    trackInteraction('audio.collection_changed', { program: 'voices' })
                     setKind('voices')
                     setQuery('')
                   }}
@@ -371,14 +471,29 @@ export function MusicExperience() {
                     max={1}
                     step={0.01}
                     value={volume}
-                    onChange={(event) => setVolume(Number(event.target.value))}
+                    onChange={(event) => {
+                      const value = Number(event.target.value)
+                      setVolume(value)
+                      clearTimeout(volumeTimer.current)
+                      volumeTimer.current = setTimeout(
+                        () => trackInteraction('audio.volume_changed', { volume: value }),
+                        300,
+                      )
+                    }}
                   />
                 </label>
               </div>
               {error && (
                 <div className="player-error" role="alert">
                   <p>{error}</p>
-                  <button onClick={start}>Retry playback</button>
+                  <button
+                    onClick={() => {
+                      trackInteraction('audio.retried', trackAttributes(current.current))
+                      start()
+                    }}
+                  >
+                    Retry playback
+                  </button>
                 </div>
               )}
               <div className="music-sources">

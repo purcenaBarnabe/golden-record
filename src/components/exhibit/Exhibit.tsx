@@ -8,6 +8,7 @@ import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { MusicExperience } from './MusicExperience'
 import { SurfaceSwitch } from './SurfaceSwitch'
 import { useCallback, useEffect, useState } from 'react'
+import { observeExhibit } from '../../lib/exhibit-observability'
 
 export function Exhibit() {
   const { theme, toggleTheme } = useGalleryTheme()
@@ -16,6 +17,7 @@ export function Exhibit() {
   const [viewerReady, setViewerReady] = useState(false)
   const onViewerReady = useCallback(() => setViewerReady(true), [])
   useEffect(() => setInteractive(true), [])
+  useEffect(observeExhibit, [])
   return (
     <div className="gallery" data-theme={theme}>
       <a className="skip-link" href="#viewer-controls">

@@ -5,8 +5,10 @@ import '@fontsource/dm-sans/500.css'
 import '@fontsource/dm-sans/600.css'
 import '@fontsource/instrument-serif/400.css'
 import '../styles/globals.css'
+import { reportFailure } from '../lib/observability'
 
 export const Route = createRootRoute({
+  onCatch: (error) => reportFailure(error, 'router'),
   head: () => ({
     meta: [
       { charSet: 'utf-8' },

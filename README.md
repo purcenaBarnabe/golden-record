@@ -20,6 +20,10 @@ Development and preview bind to loopback and require an unused port 3000. To exp
 
 React 19, TypeScript, TanStack Start and Router, Vite 8, Tailwind CSS 4, Zustand, Radix Dialog and Tooltip, Three.js, React Three Fiber, and Drei. Visual assets, catalog metadata, and fonts are local; no database or authentication is needed. Audio streams from Internet Archive only after a visitor selects a recording. External audio availability depends on that archive.
 
+## Observability
+
+Cloudflare Web Analytics provides traffic and browser performance metrics. Sentry captures UI errors, important exhibit and player interactions, scene readiness, audio startup, and buffering. Copy `.env.example` to `.env.local` to enable local reporting. Production builds receive the public DSN and a build-only source-map upload token through GitHub Actions. Errors are captured at full rate; production traces default to 10% sampling. Session Replay is disabled, and search text is excluded from telemetry.
+
 ## Verify
 
 ```sh
