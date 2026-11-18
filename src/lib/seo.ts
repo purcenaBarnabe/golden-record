@@ -3,7 +3,7 @@ import { ptBR } from './i18n/pt-BR'
 import type { Locale } from './i18n/locale'
 import { NASA_OVERVIEW } from './inscriptions'
 
-export const SITE_URL = 'https://voyager-golden-record.pages.dev/'
+export const SITE_URL = 'https://golden-record.purcena.com/'
 export const SOURCE_URL = 'https://github.com/purcenaBarnabe/golden-record'
 export const PREVIEW_IMAGE = new URL('social-preview.png', SITE_URL).href
 export const PREVIEW_WIDTH = 1200

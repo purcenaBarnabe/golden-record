@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://voyager-golden-record.pages.dev/sitemap.xml
+Sitemap: https://golden-record.purcena.com/sitemap.xml

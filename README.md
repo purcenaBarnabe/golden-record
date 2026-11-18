@@ -30,7 +30,7 @@ First-time visitors immediately see a brief celebration of Voyager 1 reaching on
 
 ## Search and link previews
 
-The production canonical URL is https://voyager-golden-record.pages.dev/. The prerendered HTML includes a descriptive title, Open Graph and Twitter large-image tags, a canonical link, and WebSite/WebPage structured data, so crawlers and chat previews do not need JavaScript. `public/robots.txt` points to the single-page sitemap. The title, descriptions, image alternative text, locale tags, and structured data follow the selected language after hydration; previews that do not run JavaScript use English. Both languages share the same canonical URL.
+The production canonical URL is https://golden-record.purcena.com/. The prerendered HTML includes a descriptive title, Open Graph and Twitter large-image tags, a canonical link, and WebSite/WebPage structured data, so crawlers and chat previews do not need JavaScript. `public/robots.txt` points to the single-page sitemap. The title, descriptions, image alternative text, locale tags, and structured data follow the selected language after hydration; previews that do not run JavaScript use English. Both languages share the same canonical URL.
 
 The social card uses the bundled NASA/JPL-Caltech reference photograph with attribution. Run `yarn assets:social` to regenerate `public/social-preview.png` and the PNG icons. When moving to another production domain, update `SITE_URL` in `src/lib/seo.ts`, `public/robots.txt`, and `public/sitemap.xml` together. The SEO browser tests check the exported metadata and linked assets with JavaScript disabled.
 

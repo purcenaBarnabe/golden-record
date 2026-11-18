@@ -76,7 +76,7 @@ jobs:
       cancel-in-progress: false
     environment:
       name: production
-      url: https://voyager-golden-record.pages.dev
+      url: https://golden-record.purcena.com
     steps:
       # A fresh runner receives only the static site, with no application checkout.
       - name: Download static site
