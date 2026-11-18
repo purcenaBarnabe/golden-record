@@ -20,6 +20,12 @@ Development and preview bind to loopback and require an unused port 3000. To exp
 
 React 19, TypeScript, TanStack Start and Router, Vite 8, Tailwind CSS 4, Zustand, Radix Dialog and Tooltip, Three.js, React Three Fiber, and Drei. Visual assets, catalog metadata, and fonts are local; no database or authentication is needed. Audio streams from Internet Archive only after a visitor selects a recording. External audio availability depends on that archive.
 
+## Languages
+
+The exhibit supports English and Brazilian Portuguese, including diagram explanations, audio metadata, search, errors, accessible labels, and document metadata. The discreet language picker beside the theme offers Automatic, English, and Português (Brasil). A manual choice is saved locally; Automatic restores the browser’s preference order through [`navigator.languages`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/languages), with `navigator.language` as a fallback. Portuguese variants use Brazilian Portuguese, unsupported languages fall through to the next supported preference, and English is the final fallback. No location lookup is used.
+
+The static document is prerendered in English and resolves the visitor’s preference after hydration. Browser language changes are followed in Automatic mode, and manual changes sync across tabs. Detection and switching also work when storage is blocked. Changing language preserves the scene, theme, and audio playback. Search matches both languages without requiring accents; original song and performer names are preserved where appropriate. UI catalogs live in `src/lib/i18n/`, with TypeScript checking key coverage. Run the i18n unit and browser tests when adding translations.
+
 ## Observability
 
 Cloudflare Web Analytics provides traffic and browser performance metrics. Sentry captures UI errors, important exhibit and player interactions, scene readiness, audio startup, and buffering. Copy `.env.example` to `.env.local` to enable local reporting. Production builds receive the public DSN and a build-only source-map upload token through GitHub Actions. Errors are captured at full rate; production traces default to 10% sampling. Session Replay is disabled, and search text is excluded from telemetry.

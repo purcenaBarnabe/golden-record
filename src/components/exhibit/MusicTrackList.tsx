@@ -1,6 +1,7 @@
 import { memo, useMemo } from 'react'
 import { Pause, Play } from 'lucide-react'
 import { filterTracks, formatTime, type RecordTrack } from '../../lib/music'
+import { useI18n } from '../../lib/i18n'
 
 export const MusicTrackList = memo(function MusicTrackList({
   kind,
@@ -19,9 +20,10 @@ export const MusicTrackList = memo(function MusicTrackList({
   toggle: () => void
   clearSearch: () => void
 }) {
-  const tracks = useMemo(() => filterTracks(kind, query), [kind, query])
+  const { t, locale } = useI18n()
+  const tracks = useMemo(() => filterTracks(kind, query, locale), [kind, query, locale])
   return (
-    <div className="music-list" role="region" aria-label="Record playlist" tabIndex={0}>
+    <div className="music-list" role="region" aria-label={t.music.playlist} tabIndex={0}>
       <ol>
         {tracks.map((track) => {
           const active = selectedId === track.id
@@ -29,7 +31,11 @@ export const MusicTrackList = memo(function MusicTrackList({
             <li key={track.id}>
               <button
                 className={`music-track ${active ? 'is-current' : ''}`}
-                aria-label={`${active && playing ? 'Pause' : 'Play'} ${track.title}`}
+                aria-label={
+                  active && playing
+                    ? t.music.pauseTrack(track.title)
+                    : t.music.playTrack(track.title)
+                }
                 aria-current={active ? 'true' : undefined}
                 onClick={() => {
                   if (active) toggle()
@@ -63,8 +69,8 @@ export const MusicTrackList = memo(function MusicTrackList({
       </ol>
       {!tracks.length && (
         <div className="music-empty">
-          <p>No tracks found.</p>
-          <button onClick={clearSearch}>Clear search</button>
+          <p>{t.music.empty}</p>
+          <button onClick={clearSearch}>{t.music.clear}</button>
         </div>
       )}
     </div>

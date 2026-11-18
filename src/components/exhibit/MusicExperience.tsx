@@ -16,6 +16,7 @@ import {
   AUDIO_ARCHIVE,
   filterTracks,
   formatTime,
+  localizeTrack,
   MUSIC_CREDITS,
   NASA_MUSIC,
   recordTracks,
@@ -23,6 +24,7 @@ import {
 } from '../../lib/music'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { MusicTrackList } from './MusicTrackList'
+import { useI18n } from '../../lib/i18n'
 import {
   beginOperation,
   reportFailure,
@@ -34,6 +36,7 @@ const trackAttributes = (track: RecordTrack | null): ObservationAttributes =>
   track ? { track_id: track.id, program: track.kind } : {}
 
 export function MusicExperience() {
+  const { t, locale, number } = useI18n()
   const open = useExhibitStore((s) => s.panel === 'music')
   const setPanel = useExhibitStore((s) => s.setPanel)
   const [kind, setKind] = useState<RecordTrack['kind']>('music')
@@ -45,7 +48,7 @@ export function MusicExperience() {
   const [duration, setDuration] = useState(0)
   const [seekable, setSeekable] = useState(false)
   const [volume, setVolume] = useState(0.75)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<'blocked' | 'failed' | null>(null)
   const audio = useRef<HTMLAudioElement>(null)
   const current = useRef<RecordTrack | null>(null)
   const request = useRef(0)
@@ -94,9 +97,7 @@ export function MusicExperience() {
       setLoading(false)
       setPlaying(false)
       setError(
-        reason instanceof DOMException && reason.name === 'NotAllowedError'
-          ? 'Press play to begin listening.'
-          : 'This recording could not load. Retry or open the audio archive below.',
+        reason instanceof DOMException && reason.name === 'NotAllowedError' ? 'blocked' : 'failed',
       )
     })
   }, [playbackFailed])
@@ -178,14 +179,15 @@ export function MusicExperience() {
   useEffect(() => {
     if (audio.current) audio.current.volume = volume
   }, [volume])
+  const selectedCopy = selected ? localizeTrack(selected, locale) : null
   useEffect(() => {
     if (!('mediaSession' in navigator)) return
     if ('MediaMetadata' in window)
-      navigator.mediaSession.metadata = selected
+      navigator.mediaSession.metadata = selectedCopy
         ? new MediaMetadata({
-            title: selected.title,
-            artist: selected.artist,
-            album: 'Voyager Golden Record',
+            title: selectedCopy.title,
+            artist: selectedCopy.artist,
+            album: t.music.album,
           })
         : null
     const handlers = {
@@ -210,7 +212,7 @@ export function MusicExperience() {
         }
       }
     }
-  }, [selected, start, skip])
+  }, [selectedCopy, start, skip, t])
   useEffect(() => {
     if ('mediaSession' in navigator)
       navigator.mediaSession.playbackState = selected ? (playing ? 'playing' : 'paused') : 'none'
@@ -224,12 +226,12 @@ export function MusicExperience() {
       () =>
         trackInteraction('audio.searched', {
           program: kind,
-          results: filterTracks(kind, query).length,
+          results: filterTracks(kind, query, locale).length,
         }),
       600,
     )
     return () => clearTimeout(timer)
-  }, [kind, open, query])
+  }, [kind, open, query, locale])
   useEffect(
     () => () => {
       startup.current?.('cancelled')
@@ -315,7 +317,7 @@ export function MusicExperience() {
             setPlaying(false)
             setLoading(false)
             setSeekable(false)
-            setError('This recording could not load. Retry or open the audio archive below.')
+            setError('failed')
           }
         }}
       />
@@ -353,14 +355,12 @@ export function MusicExperience() {
                 <Headphones size={20} strokeWidth={1.25} />
                 <span>Voyager, 1977</span>
               </div>
-              <Dialog.Close className="icon-button music-close" aria-label="Close playlist">
+              <Dialog.Close className="icon-button music-close" aria-label={t.music.close}>
                 <X size={19} strokeWidth={1.4} />
               </Dialog.Close>
-              <Dialog.Title>The Sounds of Earth</Dialog.Title>
-              <Dialog.Description id="music-description">
-                A world of music, in the order sent into space.
-              </Dialog.Description>
-              <div className="music-filters" role="group" aria-label="Audio collection">
+              <Dialog.Title>{t.music.title}</Dialog.Title>
+              <Dialog.Description id="music-description">{t.music.summary}</Dialog.Description>
+              <div className="music-filters" role="group" aria-label={t.music.collection}>
                 <button
                   aria-pressed={kind === 'music'}
                   onClick={() => {
@@ -369,7 +369,7 @@ export function MusicExperience() {
                     setQuery('')
                   }}
                 >
-                  Music <span>27</span>
+                  {t.music.music} <span>27</span>
                 </button>
                 <button
                   aria-pressed={kind === 'voices'}
@@ -379,7 +379,7 @@ export function MusicExperience() {
                     setQuery('')
                   }}
                 >
-                  Greetings & sounds <span>4</span>
+                  {t.music.voices} <span>4</span>
                 </button>
               </div>
               <label className="music-search">
@@ -388,11 +388,11 @@ export function MusicExperience() {
                   type="search"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Find a title, artist or place"
-                  aria-label="Search the record"
+                  placeholder={t.music.searchPlaceholder}
+                  aria-label={t.music.search}
                 />
                 {query && (
-                  <button aria-label="Clear search" onClick={() => setQuery('')}>
+                  <button aria-label={t.music.clear} onClick={() => setQuery('')}>
                     <X size={14} />
                   </button>
                 )}
@@ -409,17 +409,15 @@ export function MusicExperience() {
             />
             <footer className="music-player">
               <div className="now-playing" aria-live="polite">
-                <strong>{selected?.title ?? 'Choose a track'}</strong>
+                <strong>{selectedCopy?.title ?? t.music.choose}</strong>
                 <span>
-                  {selected?.artist ??
-                    (kind === 'music'
-                      ? '27 musical selections from our shared home.'
-                      : 'Four recordings of Earth’s voices and sounds.')}
+                  {selectedCopy?.artist ??
+                    (kind === 'music' ? t.music.musicSummary : t.music.voicesSummary)}
                 </span>
               </div>
               <div className="player-transport">
                 <button
-                  aria-label="Previous track"
+                  aria-label={t.music.previous}
                   onClick={() => skip(-1)}
                   disabled={!selected || (selected.order === 1 && elapsed <= 3)}
                 >
@@ -427,7 +425,7 @@ export function MusicExperience() {
                 </button>
                 <button
                   className="player-play"
-                  aria-label={playing || loading ? 'Pause playback' : 'Play playback'}
+                  aria-label={playing || loading ? t.music.pause : t.music.play}
                   onClick={toggle}
                 >
                   {loading ? (
@@ -439,7 +437,7 @@ export function MusicExperience() {
                   )}
                 </button>
                 <button
-                  aria-label="Next track"
+                  aria-label={t.music.next}
                   onClick={() => skip(1)}
                   disabled={!selected || last}
                 >
@@ -449,7 +447,8 @@ export function MusicExperience() {
               <div className="player-timeline">
                 <span>{formatTime(elapsed)}</span>
                 <input
-                  aria-label="Seek in track"
+                  aria-label={t.music.seek}
+                  aria-valuetext={`${formatTime(elapsed)} / ${formatTime(duration)}`}
                   type="range"
                   min={0}
                   max={duration || 1}
@@ -461,11 +460,12 @@ export function MusicExperience() {
                 <span>{formatTime(duration)}</span>
               </div>
               <div className="player-meta">
-                <span>{loading ? 'Loading recording…' : 'Streamed from Internet Archive'}</span>
+                <span>{loading ? t.music.loading : t.music.streamed}</span>
                 <label>
                   <Volume2 size={14} strokeWidth={1.4} />
                   <input
-                    aria-label="Volume"
+                    aria-label={t.music.volume}
+                    aria-valuetext={number(volume, { style: 'percent', maximumFractionDigits: 0 })}
                     type="range"
                     min={0}
                     max={1}
@@ -485,26 +485,26 @@ export function MusicExperience() {
               </div>
               {error && (
                 <div className="player-error" role="alert">
-                  <p>{error}</p>
+                  <p>{t.music[error]}</p>
                   <button
                     onClick={() => {
                       trackInteraction('audio.retried', trackAttributes(current.current))
                       start()
                     }}
                   >
-                    Retry playback
+                    {t.music.retry}
                   </button>
                 </div>
               )}
               <div className="music-sources">
                 <a href={NASA_MUSIC} target="_blank" rel="noreferrer">
-                  NASA catalog <ArrowUpRight size={11} />
+                  {t.music.catalog} <ArrowUpRight size={11} />
                 </a>
                 <a href={MUSIC_CREDITS} target="_blank" rel="noreferrer">
-                  Performer credits <ArrowUpRight size={11} />
+                  {t.music.credits} <ArrowUpRight size={11} />
                 </a>
                 <a href={AUDIO_ARCHIVE} target="_blank" rel="noreferrer">
-                  Audio archive <ArrowUpRight size={11} />
+                  {t.music.archive} <ArrowUpRight size={11} />
                 </a>
               </div>
             </footer>
@@ -512,10 +512,10 @@ export function MusicExperience() {
         </Dialog.Portal>
       </Dialog.Root>
       {selected && !open && (
-        <aside className="mini-player" aria-label="Now playing">
+        <aside className="mini-player" aria-label={t.music.nowPlaying}>
           <button
             className="mini-toggle"
-            aria-label={playing || loading ? 'Pause music' : 'Resume music'}
+            aria-label={playing || loading ? t.music.pauseMusic : t.music.resume}
             onClick={toggle}
           >
             {loading ? (
@@ -529,18 +529,14 @@ export function MusicExperience() {
           <button
             className="mini-title"
             onClick={() => setPanel('music')}
-            aria-label="Open music playlist"
+            aria-label={t.music.open}
           >
             <span>
-              {error
-                ? 'Recording unavailable'
-                : playing
-                  ? 'Listening to the record'
-                  : 'Music paused'}
+              {error ? t.music.unavailable : playing ? t.music.listening : t.music.paused}
             </span>
-            <strong>{selected.title}</strong>
+            <strong>{selectedCopy?.title}</strong>
           </button>
-          <button className="mini-stop" onClick={stop} aria-label="Stop listening">
+          <button className="mini-stop" onClick={stop} aria-label={t.music.stop}>
             <X size={15} />
           </button>
         </aside>

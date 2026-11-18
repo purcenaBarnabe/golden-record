@@ -1373,3 +1373,66 @@ p {
   z-index: 1;
   pointer-events: auto;
 }
+
+.language-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 57px;
+  height: 42px;
+  color: var(--muted);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.language-code {
+  font-size: 11px;
+  font-weight: 500;
+}
+.language-picker select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font: inherit;
+}
+.language-picker:hover,
+.language-picker:focus-within {
+  color: var(--foreground);
+  background: var(--surface);
+}
+.language-picker:has(select:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+.language-picker:has(select:disabled) {
+  opacity: 0.25;
+}
+.route-message {
+  padding: 10vh 24px;
+  text-align: center;
+}
+.route-message p,
+.route-message a,
+.route-message button {
+  display: block;
+  margin: 20px auto;
+}
+.route-message a,
+.route-message button {
+  color: var(--accent);
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .language-picker {
+    min-width: 49px;
+    height: 40px;
+    gap: 3px;
+  }
+  .music-filters {
+    gap: 16px;
+  }
+}

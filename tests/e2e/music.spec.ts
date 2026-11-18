@@ -115,6 +115,22 @@ test('native audio supports choosing, seeking, volume, queue advance and listeni
   await expect(page.getByRole('complementary', { name: 'Now playing' })).toContainText(
     'Johnny B. Goode',
   )
+  const source = await page.locator('audio').getAttribute('src')
+  const requestCount = requests.length
+  await page.getByRole('combobox', { name: 'Language' }).selectOption('pt-BR')
+  await expect(page.getByRole('complementary', { name: 'Em reprodução' })).toContainText(
+    'Ouvindo o disco',
+  )
+  await expect(page.locator('audio')).toHaveAttribute('src', source!)
+  expect(await page.locator('audio').evaluate((audio: HTMLAudioElement) => audio.paused)).toBe(
+    false,
+  )
+  expect(requests).toHaveLength(requestCount)
+  if (await page.evaluate(() => 'mediaSession' in navigator))
+    expect(await page.evaluate(() => navigator.mediaSession.metadata?.album)).toBe(
+      'Disco de Ouro das Voyager',
+    )
+  await page.getByRole('combobox', { name: 'Idioma' }).selectOption('en')
   await page.getByRole('switch', { name: 'Show record' }).setChecked(false)
   await expect
     .poll(() => page.locator('audio').evaluate((audio: HTMLAudioElement) => audio.paused))

@@ -4,15 +4,18 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Focus, X } from 'lucide-react'
 import { inscriptions, NASA_COVER, NASA_MAKING } from '../../lib/inscriptions'
 import { useExhibitStore } from '../../stores/use-exhibit-store'
 import { DiagramPreview } from './DiagramPreview'
+import { useI18n } from '../../lib/i18n'
 
 export function ExhibitPanels() {
+  const { t, number } = useI18n()
   const panel = useExhibitStore((s) => s.panel)
   const selected = useExhibitStore((s) => s.selected)
   const setPanel = useExhibitStore((s) => s.setPanel)
   const setSelected = useExhibitStore((s) => s.setSelected)
   const inspectEngraving = useExhibitStore((s) => s.inspectEngraving)
   const index = inscriptions.findIndex((item) => item.id === selected)
-  const item = inscriptions[index]
+  const source = inscriptions[index]
+  const item = source ? { ...source, ...t.inscriptions[source.id] } : undefined
   const returnFocus = useRef<HTMLElement | null>(null)
   const close = () => {
     setSelected(null)
@@ -46,14 +49,12 @@ export function ExhibitPanels() {
             else document.getElementById('viewer-controls')?.focus()
           }}
         >
-          <Dialog.Close className="panel-close icon-button" aria-label="Close information">
+          <Dialog.Close className="panel-close icon-button" aria-label={t.details.close}>
             <X size={20} strokeWidth={1.4} />
           </Dialog.Close>
-          <Dialog.Title>{item ? item.title : 'About this recreation'}</Dialog.Title>
+          <Dialog.Title>{item ? item.title : t.exhibit.about}</Dialog.Title>
           <Dialog.Description id="panel-description">
-            {item
-              ? item.summary
-              : 'A message from Earth, carried by both Voyager spacecraft since 1977.'}
+            {item ? item.summary : t.about.summary}
           </Dialog.Description>
           {item ? (
             <div className="detail-content">
@@ -65,14 +66,14 @@ export function ExhibitPanels() {
                 <span>{item.unit}</span>
               </div>
               <a className="source-link" href={NASA_COVER} target="_blank" rel="noreferrer">
-                NASA’s explanation <ArrowUpRight size={13} />
+                {t.details.source} <ArrowUpRight size={13} />
               </a>
               <button className="inspect-carving" onClick={() => inspectEngraving(item.id)}>
-                <Focus size={15} /> See it close up <ArrowUpRight size={13} />
+                <Focus size={15} /> {t.details.inspect} <ArrowUpRight size={13} />
               </button>
               <div className="detail-pagination">
                 <button
-                  aria-label="Previous engraving"
+                  aria-label={t.details.previous}
                   onClick={() =>
                     setSelected(
                       inscriptions[(index + inscriptions.length - 1) % inscriptions.length].id,
@@ -82,10 +83,10 @@ export function ExhibitPanels() {
                   <ArrowLeft size={18} />
                 </button>
                 <span>
-                  {index + 1} / {inscriptions.length}
+                  {number(index + 1)} / {number(inscriptions.length)}
                 </span>
                 <button
-                  aria-label="Next engraving"
+                  aria-label={t.details.next}
                   onClick={() => setSelected(inscriptions[(index + 1) % inscriptions.length].id)}
                 >
                   <ArrowRight size={18} />
@@ -94,73 +95,50 @@ export function ExhibitPanels() {
             </div>
           ) : (
             <div className="about-content">
-              <p>
-                The 12-inch record is gold-plated copper. The diagrams belong to its separate
-                aluminum protective cover. Both parts are shown together in a contemporary museum
-                mount: the engraved cover on one side, the record’s documented Side 1 label on the
-                other.
-              </p>
+              <p>{t.about.materials}</p>
               <dl>
                 <div>
-                  <dt>Record diameter</dt>
-                  <dd>304.8 mm</dd>
+                  <dt>{t.about.diameter}</dt>
+                  <dd>{number(304.8)} mm</dd>
                 </div>
                 <div>
-                  <dt>Record thickness</dt>
-                  <dd>1.27 mm</dd>
+                  <dt>{t.about.thickness}</dt>
+                  <dd>{number(1.27)} mm</dd>
                 </div>
                 <div>
-                  <dt>Construction</dt>
+                  <dt>{t.about.construction}</dt>
                   <dd>
-                    Two 0.508 mm copper faces
+                    {t.about.faces(`${number(0.508)} mm`)}
                     <br />
-                    with a 0.254 mm bond
+                    {t.about.bond(`${number(0.254)} mm`)}
                   </dd>
                 </div>
               </dl>
-              <p>
-                Drag to orbit on desktop; right-drag to pan. On mobile, Drag moves the display with
-                one finger, and Orbit rotates it. Switch modes in the bottom toolbar. Scroll toward
-                the pointer or pinch to zoom up to 128×. Choose “See it close up” for a diagram
-                close-up, and use the desktop lighting control to reveal its surface details. At
-                deep zoom, use a marker to open its information card; orbit stays on the chosen
-                face. Engraving markers appear for three seconds after a drag, orbit, or zoom, then
-                fade out. Reset view returns to the pedestal.
-              </p>
-              <p className="reference-note">
-                Record thickness follows the original construction notes in the Sagan papers. Cover
-                dimensions, small edge bevels, engraving depth, and display spacing remain estimates
-                from photographs. Microscopic grain, brushing, and groove shape are material
-                reconstructions, not measurements of a flight article. The cover artwork is a vector
-                transcription; the label derives from NASA’s photograph. This is an independent
-                reconstruction, not a 3D scan.
-              </p>
+              <p>{t.about.instructions}</p>
+              <p className="reference-note">{t.about.reference}</p>
               <div className="reference-links">
                 <a href={NASA_MAKING} target="_blank" rel="noreferrer">
-                  NASA · Materials and manufacture <ArrowUpRight size={13} />
+                  {t.about.manufacture} <ArrowUpRight size={13} />
                 </a>
                 <a href={NASA_COVER} target="_blank" rel="noreferrer">
-                  NASA · Cover diagrams <ArrowUpRight size={13} />
+                  {t.about.diagrams} <ArrowUpRight size={13} />
                 </a>
                 <a
                   href="https://tile.loc.gov/storage-services/service/mss/mss85590/038/038.pdf"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Library of Congress · Construction notes <ArrowUpRight size={13} />
+                  {t.about.notes} <ArrowUpRight size={13} />
                 </a>
                 <a
                   href="https://commons.wikimedia.org/wiki/File:Voyager_plaque.svg"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Nicolás González Montofré · Diagram transcription <ArrowUpRight size={13} />
+                  {t.about.transcription} <ArrowUpRight size={13} />
                 </a>
               </div>
-              <p className="credit-note">
-                Reference photography: NASA/JPL-Caltech. Diagram transcription: Nicolás González
-                Montofré, public domain. Not affiliated with NASA.
-              </p>
+              <p className="credit-note">{t.about.credits}</p>
             </div>
           )}
         </Dialog.Content>

@@ -1,3 +1,6 @@
+import type { Locale } from './i18n/locale'
+import { portugueseTracks } from './i18n/music.pt-BR'
+
 export const NASA_MUSIC = 'https://science.nasa.gov/mission/voyager/golden-record-contents/sounds/'
 export const AUDIO_ARCHIVE = 'https://archive.org/details/the-golden-voyager-record'
 export const MUSIC_CREDITS = 'https://ozmarecords.com/pages/voyager'
@@ -116,6 +119,18 @@ export const recordTracks: RecordTrack[] = entries.map(([title, artist, place, d
   audio: `https://archive.org/download/the-golden-voyager-record/${encodeURIComponent(`NASA - The Golden Voyager Record - Track (${String(i + 1).padStart(2, '0')}).mp3`)}`,
 }))
 
+const localizedTracks: Record<Locale, RecordTrack[]> = {
+  en: recordTracks,
+  'pt-BR': recordTracks.map((track) => {
+    const [title, artist, place] = portugueseTracks[track.id as keyof typeof portugueseTracks]
+    return { ...track, title, artist, place }
+  }),
+}
+
+export function localizeTrack(track: RecordTrack, locale: Locale): RecordTrack {
+  return localizedTracks[locale].find((entry) => entry.id === track.id)!
+}
+
 export function formatTime(seconds: number) {
   const value = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0
   return `${Math.floor(value / 60)}:${String(value % 60).padStart(2, '0')}`
@@ -129,13 +144,17 @@ const normalize = (text: string) =>
 const searchable = new Map(
   recordTracks.map((track) => [
     track.id,
-    normalize(`${track.title} ${track.artist} ${track.place}`),
+    normalize(
+      [track, localizeTrack(track, 'pt-BR')]
+        .map((entry) => `${entry.title} ${entry.artist} ${entry.place}`)
+        .join(' '),
+    ),
   ]),
 )
 
-export function filterTracks(kind: RecordTrack['kind'], query: string) {
+export function filterTracks(kind: RecordTrack['kind'], query: string, locale: Locale = 'en') {
   const terms = normalize(query).trim().split(/\s+/)
-  return recordTracks.filter(
+  return localizedTracks[locale].filter(
     (track) =>
       track.kind === kind && terms.every((term) => searchable.get(track.id)!.includes(term)),
   )

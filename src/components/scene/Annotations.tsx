@@ -1,3 +1,4 @@
+import { useI18n } from '../../lib/i18n'
 import { useRef } from 'react'
 import { Html } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
@@ -11,6 +12,11 @@ import { AnnotationCard, hoveringAnnotation, withinAnnotation } from './Annotati
 import { useProjectedSubject } from './use-projected-subject'
 
 export function Annotations() {
+  const { t } = useI18n()
+  const localizedInscriptions = inscriptions.map((item) => ({
+    ...item,
+    ...t.inscriptions[item.id],
+  }))
   const hovered = useExhibitStore((s) => s.hovered)
   const selected = useExhibitStore((s) => s.selected)
   const markers = useExhibitStore((s) => s.markersVisible)
@@ -40,7 +46,7 @@ export function Annotations() {
   })
   return (
     <group ref={root}>
-      {inscriptions.map((item) => (
+      {localizedInscriptions.map((item) => (
         <Html
           key={item.id}
           position={
@@ -85,7 +91,7 @@ export function Annotations() {
           >
             <button
               className="annotation-dot"
-              aria-label={`Explore ${item.category.toLowerCase()}`}
+              aria-label={t.details.explore(item.category)}
               aria-expanded={selected === item.id}
               onClick={(e) => {
                 e.stopPropagation()
@@ -110,10 +116,10 @@ export function Annotations() {
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
                 <button className="annotation-action" onClick={() => setSelected(item.id)}>
-                  What does this mean? <ArrowUpRight size={14} />
+                  {t.details.meaning} <ArrowUpRight size={14} />
                 </button>
                 <button className="annotation-action" onClick={() => inspectEngraving(item.id)}>
-                  See it close up <Focus size={14} />
+                  {t.details.inspect} <Focus size={14} />
                 </button>
               </AnnotationCard>
             )}

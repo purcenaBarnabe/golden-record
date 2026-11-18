@@ -1,3 +1,4 @@
+import { useI18n } from '../../lib/i18n'
 import { useRef } from 'react'
 import { Html } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
@@ -9,6 +10,7 @@ import { AnnotationCard, hoveringAnnotation, withinAnnotation } from './Annotati
 import { useProjectedSubject } from './use-projected-subject'
 
 export function RecordAnnotation() {
+  const { t } = useI18n()
   const hovered = useExhibitStore((s) => s.hovered === 'music')
   const panel = useExhibitStore((s) => s.panel)
   const setHovered = useExhibitStore((s) => s.setAnnotationHovered)
@@ -73,7 +75,7 @@ export function RecordAnnotation() {
         >
           <button
             className="record-music-dot"
-            aria-label="Explore the Sounds of Earth"
+            aria-label={t.music.explore}
             aria-expanded={panel === 'music'}
             onClick={(e) => {
               e.stopPropagation()
@@ -91,14 +93,11 @@ export function RecordAnnotation() {
               })}
               className="music-info-card"
             >
-              <span className="card-category">The record’s music</span>
-              <h3>The Sounds of Earth</h3>
-              <p>
-                27 musical selections, from Bach and Javanese gamelan to Chuck Berry. A world of
-                sound, sent into space.
-              </p>
+              <span className="card-category">{t.music.category}</span>
+              <h3>{t.music.title}</h3>
+              <p>{t.music.preview}</p>
               <button onClick={() => setPanel('music')}>
-                Listen to the record <ArrowUpRight size={14} />
+                {t.music.listen} <ArrowUpRight size={14} />
               </button>
             </AnnotationCard>
           )}
